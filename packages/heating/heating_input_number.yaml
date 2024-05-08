@@ -1,0 +1,43 @@
+input_number:
+  flat_temperature_setpoint:
+    name: "Wohnungen Solltemperatur"
+    min: 15.0
+    max: 24.0
+    step: 0.5
+    icon: "mdi:temperature-celsius"
+    mode: "box"
+  flat_temperature_tolerance:
+    name: "Wohnungen Temperatur Toleranz"
+    min: 0.0
+    max: 3.0
+    step: 0.5
+    icon: "mdi:temperature-celsius"
+    mode: "box"
+  heating_hc1_heating_curve:
+    name: "Heinzkreis 1 Heizkurve"
+    min: 0.4
+    max: 1.6
+    step: 0.05
+    icon: "mdi:hvac"
+    mode: "box"
+  heating_power_auto_max_temp:
+    name: "Maximale Raumtemp für Automatische Regelung"
+    min: 15
+    max: 25
+    step: 0.5
+    icon: "mdi:temperature-celsius"
+    mode: "box"
+  heating_power_auto_min_temp:
+    name: "Minimale Raumtemp für Automatische Regelung"
+    min: 15
+    max: 25
+    step: 0.5
+    icon: "mdi:temperature-celsius"
+    mode: "box"
+  heating_power_auto_offset_temp:
+    name: "Offset von eingestellter zu tatsächlicher Temp"
+    min: 0
+    max: 5
+    step: 0.5
+    icon: "mdi:temperature-celsius"
+    mode: "box"

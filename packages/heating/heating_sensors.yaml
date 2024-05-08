@@ -1,0 +1,9 @@
+sensor:
+  - platform: template
+    sensors:
+      flats_heating_demand:
+        friendly_name: "Wohnungen Heizbedarf"
+        value_template: >
+          {% set temp_actual = states('sensor.flats_avg_temperature') | float %}
+          {% set temp_wanted = ( states('input_number.flat_temperature_setpoint') | float - states('input_number.flat_temperature_tolerance') | float ) %}
+          {{ (temp_wanted - temp_actual) | round(1, "half", default=0) }}
