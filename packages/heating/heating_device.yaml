@@ -1,0 +1,32 @@
+mqtt:
+  - climate:
+      name: "Vaillant"
+      unique_id: "vr720-heating"
+      device:
+        manufacturer: "Vaillant"
+        model: "Ctlv2-Heating"
+        name: "Ctlv2-Heating"
+        suggested_area: "Heating"
+        identifiers:
+          - !secret heating_device_serial
+      min_temp: 16
+      max_temp: 25
+      precision: 0.5
+      temp_step: 0.5
+      current_temperature_topic: "ha/flats/avgTemp"
+      temperature_command_topic: "ebusd/ctlv2/z1HeatingRoomTempDesiredManualControlled/set"
+      temperature_state_topic: "ebusd/ctlv2/z1HeatingRoomTempDesiredManualControlled"
+      temperature_state_template: "{{ value_json['tempv']['value'] }}"
+      modes:
+        - "off"
+        - "auto"
+        - "heat"
+      mode_command_topic: "ebusd/ctlv2/z1OpModeHeating/set"
+      mode_command_template: >-
+        {% set values = { 'auto':'time controlled', 'heat':'manual', 'off':'off'} %}
+        {{ values[value] if value in values.keys() else 'auto' }}
+      mode_state_topic: "ebusd/ctlv2/z1OpModeHeating"
+      mode_state_template: >-
+        {% set values = { 'time controlled':'auto', 'manual':'heat', 'off':'off'} %}
+        {% set val = value_json['opmode2']['value'] %}
+        {{ values[val] if val in values.keys() else 'auto' }}
