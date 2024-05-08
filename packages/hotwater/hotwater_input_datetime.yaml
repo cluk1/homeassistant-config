@@ -1,0 +1,6 @@
+input_datetime:
+  hotwater_legio_lastrun:
+    name: "Warmwasser Legionellenschaltung letzte Durchführung"
+    has_date: true
+    has_time: false
+

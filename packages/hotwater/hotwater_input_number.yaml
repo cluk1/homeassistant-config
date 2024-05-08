@@ -1,0 +1,16 @@
+input_number:
+  hotwater_setpoint_normal:
+    name: "Warmwasser Solltemperatur normal"
+    min: 20.0
+    max: 70.0
+    step: 1.0
+    icon: "mdi:temperature-celsius"
+    mode: "slider"
+  hotwater_setpoint_increased:
+    name: "Warmwasser Solltemperatur erhöht"
+    min: 20.0
+    max: 70.0
+    step: 1.0
+    icon: "mdi:temperature-celsius"
+    mode: "slider"
+
