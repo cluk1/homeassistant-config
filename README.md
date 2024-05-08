@@ -12,7 +12,7 @@ Vaillant aroTHERM plus VWL 125
 
 ## Prerequisites
 * ebus Adapter: https://ebusd.eu/
-* ebus Daemon running as HA Addon (https://github.com/LukasGrebe/ha-addons) or separate docker container
+* ebus Daemon running as HA Addon (https://github.com/LukasGrebe/ha-addons) or separate docker container, addon configuration:
 ```
   "scanconfig": true,
   "loglevel_all": "error",
@@ -24,7 +24,7 @@ Vaillant aroTHERM plus VWL 125
   "latency": 10,
   "device": "/dev/ttyACM0"
 ```
-* mqtt Broker running as HA Addon (https://github.com/home-assistant/addons/tree/master/mosquitto) or separate docker container
+* mqtt Broker running as HA Addon (https://github.com/home-assistant/addons/tree/master/mosquitto) or separate docker container, addon configuration:
 ```
   "logins": [],
   "require_certificate": false,
@@ -35,13 +35,13 @@ Vaillant aroTHERM plus VWL 125
     "folder": "mosquitto"
   }
 ```
-* Advanced SSH Addon (https://github.com/hassio-addons/addon-ssh)
+* Advanced SSH Addon (https://github.com/hassio-addons/addon-ssh), addon configuration:
 ```
   "ssh": {
     "username": "hassio",
     "password": "",
     "authorized_keys": [
-      "ssh-rsa XXXXXXXXXXXX"
+      "ssh-rsa <your ssh pubkey here>"
     ],
     "sftp": false,
     "compatibility_mode": false,
@@ -59,13 +59,13 @@ Vaillant aroTHERM plus VWL 125
 ```
 
 ## Installation
-* Install the ebus adapter
+* Install the ebus hardware adapter
 * Install the required addons as listed above
 * Share one /config folder among all docker containers (ha, ebusd). This happens automatically with HA green.
 * Checkout this repo into /config
 * Checkout the ebusd config from https://github.com/cluk1/ebusd-configuration into /config/ebusd/csvs
-* Configure the ebusd addon to use the csv files from the checkout
-* Start the ebusd Addon, check if it scans the bus and submit messages to mqtt
+* Configure the ebusd addon to use the csv files from the checkout (see addon config above).
+* Start the ebusd addon, check if it scans the bus (ebusctl info) and submits messages to mqtt (listen to ebusd/#)
 
 ## Custom sensors, templates and inputs
 * Flat temperatures are read from fritz!Dect thermometers, a sensor for the minimal and average flat temp is defined in [packages/heating/heating_groups.yaml](packages/heating/heating_groups.yaml)
@@ -82,4 +82,4 @@ Vaillant aroTHERM plus VWL 125
 
 ## Hotwater Automations
 * Hotwater [Winter](packages/hotwater/hotwater_automation_winter.yaml) / [Summer](packages/hotwater/hotwater_automation_summer.yaml): Increase hotwater setpoint and hysteresis if outside temperature is high enough to turn heating off. To reduce heatpump on / off cycles in summer mode.
-* [Legionella Prevention](packages/hotwater/hotwater_automation_legio.yaml): Try to run a legionella prevention program everyday, but only if the last successful run is at least 4 weeks ago, the outside temp is high enough and the sun is shining(for the heatpump to work effectively) and the flats heating demand is low. Then increase the hotwater setpoint to 65 °C and start the circulation pump. Wait for 120 mins to reach at least 60°C.
+* [Legionella Prevention](packages/hotwater/hotwater_automation_legio.yaml): Try to run a legionella prevention program everyday, but only if the last successful run is at least 4 weeks ago, the outside temp is high enough and the sun is shining(for the heatpump to work efficiently) and the flats heating demand is low. Then increase the hotwater setpoint to 65 °C and start the circulation pump. Wait for 120 mins for the heatpump to reach at least 60°C in the hotwater storage.
