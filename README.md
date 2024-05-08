@@ -1,5 +1,7 @@
 # Homeassistant Config for Vaillant Heating System
 
+<img src="https://energiewende-einfach-machen.net/wp-content/uploads/2024/05/ha-heatpump.png" width="500">
+
 ## Heating Device
 Vaillant aroTHERM plus VWL 125
 
