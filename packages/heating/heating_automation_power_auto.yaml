@@ -1,0 +1,52 @@
+automation:
+  - id: heating_power_auto
+    alias: Heating Power Auto
+    description: ""
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.flats_avg_temperature
+        for:
+          hours: 0
+          minutes: 45
+          seconds: 0
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+      - condition: numeric_state
+        entity_id: sensor.flats_heating_demand
+        below: 0.1
+    action:
+      - variables:
+          temp_offset: "{{ states('input_number.heating_power_auto_offset_temp') }}"
+          temp_max: "{{ states('input_number.heating_power_auto_max_temp') }}"
+          temp_min: "{{ states('input_number.heating_power_auto_min_temp') }}"
+          aktuelle_temp:
+            "{{ states('number.ebusd_ctlv2_z1heatingroomtempdesiredmanualcontrolled_tempv')
+            }}"
+          ziel_temp: "{{ states('input_number.flat_temperature_setpoint') }}"
+          heizbedarf: "{{ states('sensor.flats_heating_demand') }}"
+          neue_temp: "{{ min( [ziel_temp + temp_offset + heizbedarf, temp_max] ) }}"
+      - if:
+          - condition: template
+            value_template: "{{ aktuelle_temp != neue_temp }}"
+        then:
+          - service: logbook.log
+            data:
+              name: AM Heiztemperatur
+              message:
+                "Bedarf: {{ heizbedarf }}, AktuelleT: {{ aktuelle_temp }}, Setze
+                {{ neue_temp }}"
+          - service: !secret notify_admin
+            data:
+              message:
+                "HzB: {{ heizbedarf }}, AktT: {{ aktuelle_temp }}, Setze {{ neue_temp
+                }}"
+          - service: climate.set_temperature
+            data:
+              temperature: "{{ neue_temp }}"
+            target:
+              entity_id: climate.ctlv2_heating_vaillant
+        else: []
+    mode: single

@@ -1,0 +1,47 @@
+automation:
+  - id: heating_global_off
+    alias: "Heating Global off"
+    description: ""
+    mode: single
+    trigger:
+      - platform: state
+        entity_id:
+          - input_boolean.heating_on_off
+        from: "on"
+        to: "off"
+    condition: []
+    action:
+      - service: climate.set_hvac_mode
+        data:
+          hvac_mode: "off"
+        target:
+          entity_id: climate.ctlv2_heating_vaillant
+      - service: automation.trigger
+        metadata: {}
+        data:
+          skip_condition: true
+        target:
+          entity_id: automation.hotwater_summer_mode
+  - id: heating_global_on
+    alias: "Heating Global on"
+    description: ""
+    mode: single
+    trigger:
+      - platform: state
+        entity_id:
+          - input_boolean.heating_on_off
+        from: "off"
+        to: "on"
+    condition: []
+    action:
+      - service: climate.set_hvac_mode
+        data:
+          hvac_mode: "heat"
+        target:
+          entity_id: climate.ctlv2_heating_vaillant
+      - service: automation.trigger
+        metadata: {}
+        data:
+          skip_condition: false
+        target:
+          entity_id: automation.hotwater_winter_mode

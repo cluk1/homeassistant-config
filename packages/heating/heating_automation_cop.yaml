@@ -1,0 +1,25 @@
+automation:
+  - id: heating_cop_low
+    alias: "Heating COP low"
+    description: ""
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - sensor.my_home_device_0_arotherm_plus_heating_energy_efficiency
+        for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+        below: 3
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+      - condition: time
+        after: 08:00:00
+        enabled: false
+    action:
+      - service: !secret notify_admin
+        data:
+          message: Wäremepumpen Arbeitszahl unter 3
+    mode: single

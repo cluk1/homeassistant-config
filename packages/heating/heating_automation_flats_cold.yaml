@@ -1,0 +1,22 @@
+automation:
+  - id: heating_flats_cold
+    alias: Heating Flats cold
+    description: ""
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - sensor.flats_min_temperature
+        for:
+          hours: 0
+          minutes: 30
+          seconds: 0
+        below: 19.5
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+    action:
+      - service: !secret notify_admin
+        data:
+          message: Wohnungen unter 19.5
+    mode: single

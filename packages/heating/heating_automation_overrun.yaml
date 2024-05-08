@@ -1,0 +1,15 @@
+automation:
+  - id: heating_overrun
+    alias: Heating Heatpump Overrun
+    description: ""
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.ebusd_hmu_state00_compressorstate
+        to: Heating Overrun
+    condition: []
+    action:
+      - service: !secret notify_admin
+        data:
+          message: Heating Overrun
+    mode: single

@@ -1,0 +1,62 @@
+automation:
+  - id: heating_power_off
+    alias: Heating Power Off
+    description: ""
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.ebusd_hmu_state00_compressorstate
+        to: Heating Overrun
+    condition:
+      - condition: numeric_state
+        entity_id: sensor.flats_heating_demand
+        below: -1.4
+      - condition: sun
+        before: sunset
+        before_offset: -01:00
+        after: sunrise
+        after_offset: 02:00
+    action:
+      - repeat:
+          sequence:
+            - service: logbook.log
+              data:
+                name: AM Heizung Temp aus
+                message:
+                  "Bedarf: {{ heizbedarf }}, AktuelleT: {{ aktuelle_temp }}, Schalte
+                  aus"
+            - service: !secret notify_admin
+              data:
+                message: "HzB: {{ heizbedarf }}, AktT: {{ aktuelle_temp }}, Schalte aus"
+            - service: climate.set_hvac_mode
+              data:
+                hvac_mode: "off"
+              target:
+                entity_id: climate.ctlv2_heating_vaillant
+            - delay:
+                hours: 0
+                minutes: 30
+                seconds: 0
+                milliseconds: 0
+          while:
+            - condition: numeric_state
+              entity_id: sensor.flats_heating_demand
+              below: -1.4
+            - condition: sun
+              before: sunset
+              before_offset: -01:00
+              after: sunrise
+              after_offset: 02:00
+      - service: climate.set_hvac_mode
+        data:
+          hvac_mode: heat
+        target:
+          entity_id: climate.ctlv2_heating_vaillant
+      - service: logbook.log
+        data:
+          name: AM Heizung Temp aus
+          message: Schalte ein
+      - service: !secret notify_admin
+        data:
+          message: Schalte ein
+    mode: single
