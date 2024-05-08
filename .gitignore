@@ -1,0 +1,13 @@
+*.old
+*.new
+.HA_VERSION
+home-assistant.log*
+home-assistant_v2.db*
+secrets.yaml
+.cloud
+blueprints
+custom_components
+deps
+.storage/*
+zigbee2mqtt/*
+ebusd/csvs
