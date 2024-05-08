@@ -13,7 +13,50 @@ Vaillant aroTHERM plus VWL 125
 ## Prerequisites
 * ebus Adapter: https://ebusd.eu/
 * ebus Daemon running as HA Addon (https://github.com/LukasGrebe/ha-addons) or separate docker container
+```
+  "scanconfig": true,
+  "loglevel_all": "error",
+  "mqtttopic": "ebusd",
+  "mqttint": "/config/ebusd/mqtt-hassio.cfg",
+  "mqttjson": true,
+  "mode": "ens",
+  "configpath": "/config/ebusd/csvs/ebusd-2.1.x/en",
+  "latency": 10,
+  "device": "/dev/ttyACM0"
+```
 * mqtt Broker running as HA Addon (https://github.com/home-assistant/addons/tree/master/mosquitto) or separate docker container
+```
+  "logins": [],
+  "require_certificate": false,
+  "certfile": "fullchain.pem",
+  "keyfile": "privkey.pem",
+  "customize": {
+    "active": true,
+    "folder": "mosquitto"
+  }
+```
+* Advanced SSH Addon (https://github.com/hassio-addons/addon-ssh)
+```
+  "ssh": {
+    "username": "hassio",
+    "password": "",
+    "authorized_keys": [
+      "ssh-rsa XXXXXXXXXXXX"
+    ],
+    "sftp": false,
+    "compatibility_mode": false,
+    "allow_agent_forwarding": true,
+    "allow_remote_port_forwarding": false,
+    "allow_tcp_forwarding": false
+  },
+  "zsh": false,
+  "share_sessions": false,
+  "packages": [],
+  "init_commands": [
+    "(crontab -l | grep -v ebus; cat /config/ebusd/crontab) | crontab -",
+    "crond"
+  ]
+```
 
 ## Installation
 * Install the ebus adapter
