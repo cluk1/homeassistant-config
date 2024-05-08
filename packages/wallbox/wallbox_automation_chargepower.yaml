@@ -1,0 +1,35 @@
+automation:
+  - id: wallbox_chargepower_11
+    alias: Wallbox CP1 11kW
+    description: ""
+    trigger:
+      - platform: webhook
+        allowed_methods:
+          - POST
+        local_only: false
+        webhook_id: !secret webhook3
+    condition: []
+    action:
+      - service: openwbmqtt.change_charge_current_per_cp
+        data:
+          mqtt_prefix: openWB
+          charge_point_id: 1
+          target_current: 16
+    mode: single
+  - id: wallbox_chargepower_22
+    alias: Wallbox CP1 22kW
+    description: ""
+    trigger:
+      - platform: webhook
+        allowed_methods:
+          - POST
+        local_only: false
+        webhook_id: !secret webhook4
+    condition: []
+    action:
+      - service: openwbmqtt.change_charge_current_per_cp
+        data:
+          mqtt_prefix: openWB
+          charge_point_id: 1
+          target_current: 32
+    mode: single

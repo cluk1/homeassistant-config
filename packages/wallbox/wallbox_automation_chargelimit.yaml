@@ -1,0 +1,36 @@
+automation:
+  - id: wallbox_chargelimit_100
+    alias: Wallbox CP1 100%
+    description: ""
+    trigger:
+      - platform: webhook
+        allowed_methods:
+          - POST
+        local_only: false
+        webhook_id: !secret webhook1
+    condition: []
+    action:
+      - service: openwbmqtt.change_charge_limitation_per_cp
+        data:
+          mqtt_prefix: openWB
+          charge_limitation: Not limited
+          charge_point_id: 1
+    mode: single
+  - id: wallbox_chargelimit_90
+    alias: Wallbox CP1 90%
+    description: ""
+    trigger:
+      - platform: webhook
+        allowed_methods:
+          - POST
+        local_only: false
+        webhook_id: !secret webhook2
+    condition: []
+    action:
+      - service: openwbmqtt.change_charge_limitation_per_cp
+        data:
+          mqtt_prefix: openWB
+          charge_limitation: SOC
+          charge_point_id: 1
+          required_soc: 90
+    mode: single
