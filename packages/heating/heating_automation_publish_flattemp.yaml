@@ -1,0 +1,19 @@
+automation:
+  - id: heating_publish_flattemp
+    alias: Heating Publish Flat Temperature
+    description: ""
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.flats_avg_temperature
+      - platform: homeassistant
+        event: start
+    condition: []
+    action:
+      - service: mqtt.publish
+        data:
+          qos: "0"
+          retain: false
+          topic: ha/flats/avgTemp
+          payload_template: "{{ states('sensor.flats_avg_temperature') }}"
+    mode: single

@@ -1,0 +1,20 @@
+automation:
+  - id: heating_bath_window_open
+    alias: "Heating Bath Window Open"
+    description: ""
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - !secret climate_bath
+        for:
+          hours: 0
+          minutes: 10
+          seconds: 0
+        attribute: current_temperature
+        below: 18
+    condition: []
+    action:
+      - service: !secret notify_all
+        data:
+          message: Fenster im Bad offen
+    mode: single

@@ -1,0 +1,55 @@
+automation:
+  - id: heating_power_manual_increase
+    alias: Heating Power Manual Increase
+    description: ""
+    trigger:
+      - platform: webhook
+        allowed_methods:
+          - POST
+        local_only: false
+        webhook_id: !secret webhook5
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+    action:
+      - variables:
+          start_temp:
+            "{{ states('number.ebusd_ctlv2_z1heatingroomtempdesiredmanualcontrolled_tempv')
+            }}"
+          neue_temp: "{{ start_temp + 1 }}"
+      - service: !secret notify_admin
+        data:
+          message: Heizung auf {{ neue_temp }}
+      - service: climate.set_temperature
+        data:
+          temperature: "{{ neue_temp }}"
+        target:
+          entity_id: climate.ctlv2_heating_vaillant
+    mode: single
+
+  - id: heating_power_manual_decrease
+    alias: Heating Power Manual Decrease
+    description: ""
+    trigger:
+      - platform: webhook
+        allowed_methods:
+          - POST
+        local_only: false
+        webhook_id: !secret webhook6
+    condition: []
+    action:
+      - variables:
+          start_temp:
+            "{{ states('number.ebusd_ctlv2_z1heatingroomtempdesiredmanualcontrolled_tempv')
+            }}"
+          neue_temp: "{{ start_temp - 1 }}"
+      - service: !secret notify_admin
+        data:
+          message: Heizung auf {{ neue_temp }}
+      - service: climate.set_temperature
+        data:
+          temperature: "{{ neue_temp }}"
+        target:
+          entity_id: climate.ctlv2_heating_vaillant
+    mode: single
