@@ -1,0 +1,83 @@
+automation:
+  - id: hotwater_legio
+    alias: "Hotwater Legio"
+    description: ""
+    trigger:
+      - platform: time
+        at: "13:00:00"
+    condition:
+      - condition: numeric_state
+        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+        above: 10
+      - condition: numeric_state
+        entity_id: sensor.pv_leistung
+        above: 300
+        enabled: true
+      - condition: numeric_state
+        entity_id: sensor.warmwasser_legio_tage_seit_letzter
+        above: 25
+      - condition: numeric_state
+        entity_id: sensor.wohnungen_heizbedarf
+        below: 0
+    action:
+      - service: select.select_option
+        target:
+          entity_id: select.ebusd_hmu_hwcmode
+        data:
+          option: normal
+      - service: number.set_value
+        target:
+          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+        data:
+          value: "130"
+      - service: water_heater.set_temperature
+        data:
+          operation_mode: heat
+          temperature: 65
+        target:
+          entity_id: water_heater.mqtt_vaillant
+      - wait_for_trigger:
+          - platform: numeric_state
+            entity_id:
+              - water_heater.mqtt_vaillant
+            attribute: current_temperature
+            above: 60
+        timeout:
+          hours: 2
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+      - service: water_heater.set_temperature
+        data:
+          operation_mode: auto
+          temperature: "{{ states('input_number.warmwasser_zieltemperatur_normal') }}"
+        target:
+          entity_id: water_heater.mqtt_vaillant
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
+            below: 60
+        then:
+          - service: notify.mobile_app_pixel_5
+            data:
+              message: Legio Schaltung abgebrochen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
+        else:
+          - service: input_datetime.set_datetime
+            target:
+              entity_id: input_datetime.warmwasser_legio_letzte_durchfuhrung
+            data:
+              date: "{{ now().strftime('%Y-%m-%d') }}"
+          - service: notify.mobile_app_pixel_5
+            data:
+              message: Legio Schaltung abgeschlossen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
+      - service: number.set_value
+        target:
+          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+        data:
+          value: "60"
+      - service: select.select_option
+        target:
+          entity_id: select.ebusd_hmu_hwcmode
+        data:
+          option: eco
+    mode: single

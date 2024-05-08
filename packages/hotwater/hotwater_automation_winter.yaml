@@ -1,0 +1,38 @@
+automation:
+  - id: hotwater_winter
+    alias: Hotwater Winter Mode
+    description: ""
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+        for:
+          hours: 0
+          minutes: 5
+          seconds: 0
+        below: number.ebusd_ctlv2_hc1summertemplimit_tempv
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+    action:
+      - service: number.set_value
+        target:
+          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+        data:
+          value: "60"
+      - service: number.set_value
+        target:
+          entity_id: number.ebusd_ctlv2_hwctempdesired_tempv
+        data:
+          value: "40"
+      - service: number.set_value
+        target:
+          entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
+        data:
+          value: "10"
+      - service: !secret notify_admin
+        metadata: {}
+        data:
+          message: Warmwasser Winter
+    mode: single
