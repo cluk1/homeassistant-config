@@ -1,0 +1,58 @@
+automation:
+  - id: hotwater_setpoint_increased
+    alias: "Hotwater Setpoint Increased"
+    description: ""
+    trigger:
+      - platform: state
+        entity_id:
+          - schedule.hotwater_schedule_increased
+        to: "on"
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 0
+        from: "off"
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+      - condition: numeric_state
+        entity_id: water_heater.ctlv2_hotwater_vaillant
+        attribute: current_temperature
+        below: 38
+      - condition: numeric_state
+        entity_id: sensor.flats_heating_demand
+        below: 2
+    action:
+      - service: water_heater.set_temperature
+        data:
+          operation_mode: heat
+          temperature: "{{ states('input_number.hotwater_setpoint_increased') }}"
+        target:
+          entity_id: water_heater.ctlv2_hotwater_vaillant
+    mode: single
+  - id: hotwater_setpoint_normal
+    alias: "Hotwater Setpoint Normal"
+    description: ""
+    trigger:
+      - platform: state
+        entity_id:
+          - schedule.hotwater_schedule_increased
+        from: "on"
+        to: "off"
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 0
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+    action:
+      - service: water_heater.set_temperature
+        data:
+          operation_mode: auto
+          temperature: "{{ states('input_number.hotwater_setpoint_normal') }}"
+        target:
+          entity_id: water_heater.ctlv2_hotwater_vaillant
+    mode: single
