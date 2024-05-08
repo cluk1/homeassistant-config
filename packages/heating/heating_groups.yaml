@@ -1,0 +1,15 @@
+sensor:
+  - platform: group
+    name: "flats_avg_temperature"
+    type: mean
+    entities:
+      - !secret flat1_temperature
+      - !secret flat2_temperature
+      - !secret flat3_temperature
+  - platform: group
+    name: "flats_min_temperature"
+    type: min
+    entities:
+      - !secret flat1_temperature
+      - !secret flat2_temperature
+      - !secret flat3_temperature

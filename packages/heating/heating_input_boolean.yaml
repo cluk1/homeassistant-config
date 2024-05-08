@@ -1,0 +1,4 @@
+input_boolean:
+  heating_on_off:
+    name: "Heizung global an/aus"
+    icon: "mdi:hvac-off"
