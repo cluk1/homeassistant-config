@@ -12,7 +12,10 @@ automation:
           seconds: 0
         attribute: current_temperature
         below: 18
-    condition: []
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
     action:
       - service: !secret notify_all
         data:
