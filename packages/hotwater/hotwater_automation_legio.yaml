@@ -7,19 +7,27 @@ automation:
         at: "13:00:00"
     condition:
       - condition: numeric_state
-        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
-        above: 10
-      - condition: numeric_state
-        entity_id: sensor.pv_leistung
-        above: 300
-        enabled: true
-      - condition: numeric_state
-        entity_id: sensor.warmwasser_legio_tage_seit_letzter
+        entity_id: sensor.hotwater_legio_days_since_lastrun
         above: 25
       - condition: numeric_state
-        entity_id: sensor.wohnungen_heizbedarf
+        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+        above: 10
+      - condition: or
+        conditions:
+          - condition: numeric_state
+            entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+            above: 22
+          - condition: numeric_state
+            entity_id: sensor.pv_leistung
+            above: 300
+      - condition: numeric_state
+        entity_id: sensor.flats_heating_demand
         below: 0
     action:
+      - variables:
+          hw_setpoint: "{{ states('number.ebusd_ctlv2_hwctempdesired_tempv') }}"
+          hw_maxchargetime: "{{ states('number.ebusd_ctlv2_hwcmaxchargetime_minutes2') }}"
+          hw_chargehysteresis: "{{ states('number.ebusd_ctlv2_hwcchargehysteresis_calibrationv') }}"
       - service: select.select_option
         target:
           entity_id: select.ebusd_hmu_hwcmode
@@ -35,11 +43,11 @@ automation:
           operation_mode: heat
           temperature: 65
         target:
-          entity_id: water_heater.mqtt_vaillant
+          entity_id: water_heater.ctlv2_hotwater_vaillant
       - wait_for_trigger:
           - platform: numeric_state
             entity_id:
-              - water_heater.mqtt_vaillant
+              - water_heater.ctlv2_hotwater_vaillant
             attribute: current_temperature
             above: 60
         timeout:
@@ -50,9 +58,24 @@ automation:
       - service: water_heater.set_temperature
         data:
           operation_mode: auto
-          temperature: "{{ states('input_number.warmwasser_zieltemperatur_normal') }}"
+          temperature: "{{ hw_setpoint }}"
         target:
-          entity_id: water_heater.mqtt_vaillant
+          entity_id: water_heater.ctlv2_hotwater_vaillant
+      - service: number.set_value
+        target:
+          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+        data:
+          value: "{{ hw_maxchargetime }}"
+      - service: number.set_value
+        target:
+          entity_id: nnumber.ebusd_ctlv2_hwcchargehysteresis_calibrationv
+        data:
+          value: "{{ hw_chargehysteresis }}"
+      - service: select.select_option
+        target:
+          entity_id: select.ebusd_hmu_hwcmode
+        data:
+          option: eco
       - if:
           - condition: numeric_state
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
@@ -64,20 +87,10 @@ automation:
         else:
           - service: input_datetime.set_datetime
             target:
-              entity_id: input_datetime.warmwasser_legio_letzte_durchfuhrung
+              entity_id: input_datetime.hotwater_legio_lastrun
             data:
               date: "{{ now().strftime('%Y-%m-%d') }}"
           - service: notify.mobile_app_pixel_5
             data:
               message: Legio Schaltung abgeschlossen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
-      - service: number.set_value
-        target:
-          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
-        data:
-          value: "60"
-      - service: select.select_option
-        target:
-          entity_id: select.ebusd_hmu_hwcmode
-        data:
-          option: eco
     mode: single
