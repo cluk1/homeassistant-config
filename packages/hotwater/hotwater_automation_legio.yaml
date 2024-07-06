@@ -44,6 +44,11 @@ automation:
           temperature: 65
         target:
           entity_id: water_heater.ctlv2_hotwater_vaillant
+      - service: number.set_value
+        target:
+          entity_id: nnumber.ebusd_ctlv2_hwcchargehysteresis_calibrationv
+        data:
+          value: "5"
       - wait_for_trigger:
           - platform: numeric_state
             entity_id:
@@ -81,7 +86,7 @@ automation:
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
             below: 60
         then:
-          - service: notify.mobile_app_pixel_5
+          - service: !secret notify_admin
             data:
               message: Legio Schaltung abgebrochen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
         else:
@@ -90,7 +95,7 @@ automation:
               entity_id: input_datetime.hotwater_legio_lastrun
             data:
               date: "{{ now().strftime('%Y-%m-%d') }}"
-          - service: notify.mobile_app_pixel_5
+          - service: !secret notify_admin
             data:
               message: Legio Schaltung abgeschlossen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
     mode: single
