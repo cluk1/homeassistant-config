@@ -11,3 +11,6 @@ deps
 .storage/*
 zigbee2mqtt/*
 ebusd/csvs
+solcast-sites.json
+solcast-usage.json
+solcast.json
