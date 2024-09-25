@@ -89,13 +89,4 @@ automation:
           - service: !secret notify_admin
             data:
               message: Legio Schaltung abgebrochen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
-        else:
-          - service: input_datetime.set_datetime
-            target:
-              entity_id: input_datetime.hotwater_legio_lastrun
-            data:
-              date: "{{ now().strftime('%Y-%m-%d') }}"
-          - service: !secret notify_admin
-            data:
-              message: Legio Schaltung abgeschlossen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
     mode: single
