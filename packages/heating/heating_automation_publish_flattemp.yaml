@@ -15,5 +15,5 @@ automation:
           qos: "0"
           retain: false
           topic: ha/flats/avgTemp
-          payload_template: "{{ states('sensor.flats_avg_temperature') }}"
+          payload: "{{ states('sensor.flats_avg_temperature') }}"
     mode: single
