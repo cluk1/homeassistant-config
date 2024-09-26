@@ -1,0 +1,299 @@
+modbus:
+  - name: "fems"
+    type: tcp
+    host: 192.168.0.73
+    port: 502
+
+    message_wait_milliseconds: 30
+    delay: 5
+    timeout: 5
+
+    sensors:
+      - name: "EssSoc"
+        scan_interval: 60
+        data_type: uint16
+        input_type: input
+        device_class: battery
+        state_class: measurement
+        unit_of_measurement: "%"
+        address: 302
+        slave: 1
+        unique_id: fems_modbus_302
+
+      - name: "GridPower" # Grid Power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 315
+        slave: 1
+        unique_id: fems_modbus_315
+      - name: "ProductionPower"
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 327
+        slave: 1
+        unique_id: fems_modbus_327
+      - name: "ConsumptionPower" #House Power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 343
+        slave: 1
+        unique_id: fems_modbus_343
+
+      - name: "GridBuyEnergy"
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float64
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 359
+        slave: 1
+        unique_id: fems_modbus_359
+      - name: "GridSellEnergy"
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float64
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 363
+        slave: 1
+        unique_id: fems_modbus_363
+      - name: "EssDcChargeEnergy"
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float64
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 383
+        slave: 1
+        unique_id: fems_modbus_383
+      - name: "EssDcDischargeEnergy"
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float64
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 387
+        slave: 1
+        unique_id: fems_modbus_387
+      - name: "ProductionEnergy"
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float64
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 367
+        slave: 1
+        unique_id: fems_modbus_367
+      - name: "ConsumptionEnergy"
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float64
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 379
+        slave: 1
+        unique_id: fems_modbus_379
+
+      - name: heatpump_power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 608
+        slave: 1
+        unique_id: fems_modbus_608
+      - name: heatpump_production
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 614
+        slave: 1
+        unique_id: fems_modbus_614
+      - name: heatpump_consumption
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 612
+        slave: 1
+        unique_id: fems_modbus_612
+
+      - name: flat2_power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 888
+        slave: 1
+        unique_id: fems_modbus_888
+      - name: flat2_production
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 894
+        slave: 1
+        unique_id: fems_modbus_894
+      - name: flat2_consumption
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 892
+        slave: 1
+        unique_id: fems_modbus_892
+
+      - name: flat1_power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 1168
+        slave: 1
+        unique_id: fems_modbus_1168
+      - name: flat1_production
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 1174
+        slave: 1
+        unique_id: fems_modbus_1174
+      - name: flat1_consumption
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 1172
+        slave: 1
+        unique_id: fems_modbus_1172
+
+      - name: flat3_power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 1448
+        slave: 1
+        unique_id: fems_modbus_1448
+      - name: flat3_production
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 1454
+        slave: 1
+        unique_id: fems_modbus_1454
+      - name: flat3_consumption
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 1452
+        slave: 1
+        unique_id: fems_modbus_1452
+
+      - name: flat4_power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 1728
+        slave: 1
+        unique_id: fems_modbus_1728
+      - name: flat4_production
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 1734
+        slave: 1
+        unique_id: fems_modbus_1734
+      - name: flat4_consumption
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 1732
+        slave: 1
+        unique_id: fems_modbus_1732
+
+      - name: comm_power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 2008
+        slave: 1
+        unique_id: fems_modbus_2008
+      - name: comm_production
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 2014
+        slave: 1
+        unique_id: fems_modbus_2014
+      - name: comm_consumption
+        unit_of_measurement: Wh
+        scan_interval: 60
+        data_type: float32
+        input_type: holding
+        device_class: energy
+        state_class: total_increasing
+        address: 2012
+        slave: 1
+        unique_id: fems_modbus_2012
