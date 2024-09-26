@@ -1,0 +1,33 @@
+automation:
+  - id: photovoltaik_update_solcast
+    alias: Photovoltaik Solcast update
+    description: ""
+    trigger:
+      - platform: template
+        value_template: >-
+          {% set nr = as_datetime(state_attr('sun.sun','next_rising')) | as_local %}
+          {% set ns = as_datetime(state_attr('sun.sun','next_setting')) | as_local %}
+          {% set api_request_limit = 5 %}
+          {% if nr > ns %}
+            {% set nr = nr - timedelta(hours = 24) %} 
+          {% endif %}
+          {% set hours_difference = (ns - nr) %}
+          {% set interval_hours = hours_difference / api_request_limit %}
+          {% set ns = namespace(match = false) %}
+          {% for i in range(api_request_limit) %}
+            {% set start_time = nr + (i * interval_hours) %}
+            {% if ((start_time - timedelta(seconds=30)) <= now()) and (now() <= (start_time + timedelta(seconds=30))) %}
+              {% set ns.match = true %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.match }}
+    condition:
+      - condition: sun
+        before: sunset
+        after: sunrise
+    action:
+      - delay:
+          seconds: "{{ range(30, 360)|random|int }}"
+      - service: solcast_solar.update_forecasts
+        data: {}
+    mode: single
