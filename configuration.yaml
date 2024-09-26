@@ -12,6 +12,32 @@ http:
   use_x_forwarded_for: true
   trusted_proxies: 192.168.0.0/24
 
+recorder:
+  purge_keep_days: 90
+
+influxdb:
+  host: !secret influx_host
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: !secret influx_pwd
+  max_retries: 3
+  default_measurement: state
+  include:
+    entity_globs:
+      - sensor.*_meter_15
+      - sensor.*_meter_day
+
+pyscript:
+  allow_all_imports: true
+  apps:
+    meters_persist:
+      - dbhost: !secret influx_host
+        dbpassword: !secret influx_pwd
+    meters_calculate_incs:
+      - dbhost: !secret influx_host
+        dbpassword: !secret influx_pwd
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
