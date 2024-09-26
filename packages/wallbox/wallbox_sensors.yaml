@@ -1,0 +1,24 @@
+mqtt:
+  sensor:
+    - name: "Wallbox CP1 power"
+      unique_id: wallbox_cp1_power
+      unit_of_measurement: W
+      device_class: power
+      state_topic: "openWB/chargepoint/1/get/power"
+    - name: "Wallbox CP2 power"
+      unique_id: wallbox_cp2_power
+      unit_of_measurement: W
+      device_class: power
+      state_topic: "openWB/chargepoint/2/get/power"
+    - name: "Wallbox CP1 energy"
+      unique_id: wallbox_cp1_energy
+      unit_of_measurement: Wh
+      device_class: energy
+      state_class: total_increasing
+      state_topic: "openWB/chargepoint/1/get/imported"
+    - name: "Wallbox CP2 energy"
+      unique_id: wallbox_cp2_energy
+      unit_of_measurement: Wh
+      device_class: energy
+      state_class: total_increasing
+      state_topic: "openWB/chargepoint/2/get/imported"
