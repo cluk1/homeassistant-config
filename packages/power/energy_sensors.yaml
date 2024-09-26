@@ -1,0 +1,107 @@
+sensor:
+  - platform: template
+    sensors:
+      flat1_energy_costs_day:
+        friendly_name: "Flat1 Energy Cost Today"
+        unique_id: flat1_energy_costs_day
+        device_class: monetary
+        unit_of_measurement: €
+        value_template: >
+          {% if states('sensor.flat1_grid_energy_day') in ("unavailable", "unknown") %}
+            {{ 'unknown' }}
+          {% else %}
+            {% set grid = states('sensor.flat1_grid_energy_day')|float %}
+            {% set price = states('input_number.energy_grid_price')|float %}
+            {{ ( grid * price / 100) | round(2) }}
+          {% endif %}
+      flat2_energy_costs_day:
+        friendly_name: "Flat2 Energy Cost Today"
+        unique_id: flat2_energy_costs_day
+        device_class: monetary
+        unit_of_measurement: €
+        value_template: >
+          {% if states('sensor.flat2_grid_energy_day') in ("unavailable", "unknown") %}
+            {{ 'unknown' }}
+          {% else %}
+            {% set grid = states('sensor.flat2_grid_energy_day')|float %}
+            {% set price = states('input_number.energy_grid_price')|float %}
+            {{ ( grid * price / 100) | round(2) }}
+          {% endif %}
+      flat3_energy_costs_day:
+        friendly_name: "Flat3 Energy Cost Today"
+        unique_id: flat3_energy_costs_day
+        device_class: monetary
+        unit_of_measurement: €
+        value_template: >
+          {% if states('sensor.flat3_grid_energy_day') in ("unavailable", "unknown") %}
+            {{ 'unknown' }}
+          {% else %}
+            {% set grid = states('sensor.flat3_grid_energy_day')|float %}
+            {% set price = states('input_number.energy_grid_price')|float %}
+            {{ ( grid * price / 100) | round(2) }}
+          {% endif %}
+      flat4_energy_costs_day:
+        friendly_name: "Flat4 Energy Cost Today"
+        unique_id: flat4_energy_costs_day
+        device_class: monetary
+        unit_of_measurement: €
+        value_template: >
+          {% if states('sensor.flat4_grid_energy_day') in ("unavailable", "unknown") %}
+            {{ 'unknown' }}
+          {% else %}
+            {% set grid = states('sensor.flat4_grid_energy_day')|float %}
+            {% set price = states('input_number.energy_grid_price')|float %}
+            {{ ( grid * price / 100) | round(2) }}
+          {% endif %}
+      comm_energy_costs_day:
+        friendly_name: "Common Energy Cost Today"
+        unique_id: comm_energy_costs_day
+        device_class: monetary
+        unit_of_measurement: €
+        value_template: >
+          {% if states('sensor.comm_grid_energy_day') in ("unavailable", "unknown") %}
+            {{ 'unknown' }}
+          {% else %}
+            {% set grid = states('sensor.comm_grid_energy_day')|float %}
+            {% set price = states('input_number.energy_grid_price')|float %}
+            {{ ( grid * price / 100) | round(2) }}
+          {% endif %}
+      heatpump_energy_costs_day:
+        friendly_name: "Heatpump Energy Cost Today"
+        unique_id: heatpump_energy_costs_day
+        device_class: monetary
+        unit_of_measurement: €
+        value_template: >
+          {% if states('sensor.heatpump_grid_energy_day') in ("unavailable", "unknown") %}
+            {{ 'unknown' }}
+          {% else %}
+            {% set grid = states('sensor.heatpump_grid_energy_day')|float %}
+            {% set price = states('input_number.energy_grid_price')|float %}
+            {{ ( grid * price / 100) | round(2) }}
+          {% endif %}
+      wallbox_cp1_energy_costs_day:
+        friendly_name: "Wallbox CP1 Charging Cost Today"
+        unique_id: wallbox_cp1_energy_costs_day
+        device_class: monetary
+        unit_of_measurement: €
+        value_template: >
+          {% if states('sensor.wallbox_cp1_grid_energy_day') in ("unavailable", "unknown") %}
+            {{ 'unknown' }}
+          {% else %}
+            {% set grid = states('sensor.wallbox_cp1_grid_energy_day')|float %}
+            {% set price = states('input_number.energy_grid_price')|float %}
+            {{ ( grid * price / 100) | round(2) }}
+          {% endif %}
+      wallbox_cp2_energy_costs_day:
+        friendly_name: "FWallbox CP1 Charging Cost Today"
+        unique_id: wallbox_cp2_energy_costs_day
+        device_class: monetary
+        unit_of_measurement: €
+        value_template: >
+          {% if states('sensor.wallbox_cp2_grid_energy_day') in ("unavailable", "unknown") %}
+            {{ 'unknown' }}
+          {% else %}
+            {% set grid = states('sensor.wallbox_cp2_grid_energy_day')|float %}
+            {% set price = states('input_number.energy_grid_price')|float %}
+            {{ ( grid * price / 100) | round(2) }}
+          {% endif %}

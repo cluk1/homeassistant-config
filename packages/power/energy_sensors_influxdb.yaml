@@ -1,0 +1,94 @@
+sensor:
+  - platform: influxdb
+    host: !secret influx_host
+    username: homeassistant
+    password: !secret influx_pwd
+    queries:
+      - name: flat1_grid_energy_day
+        unique_id: flat1_grid_energy_day
+        unit_of_measurement: €
+        value_template: "{{ value }}"
+        where: >
+          {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
+          {{ '"meter" = \'flat1\' and time >= \'' + midnight +'\'' }}
+        measurement: meter.autogen.grid
+        field: "value"
+        group_function: sum
+        database: meter
+      - name: flat2_grid_energy_day
+        unique_id: flat2_grid_energy_day
+        unit_of_measurement: €
+        value_template: "{{ value }}"
+        where: >
+          {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
+          {{ '"meter" = \'flat2\' and time >= \'' + midnight +'\'' }}
+        measurement: meter.autogen.grid
+        field: "value"
+        group_function: sum
+        database: meter
+      - name: flat3_grid_energy_day
+        unique_id: flat3_grid_energy_day
+        unit_of_measurement: €
+        value_template: "{{ value }}"
+        where: >
+          {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
+          {{ '"meter" = \'flat3\' and time >= \'' + midnight +'\'' }}
+        measurement: meter.autogen.grid
+        field: "value"
+        group_function: sum
+        database: meter
+      - name: flat4_grid_energy_day
+        unique_id: flat4_grid_energy_day
+        unit_of_measurement: €
+        value_template: "{{ value }}"
+        where: >
+          {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
+          {{ '"meter" = \'flat4\' and time >= \'' + midnight +'\'' }}
+        measurement: meter.autogen.grid
+        field: "value"
+        group_function: sum
+        database: meter
+      - name: comm_grid_energy_day
+        unique_id: comm_grid_energy_day
+        unit_of_measurement: €
+        value_template: "{{ value }}"
+        where: >
+          {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
+          {{ '"meter" = \'comm\' and time >= \'' + midnight +'\'' }}
+        measurement: meter.autogen.grid
+        field: "value"
+        group_function: sum
+        database: meter
+      - name: heatpump_grid_energy_day
+        unique_id: heatpump_grid_energy_day
+        unit_of_measurement: €
+        value_template: "{{ value }}"
+        where: >
+          {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
+          {{ '"meter" = \'heatpump\' and time >= \'' + midnight +'\'' }}
+        measurement: meter.autogen.grid
+        field: "value"
+        group_function: sum
+        database: meter
+      - name: wallbox_cp1_grid_energy_day
+        unique_id: wallbox_cp1_grid_energy_day
+        unit_of_measurement: €
+        value_template: "{{ value }}"
+        where: >
+          {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
+          {{ '"meter" = \'wallbox_cp1\' and time >= \'' + midnight +'\'' }}
+        measurement: meter.autogen.grid
+        field: "value"
+        group_function: sum
+        database: meter
+      - name: wallbox_cp2_grid_energy_day
+        unique_id: wallbox_cp2_grid_energy_day
+        unit_of_measurement: €
+        value_template: "{{ value }}"
+        where: >
+          {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
+          {{ '"meter" = \'wallbox_cp2\' and time >= \'' + midnight +'\'' }}
+        measurement: meter.autogen.grid
+        field: "value"
+        group_function: sum
+        database: meter
