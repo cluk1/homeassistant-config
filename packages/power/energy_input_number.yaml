@@ -6,3 +6,10 @@ input_number:
     step: 0.1
     icon: "mdi:currency-eur"
     mode: "box"
+  energy_grid_price_heatpump:
+    name: "Strompreis Wärmestrom"
+    min: 10.0
+    max: 40.0
+    step: 0.1
+    icon: "mdi:currency-eur"
+    mode: "box"

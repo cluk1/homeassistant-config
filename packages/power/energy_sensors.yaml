@@ -76,7 +76,7 @@ sensor:
             {{ 'unknown' }}
           {% else %}
             {% set grid = states('sensor.heatpump_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price')|float %}
+            {% set price = states('input_number.energy_grid_price_heatpump')|float %}
             {{ ( grid * price / 100) | round(2) }}
           {% endif %}
       wallbox_cp1_energy_costs_day:
