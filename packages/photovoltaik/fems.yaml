@@ -50,6 +50,16 @@ modbus:
         address: 343
         slave: 1
         unique_id: fems_modbus_343
+      - name: "EssDischargePower" #Battery Discharge Power
+        unit_of_measurement: W
+        scan_interval: 10
+        data_type: float32
+        input_type: holding
+        device_class: power
+        state_class: measurement
+        address: 415
+        slave: 1
+        unique_id: fems_modbus_415
 
       - name: "GridBuyEnergy"
         unit_of_measurement: Wh
