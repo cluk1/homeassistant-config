@@ -3,38 +3,32 @@ automation:
     alias: Photovoltaik Surplus Hotwater
     description: ""
     trigger:
-      - platform: template
-        value_template: |-
-          {# Kompressor geht an bei SOC größer 95 #}
-          {{ 
-            (states('sensor.ebusd_hmu_statuscode') == 'Heating: Compressor active'
-            or states('sensor.ebusd_hmu_statuscode') == 'Warm Water: Compressor active') 
-            and states('sensor.esssoc') | int >  95 
-          }}
+      - platform: state
+        entity_id:
+          - sensor.ebusd_hmu_statuscode
+        to: "Warm Water: Compressor active"
+      - platform: state
+        entity_id:
+          - sensor.ebusd_hmu_statuscode
+        to: "Heating: Compressor active"
         for:
           hours: 0
-          minutes: 15
+          minutes: 45
           seconds: 0
-      - platform: template
-        value_template: |-
-          {# Heizung ist aus und WW kälter als 42 #}
-          {{
-            (states('sensor.ebusd_ctlv2_displayedoutsidetemp_tempv')|float > states('number.ebusd_ctlv2_hc1summertemplimit_tempv')|float
-            and states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')|float < 42
-            and states('sensor.esssoc') | int >  95)
-          }}
-        for:
-          hours: 0
-          minutes: 5
-          seconds: 0
+      - platform: sun
+        event: sunset
+        offset: "-4:00"
     condition:
+      - condition: numeric_state
+        entity_id: sensor.esssoc
+        above: 90
+      - condition: numeric_state
+        entity_id: sensor.solcast_pv_forecast_forecast_next_x_hours
+        above: 5
       - condition: sun
         before: sunset
-        before_offset: "3"
+        before_offset: "-3:00"
         after: sunrise
-      - condition: numeric_state
-        entity_id: sensor.solcast_pv_forecast_prognose_nachste_stunde
-        above: 5
       - condition: numeric_state
         entity_id: sensor.flats_heating_demand
         below: 0
@@ -43,53 +37,15 @@ automation:
         attribute: current_temperature
         below: 45
     action:
-      - variables:
-          hw_setpoint: "{{ states('number.ebusd_ctlv2_hwctempdesired_tempv') }}"
-          hw_maxchargetime: "{{ states('number.ebusd_ctlv2_hwcmaxchargetime_minutes2') }}"
-          hw_chargehysteresis: "{{ states('number.ebusd_ctlv2_hwcchargehysteresis_calibrationv') }}"
-      - target:
-          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+      - action: script.warmwater_settings
+        metadata: {}
         data:
-          value: "150"
-        action: number.set_value
-      - data:
-          operation_mode: heat
-          temperature: 60
-        target:
-          entity_id: water_heater.ctlv2_hotwater_vaillant
-        action: water_heater.set_temperature
-      - target:
-          entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
-        data:
-          value: "5"
-        action: number.set_value
-      - wait_for_trigger:
-          - platform: numeric_state
-            entity_id:
-              - water_heater.ctlv2_hotwater_vaillant
-            attribute: current_temperature
-            above: 60
-        timeout:
-          hours: 2
-          minutes: 30
-          seconds: 0
-          milliseconds: 0
-      - data:
-          operation_mode: auto
-          temperature: "{{ hw_setpoint }}"
-        target:
-          entity_id: water_heater.ctlv2_hotwater_vaillant
-        action: water_heater.set_temperature
-      - target:
-          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
-        data:
-          value: "{{ hw_maxchargetime }}"
-        action: number.set_value
-      - target:
-          entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
-        data:
-          value: "{{ hw_chargehysteresis }}"
-        action: number.set_value
+          setpoint: 60
+          maxchargetime: 150
+          chargehysteresis: 13
+          opmode: "heat"
+          restore: 1
+          timeout: 150
       - if:
           - condition: numeric_state
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv

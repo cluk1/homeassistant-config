@@ -1,0 +1,104 @@
+warmwater_settings:
+  alias: Warmwater Settings
+  sequence:
+  - variables:
+      old_setpoint: '{{ states(''number.ebusd_ctlv2_hwctempdesired_tempv'') }}'
+      old_maxchargetime: '{{ states(''number.ebusd_ctlv2_hwcmaxchargetime_minutes2'')
+        }}'
+      old_chargehysteresis: '{{ states(''number.ebusd_ctlv2_hwcchargehysteresis_calibrationv'')
+        }}'
+  - target:
+      entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+    data:
+      value: '{{ maxchargetime }}'
+    action: number.set_value
+  - data:
+      operation_mode: '{{ opmode }}'
+      temperature: '{{ setpoint }}'
+    target:
+      entity_id: water_heater.ctlv2_hotwater_vaillant
+    action: water_heater.set_temperature
+  - target:
+      entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
+    data:
+      value: '{{ chargehysteresis }}'
+    action: number.set_value
+  - wait_template: '{{ state_attr(''water_heater.ctlv2_hotwater_vaillant'', ''current_temperature'')
+      > setpoint }}'
+    continue_on_timeout: true
+    timeout: 00:{{ timeout }}
+  - if:
+    - condition: template
+      value_template: '{{ restore == 1 }}'
+    then:
+    - target:
+        entity_id: water_heater.ctlv2_hotwater_vaillant
+      data:
+        operation_mode: auto
+        temperature: '{{ old_setpoint }}'
+      action: water_heater.set_temperature
+    - target:
+        entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+      data:
+        value: '{{ old_maxchargetime }}'
+      action: number.set_value
+    - target:
+        entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
+      data:
+        value: '{{ old_chargehysteresis }}'
+      action: number.set_value
+  description: ''
+  fields:
+    setpoint:
+      selector:
+        number:
+          min: 15
+          max: 70
+          step: 1
+      name: Setpoint
+      required: true
+    maxchargetime:
+      selector:
+        number:
+          min: 60
+          max: 180
+          step: 1
+      name: MaxChargeTime
+      required: true
+    chargehysteresis:
+      selector:
+        number:
+          min: 5
+          max: 20
+          step: 1
+      name: ChargeHysteresis
+      required: true
+    restore:
+      selector:
+        number:
+          min: 0
+          max: 1
+          step: 1
+      name: Restore
+      required: true
+      description: Restore
+    timeout:
+      selector:
+        number:
+          min: 0
+          max: 180
+          step: 1
+      name: Timeout
+      default: 0
+      required: true
+    opmode:
+      selector:
+        select:
+          options:
+          - auto
+          - heat
+      name: OpMode
+      default: heat
+      required: true
+  mode: queued
+  max: 3
