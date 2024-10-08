@@ -1,0 +1,28 @@
+sensor:
+  - platform: group
+    name: "flats_power"
+    type: sum
+    entities:
+      - sensor.flat1_power
+      - sensor.flat2_power
+      - sensor.flat3_power
+      - sensor.flat4_power
+  - platform: group
+    name: "flats_building1_power"
+    type: sum
+    entities:
+      - sensor.flat1_power
+      - sensor.flat2_power
+      - sensor.flat3_power
+  - platform: group
+    name: "flats_building2_power"
+    type: sum
+    entities:
+      - sensor.flat4_power
+  - platform: group
+    name: "wallbox_power"
+    type: sum
+    entities:
+      - sensor.wallbox_cp1_power
+      - sensor.wallbox_cp2_power
+
