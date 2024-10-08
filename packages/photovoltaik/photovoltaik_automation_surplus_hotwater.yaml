@@ -21,7 +21,7 @@ automation:
     condition:
       - condition: numeric_state
         entity_id: sensor.esssoc
-        above: 90
+        above: 85
       - condition: numeric_state
         entity_id: sensor.solcast_pv_forecast_forecast_next_x_hours
         above: 5
@@ -32,20 +32,29 @@ automation:
       - condition: numeric_state
         entity_id: sensor.flats_heating_demand
         below: 0
-      - condition: numeric_state
-        entity_id: water_heater.ctlv2_hotwater_vaillant
-        attribute: current_temperature
-        below: 45
+      - condition: or
+        conditions:
+          - condition: numeric_state
+            entity_id: water_heater.ctlv2_hotwater_vaillant
+            attribute: current_temperature
+            below: 45
+          - condition: state
+            entity_id: sensor.ebusd_hmu_statuscode
+            state: "Warm Water: Compressor active"
+          - condition: state
+            entity_id: sensor.ebusd_hmu_statuscode
+            state: "Heating: Compressor active"
     action:
       - action: script.warmwater_settings
         metadata: {}
         data:
           setpoint: 60
-          maxchargetime: 150
-          chargehysteresis: 13
+          maxchargetime: 120
+          chargehysteresis: 5
           opmode: "heat"
+          hwcmode: "normal"
           restore: 1
-          timeout: 150
+          timeout: 120
       - if:
           - condition: numeric_state
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv

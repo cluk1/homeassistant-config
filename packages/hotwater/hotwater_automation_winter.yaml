@@ -23,6 +23,7 @@ automation:
           maxchargetime: 60
           chargehysteresis: 10
           opmode: "auto"
+          hwcmode: "eco"
           restore: 0
           timeout: 0
       - service: !secret notify_admin
