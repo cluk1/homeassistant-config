@@ -13,5 +13,5 @@ automation:
           qos: "0"
           retain: false
           topic: ebusd/ctlv2/Hc1HeatCurve/set
-          payload_template: "{{ states('input_number.heating_hc1_heating_curve') }}"
+          payload: "{{ states('input_number.heating_hc1_heating_curve') }}"
     mode: single
