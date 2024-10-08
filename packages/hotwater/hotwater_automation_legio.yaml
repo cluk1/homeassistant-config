@@ -24,63 +24,16 @@ automation:
         entity_id: sensor.flats_heating_demand
         below: 0
     action:
-      - variables:
-          hw_setpoint: "{{ states('number.ebusd_ctlv2_hwctempdesired_tempv') }}"
-          hw_maxchargetime: "{{ states('number.ebusd_ctlv2_hwcmaxchargetime_minutes2') }}"
-          hw_chargehysteresis: "{{ states('number.ebusd_ctlv2_hwcchargehysteresis_calibrationv') }}"
-      - service: select.select_option
-        target:
-          entity_id: select.ebusd_hmu_hwcmode
+      - action: script.warmwater_settings
+        metadata: {}
         data:
-          option: normal
-      - service: number.set_value
-        target:
-          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
-        data:
-          value: "130"
-      - service: water_heater.set_temperature
-        data:
-          operation_mode: heat
-          temperature: 65
-        target:
-          entity_id: water_heater.ctlv2_hotwater_vaillant
-      - service: number.set_value
-        target:
-          entity_id: nnumber.ebusd_ctlv2_hwcchargehysteresis_calibrationv
-        data:
-          value: "5"
-      - wait_for_trigger:
-          - platform: numeric_state
-            entity_id:
-              - water_heater.ctlv2_hotwater_vaillant
-            attribute: current_temperature
-            above: 60
-        timeout:
-          hours: 2
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-      - service: water_heater.set_temperature
-        data:
-          operation_mode: auto
-          temperature: "{{ hw_setpoint }}"
-        target:
-          entity_id: water_heater.ctlv2_hotwater_vaillant
-      - service: number.set_value
-        target:
-          entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
-        data:
-          value: "{{ hw_maxchargetime }}"
-      - service: number.set_value
-        target:
-          entity_id: nnumber.ebusd_ctlv2_hwcchargehysteresis_calibrationv
-        data:
-          value: "{{ hw_chargehysteresis }}"
-      - service: select.select_option
-        target:
-          entity_id: select.ebusd_hmu_hwcmode
-        data:
-          option: eco
+          setpoint: 60
+          maxchargetime: 150
+          chargehysteresis: 5
+          opmode: "heat"
+          hwcmode: "normal"
+          restore: 1
+          timeout: 150
       - if:
           - condition: numeric_state
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
