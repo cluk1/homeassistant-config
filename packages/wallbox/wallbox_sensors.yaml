@@ -22,3 +22,13 @@ mqtt:
       device_class: energy
       state_class: total_increasing
       state_topic: "openWB/chargepoint/2/get/imported"
+  select:
+    - name: "PV Charging Battery Mode"
+      unique_id: "pv_charging_bat_mode"
+      command_topic: "openWB/set/general/chargemode_config/pv_charging/bat_mode"
+      state_topic: "openWB/general/chargemode_config/pv_charging/bat_mode"
+      value_template: '{{ value | replace(''"'','''') }}'
+      options:
+        - "ev_mode"
+        - "bat_mode"
+        - "min_soc_bat_mode"
