@@ -6,7 +6,7 @@ sensor:
     queries:
       - name: flat1_grid_energy_day
         unique_id: flat1_grid_energy_day
-        unit_of_measurement: €
+        unit_of_measurement: kWh
         value_template: "{{ value }}"
         where: >
           {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
@@ -17,7 +17,7 @@ sensor:
         database: meter
       - name: flat2_grid_energy_day
         unique_id: flat2_grid_energy_day
-        unit_of_measurement: €
+        unit_of_measurement: kWh
         value_template: "{{ value }}"
         where: >
           {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
@@ -28,7 +28,7 @@ sensor:
         database: meter
       - name: flat3_grid_energy_day
         unique_id: flat3_grid_energy_day
-        unit_of_measurement: €
+        unit_of_measurement: kWh
         value_template: "{{ value }}"
         where: >
           {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
@@ -39,7 +39,7 @@ sensor:
         database: meter
       - name: flat4_grid_energy_day
         unique_id: flat4_grid_energy_day
-        unit_of_measurement: €
+        unit_of_measurement: kWh
         value_template: "{{ value }}"
         where: >
           {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
@@ -50,7 +50,7 @@ sensor:
         database: meter
       - name: comm_grid_energy_day
         unique_id: comm_grid_energy_day
-        unit_of_measurement: €
+        unit_of_measurement: kWh
         value_template: "{{ value }}"
         where: >
           {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
@@ -61,7 +61,7 @@ sensor:
         database: meter
       - name: heatpump_grid_energy_day
         unique_id: heatpump_grid_energy_day
-        unit_of_measurement: €
+        unit_of_measurement: kWh
         value_template: "{{ value }}"
         where: >
           {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
@@ -72,7 +72,7 @@ sensor:
         database: meter
       - name: wallbox_cp1_grid_energy_day
         unique_id: wallbox_cp1_grid_energy_day
-        unit_of_measurement: €
+        unit_of_measurement: kWh
         value_template: "{{ value }}"
         where: >
           {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
@@ -83,7 +83,7 @@ sensor:
         database: meter
       - name: wallbox_cp2_grid_energy_day
         unique_id: wallbox_cp2_grid_energy_day
-        unit_of_measurement: €
+        unit_of_measurement: kWh
         value_template: "{{ value }}"
         where: >
           {% set midnight = ( as_timestamp(today_at())|timestamp_utc() ) %}
