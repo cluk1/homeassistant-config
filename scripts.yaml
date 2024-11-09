@@ -1,6 +1,7 @@
 warmwater_settings:
   alias: Warmwater Settings
   sequence:
+    # remember old settings
     - variables:
         old_setpoint: "{{ states('number.ebusd_ctlv2_hwctempdesired_tempv') }}"
         old_maxchargetime:
@@ -10,57 +11,60 @@ warmwater_settings:
           "{{ states('number.ebusd_ctlv2_hwcchargehysteresis_calibrationv')
           }}"
         old_hwcmode: "{{ states('select.ebusd_hmu_hwcmode')}}"
-    - target:
+    # set all new settings
+    - action: select.select_option
+      target:
         entity_id: select.ebusd_hmu_hwcmode
       data:
         option: "{{ hwcmode }}"
-      action: select.select_option
-    - target:
+    - action: number.set_value
+      target:
         entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
       data:
         value: "{{ maxchargetime }}"
-      action: number.set_value
-    - data:
+    - action: water_heater.set_temperature
+      data:
         operation_mode: "{{ opmode }}"
         temperature: "{{ setpoint }}"
       target:
         entity_id: water_heater.ctlv2_hotwater_vaillant
-      action: water_heater.set_temperature
-    - target:
+    - action: number.set_value
+      target:
         entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
       data:
         value: "{{ chargehysteresis }}"
-      action: number.set_value
+    # wait for hotwater setpoint to be reached or timeout
     - wait_template:
         "{{ state_attr('water_heater.ctlv2_hotwater_vaillant', 'current_temperature')
         > setpoint }}"
       continue_on_timeout: true
       timeout: 00:{{ timeout }}
+    # restore old settings if requested
     - if:
         - condition: template
           value_template: "{{ restore == 1 }}"
       then:
-        - target:
+        - action: water_heater.set_temperature
+          target:
             entity_id: water_heater.ctlv2_hotwater_vaillant
           data:
             operation_mode: auto
             temperature: "{{ old_setpoint }}"
-          action: water_heater.set_temperature
-        - target:
+        - action: number.set_value
+          target:
             entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
           data:
             value: "{{ old_maxchargetime }}"
-          action: number.set_value
-        - target:
+        - action: number.set_value
+          target:
             entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
           data:
             value: "{{ old_chargehysteresis }}"
-          action: number.set_value
-        - target:
+        - action: select.select_option
+          target:
             entity_id: select.ebusd_hmu_hwcmode
           data:
             option: "{{ old_hwcmode }}"
-          action: select.select_option
   description: ""
   fields:
     setpoint:
@@ -123,5 +127,7 @@ warmwater_settings:
       name: HwcMode
       default: eco
       required: true
+  # allow 3 incarnations to be queued as
+  # hotwater summer / winter automation might kick in while running
   mode: queued
   max: 3
