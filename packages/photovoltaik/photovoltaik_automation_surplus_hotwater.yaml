@@ -3,11 +3,11 @@ automation:
     alias: Photovoltaik Surplus Hotwater
     description: ""
     trigger:
-      - platform: state
+      - trigger: state
         entity_id:
           - sensor.ebusd_hmu_statuscode
         to: "Warm Water: Compressor active"
-      - platform: state
+      - trigger: state
         entity_id:
           - sensor.ebusd_hmu_statuscode
         to: "Heating: Compressor active"
@@ -15,7 +15,7 @@ automation:
           hours: 0
           minutes: 45
           seconds: 0
-      - platform: sun
+      - trigger: sun
         event: sunset
         offset: "-4:00"
     condition:
@@ -29,9 +29,14 @@ automation:
         before: sunset
         before_offset: "-3:00"
         after: sunrise
-      - condition: numeric_state
-        entity_id: sensor.flats_heating_demand
-        below: 0
+      - condition: or
+        conditions:
+          - condition: numeric_state
+            entity_id: input_number.flat_temperature_setpoint
+            above: 20
+          - condition: numeric_state
+            entity_id: sensor.flats_heating_demand
+            below: 0
       - condition: or
         conditions:
           - condition: numeric_state
