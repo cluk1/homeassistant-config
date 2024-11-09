@@ -3,10 +3,12 @@ automation:
     alias: Photovoltaik Surplus Hotwater
     description: ""
     trigger:
+      # Trigger automation immediately whenever compressor starts for hotwater
       - trigger: state
         entity_id:
           - sensor.ebusd_hmu_statuscode
         to: "Warm Water: Compressor active"
+      # Trigger also when compressor has been running for heating for 45 mins
       - trigger: state
         entity_id:
           - sensor.ebusd_hmu_statuscode
@@ -15,16 +17,20 @@ automation:
           hours: 0
           minutes: 45
           seconds: 0
+      # Trigger once 4 hours before sunset
       - trigger: sun
         event: sunset
         offset: "-4:00"
     condition:
+      # if PV batterie has at least 85%
       - condition: numeric_state
         entity_id: sensor.esssoc
         above: 85
+      # and if PV forecast for the next 2h is above 5 kWh
       - condition: numeric_state
         entity_id: sensor.solcast_pv_forecast_forecast_next_x_hours
         above: 5
+      # and if it is at least 3h before sunset but after sunrise
       - condition: sun
         before: sunset
         before_offset: "-3:00"
@@ -37,6 +43,8 @@ automation:
           - condition: numeric_state
             entity_id: sensor.flats_heating_demand
             below: 0
+      # and if either the compressor is already running
+      # or hot water is below 45 °C
       - condition: or
         conditions:
           - condition: numeric_state
@@ -50,6 +58,7 @@ automation:
             entity_id: sensor.ebusd_hmu_statuscode
             state: "Heating: Compressor active"
     action:
+      # then use the script to change hotwater settings for overheating
       - action: script.warmwater_settings
         metadata: {}
         data:
@@ -60,6 +69,7 @@ automation:
           hwcmode: "normal"
           restore: 1
           timeout: 120
+      # send out notification on success or failure
       - if:
           - condition: numeric_state
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
