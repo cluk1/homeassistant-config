@@ -17,14 +17,18 @@ automation:
           seconds: 0
       - trigger: sun
         event: sunset
-        offset: "-6:00"
+        offset: "-5:00"
+      - trigger: numeric_state
+        entity_id:
+          - sensor.esssoc
+        above: 20
     conditions:
       - condition: numeric_state
         entity_id: sensor.esssoc
         above: 20
       - condition: numeric_state
         entity_id: sensor.solcast_pv_forecast_forecast_next_x_hours
-        above: 5
+        above: 6
       - condition: sun
         before: sunset
         before_offset: "-3:00"
