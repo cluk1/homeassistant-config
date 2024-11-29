@@ -7,3 +7,22 @@ sensor:
           {% set temp_actual = states('sensor.flats_avg_temperature') | float %}
           {% set temp_wanted = ( states('input_number.flat_temperature_setpoint') | float - states('input_number.flat_temperature_tolerance') | float ) %}
           {{ (temp_wanted - temp_actual) | round(1, "half", default=0) }}
+binary_sensor:
+  - platform: template
+    sensors:
+      flat1_humidity_too_high:
+        friendly_name: "Wohnung 1 Luftfeuchte"
+        value_template: >
+          {{ states('sensor.juengst_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
+  - platform: template
+    sensors:
+      flat2_humidity_too_high:
+        friendly_name: "Wohnung 2 Luftfeuchte"
+        value_template: >
+          {{ states('sensor.nunnenmacher_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
+  - platform: template
+    sensors:
+      flat3_humidity_too_high:
+        friendly_name: "Wohnung 3 Luftfeuchte"
+        value_template: >
+          {{ states('sensor.ketterer_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
