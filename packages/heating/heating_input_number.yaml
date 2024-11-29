@@ -13,6 +13,13 @@ input_number:
     step: 0.5
     icon: "mdi:temperature-celsius"
     mode: "box"
+  flat_humidity_alert:
+    name: "Luftfeuchte Alertlevel"
+    min: 10
+    max: 90
+    step: 1
+    icon: "mdi:water-percent-alert"
+    mode: "box"
   heating_hc1_heating_curve:
     name: "Heinzkreis 1 Heizkurve"
     min: 0.4
