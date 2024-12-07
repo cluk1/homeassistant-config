@@ -17,6 +17,8 @@ automation:
       - condition: numeric_state
         entity_id: sensor.flats_heating_demand
         below: 0.1
+        # Has to be disabled to enable pv overheating
+        enabled: false
     action:
       - variables:
           temp_offset: "{{ states('input_number.heating_power_auto_offset_temp') }}"
