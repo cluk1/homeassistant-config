@@ -27,8 +27,14 @@ mqtt:
       unique_id: "pv_charging_bat_mode"
       command_topic: "openWB/set/general/chargemode_config/pv_charging/bat_mode"
       state_topic: "openWB/general/chargemode_config/pv_charging/bat_mode"
-      value_template: '{{ value | replace(''"'','''') }}'
+      value_template: >-
+        {% set values = {'ev_mode':'Car', 'bat_mode':'Bat', 'min_soc_bat_mode':'SoC'} %}
+        {% set fvalue = value | replace('"','') %}
+        {{ values[fvalue] if fvalue in values.keys() else 'unknown' }}
+      command_template: >-
+        {% set values = {'Car':'ev_mode', 'Bat':'bat_mode', 'SoC':'min_soc_bat_mode'} %}
+        {{ values[value] if value in values.keys() else 'unknown' }}
       options:
-        - "ev_mode"
-        - "bat_mode"
-        - "min_soc_bat_mode"
+        - "Car"
+        - "Bat"
+        - "SoC"
