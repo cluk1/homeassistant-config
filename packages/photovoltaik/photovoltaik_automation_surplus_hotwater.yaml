@@ -22,10 +22,10 @@ automation:
         event: sunset
         offset: "-4:00"
     condition:
-      # if PV batterie has at least 85%
+      # if PV batterie has at least 70%
       - condition: numeric_state
         entity_id: sensor.esssoc
-        above: 85
+        above: 70
       # and if PV forecast for the next 2h is above 5 kWh
       - condition: numeric_state
         entity_id: sensor.solcast_pv_forecast_forecast_next_x_hours
@@ -63,12 +63,12 @@ automation:
         metadata: {}
         data:
           setpoint: 60
-          maxchargetime: 120
+          maxchargetime: 150
           chargehysteresis: 5
           opmode: "heat"
           hwcmode: "normal"
           restore: 1
-          timeout: 120
+          timeout: 150
       # send out notification on success or failure
       - if:
           - condition: numeric_state
