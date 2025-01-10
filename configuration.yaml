@@ -14,6 +14,12 @@ http:
 
 recorder:
   purge_keep_days: 90
+  exclude:
+    entity_globs:
+      - sensor.openwb_chargepoint_*_spannung_l*
+      - sensor.openwb_chargepoint_*_frequenz
+      - sensor.flat*_grid_percentage
+      - sensor.heatpump_grid_percentage
 
 influxdb:
   host: !secret influx_host
@@ -25,8 +31,10 @@ influxdb:
   default_measurement: state
   include:
     entity_globs:
-      - sensor.*_meter_15
-      - sensor.*_meter_day
+      - sensor.*_production
+      - sensor.*_consumption
+      - sensor.gridbuyenergy
+      - sensor.gridsellenergy
 
 pyscript:
   allow_all_imports: true
