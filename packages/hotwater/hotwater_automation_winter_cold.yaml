@@ -1,0 +1,33 @@
+automation:
+  - id: hotwater_winter_cold
+    alias: Hotwater Winter Mode Cold
+    description: ""
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+        for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+        below: 2
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+    action:
+      - action: script.warmwater_settings
+        metadata: {}
+        data:
+          setpoint: 40
+          maxchargetime: 60
+          chargehysteresis: 10
+          opmode: "auto"
+          hwcmode: "balance"
+          restore: 0
+          timeout: 0
+      - service: !secret notify_admin
+        metadata: {}
+        data:
+          message: Warmwasser Winter Cold
+    mode: single
