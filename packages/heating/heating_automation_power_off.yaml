@@ -11,6 +11,9 @@ automation:
       - condition: numeric_state
         entity_id: sensor.flats_heating_demand
         below: -1.4
+      - condition: numeric_state
+        entity_id: number.ebusd_ctlv2_hc1summertemplimit_tempv
+        above: 5
       - condition: sun
         before: sunset
         before_offset: -01:00
@@ -42,6 +45,9 @@ automation:
             - condition: numeric_state
               entity_id: sensor.flats_heating_demand
               below: -1.4
+            - condition: numeric_state
+              entity_id: number.ebusd_ctlv2_hc1summertemplimit_tempv
+              above: 5
             - condition: sun
               before: sunset
               before_offset: -01:00
