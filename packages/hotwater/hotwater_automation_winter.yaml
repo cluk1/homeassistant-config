@@ -11,6 +11,7 @@ automation:
           minutes: 15
           seconds: 0
         below: number.ebusd_ctlv2_hc1summertemplimit_tempv
+        above: 3
     condition:
       - condition: state
         entity_id: input_boolean.heating_on_off
