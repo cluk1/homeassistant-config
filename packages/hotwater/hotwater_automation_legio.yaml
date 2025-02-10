@@ -8,10 +8,10 @@ automation:
     condition:
       - condition: numeric_state
         entity_id: sensor.hotwater_legio_days_since_lastrun
-        above: 25
+        above: 21
       - condition: numeric_state
         entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
-        above: 10
+        above: 8
       - condition: or
         conditions:
           - condition: numeric_state
@@ -32,7 +32,7 @@ automation:
         below: 0.1
     action:
       # Enable parallel load?
-      # Lower HwcBivalencePoint to enable parallel heater 
+      # Lower HwcBivalencePoint to enable parallel heater
       - action: script.warmwater_settings
         metadata: {}
         data:
