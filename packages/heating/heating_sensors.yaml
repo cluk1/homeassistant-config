@@ -7,6 +7,13 @@ sensor:
           {% set temp_actual = states('sensor.flats_avg_temperature') | float %}
           {% set temp_wanted = ( states('input_number.flat_temperature_setpoint') | float - states('input_number.flat_temperature_tolerance') | float ) %}
           {{ (temp_wanted - temp_actual) | round(1, "half", default=0) }}
+      heatpump_cop:
+        friendly_name: "Heatpump CoP"
+        unique_id: heatpump_cop
+        device_class: power_factor
+        value_template: >
+          {% set electricalPower =  states('sensor.ebusd_hmu_currentconsumedpower')|float %}
+          {{ ( states('sensor.ebusd_hmu_currentyieldpower')|float + electricalPower) / electricalPower }}
 binary_sensor:
   - platform: template
     sensors:
