@@ -16,12 +16,36 @@ mqtt:
       device_class: energy
       state_class: total_increasing
       state_topic: "openWB/chargepoint/1/get/imported"
+      value_template: >
+        {% set oldval = states('sensor.wallbox_cp1_energy') %}
+        {% if oldval in ['unknown', 'unavailable', 'none'] %}
+          {{ value }}
+        {% else %}
+          {% set oldval = (states('sensor.wallbox_cp1_energy')|float * 1000)|int %}
+          {% if value in ['unknown', 'unavailable', 'none', 0, 0.000, '0', '0.000', '0,000'] or value | int < oldval %}
+            {{ oldval }}
+          {% else %}
+            {{ value }}
+          {% endif %}
+        {% endif %}
     - name: "Wallbox CP2 energy"
       unique_id: wallbox_cp2_energy
       unit_of_measurement: Wh
       device_class: energy
       state_class: total_increasing
       state_topic: "openWB/chargepoint/2/get/imported"
+      value_template: >
+        {% set oldval = states('sensor.wallbox_cp2_energy') %}
+        {% if oldval in ['unknown', 'unavailable', 'none'] %}
+          {{ value }}
+        {% else %}
+          {% set oldval = (states('sensor.wallbox_cp2_energy')|float * 1000)|int %}
+          {% if value in ['unknown', 'unavailable', 'none', 0, 0.000, '0', '0.000', '0,000'] or value | int < oldval %}
+            {{ oldval }}
+          {% else %}
+            {{ value }}
+          {% endif %}
+        {% endif %}
   select:
     - name: "PV Charging Battery Mode"
       unique_id: "pv_charging_bat_mode"
