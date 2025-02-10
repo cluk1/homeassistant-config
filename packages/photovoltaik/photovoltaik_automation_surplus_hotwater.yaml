@@ -21,6 +21,11 @@ automation:
       - trigger: sun
         event: sunset
         offset: "-4:00"
+      # Trigger when Soc is above 70%
+      - trigger: numeric_state
+        entity_id:
+          - sensor.esssoc
+        above: 70
     condition:
       # if PV batterie has at least 70%
       - condition: numeric_state
