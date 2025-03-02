@@ -11,7 +11,11 @@
 ## Heating System
 * Vaillant aroTHERM plus VWL 125
 * The heating system is installed in one of the two buildings as a heating supply for 3 flats.
-* Details about the [Heating system](Heating.md)
+* Details about the [Heating system](HEATING.md)
+
+## Energy Management
+* Combining the heatpump control and the pv system allows for intelligent usage of photovoltaic surplus using HA automations.
+* Details about the [Energy Management System](EMS.md)
 
 ## Wallbox
 * OpenWB Pro+
