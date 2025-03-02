@@ -83,3 +83,6 @@ Vaillant aroTHERM plus VWL 125
 ## Hotwater Automations
 * Hotwater [Winter](packages/hotwater/hotwater_automation_winter.yaml) / [Summer](packages/hotwater/hotwater_automation_summer.yaml): Increase hotwater setpoint and hysteresis if outside temperature is high enough to turn heating off. To reduce heatpump on / off cycles in summer mode.
 * [Legionella Prevention](packages/hotwater/hotwater_automation_legio.yaml): Try to run a legionella prevention program everyday, but only if the last successful run is at least 4 weeks ago, the outside temp is high enough and the sun is shining(for the heatpump to work efficiently) and the flats heating demand is low. Then increase the hotwater setpoint to 65 °C and start the circulation pump. Wait for 120 mins for the heatpump to reach at least 60°C in the hotwater storage.
+
+## Energy Management
+* Combining the pv system with the heating system allows various ways to do intelligent [energy management](EMS.md) using HA automations.
