@@ -1,0 +1,61 @@
+type: custom:power-flow-card-plus
+entities:
+  battery:
+    entity: sensor.essdischargepower
+    state_of_charge: sensor.esssoc
+  grid:
+    entity: sensor.gridpower
+    secondary_info: {}
+  solar:
+    entity: sensor.productionpower
+    display_zero_state: true
+    secondary_info: {}
+    name: PV
+    icon: mdi:solar-power-variant-outline
+  home:
+    secondary_info: {}
+    entity: sensor.consumptionpower
+  individual:
+    - entity: sensor.flats_building1_power
+      name: Vorderhaus
+      icon: mdi:home
+      display_zero: true
+    - entity: sensor.flats_building2_power
+      secondary_info: {}
+      name: Hinterhaus
+      icon: mdi:home
+      display_zero: true
+    - entity: sensor.heatpump_power
+      secondary_info: {}
+      name: Wärmepumpe
+      display_zero: true
+      icon: mdi:heat-pump
+    - entity: sensor.wallbox_power
+      secondary_info:
+        entity: sensor.battery_electric_vehicle_soc
+        unit_of_measurement: "%"
+      name: Wallbox
+      display_zero: true
+      icon: mdi:car-electric
+clickable_entities: true
+display_zero_lines:
+  mode: show
+  transparency: 50
+  grey_color:
+    - 189
+    - 189
+    - 189
+use_new_flow_rate_model: true
+w_decimals: 0
+kw_decimals: 1
+min_flow_rate: 0.75
+max_flow_rate: 6
+max_expected_power: 2000
+min_expected_power: 0.01
+watt_threshold: 1000
+transparency_zero_lines: 0
+disable_dots: false
+layout_options:
+  grid_columns: 5
+  grid_rows: auto
+title: Überblick
