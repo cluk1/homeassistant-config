@@ -9,7 +9,7 @@ mqtt:
       unique_id: wallbox_cp2_power
       unit_of_measurement: W
       device_class: power
-      state_topic: "openWB/chargepoint/2/get/power"
+      state_topic: "openWB/chargepoint/5/get/power"
     - name: "Wallbox CP1 energy"
       unique_id: wallbox_cp1_energy
       unit_of_measurement: Wh
@@ -33,7 +33,7 @@ mqtt:
       unit_of_measurement: Wh
       device_class: energy
       state_class: total_increasing
-      state_topic: "openWB/chargepoint/2/get/imported"
+      state_topic: "openWB/chargepoint/5/get/imported"
       value_template: >
         {% set oldval = states('sensor.wallbox_cp2_energy') %}
         {% if oldval in ['unknown', 'unavailable', 'none'] %}
