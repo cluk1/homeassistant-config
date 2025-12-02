@@ -1,0 +1,118 @@
+kiosk_mode:
+  user_settings:
+    - users:
+        - user1
+        - user2
+        - user3
+        - user4
+      kiosk: true
+views:
+  - title: Flat1
+    path: flat1
+    cards: []
+    badges: []
+    visible:
+      - user: XX
+      - user: YY
+    type: sections
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            icon: ''
+            heading: Stromverbrauch
+            heading_style: title
+          - type: gauge
+            entity: sensor.flat1_power
+            max: 3000
+            needle: true
+            severity:
+              green: 0
+              yellow: 500
+              red: 1000
+            name: aktuell
+          - type: gauge
+            needle: true
+            severity:
+              green: 0
+              yellow: 20
+              red: 100
+            name: '% aus dem Netz'
+            entity: sensor.grid_percentage
+          - type: entity
+            entity: sensor.flat1_meter_day
+            name: Verbrauch heute
+            grid_options:
+              columns: full
+          - type: entity
+            entity: sensor.flat1_energy_costs_day
+            icon: mdi:currency-eur
+            unit: €
+            name: Stromkosten heute
+            grid_options:
+              columns: full
+      - type: grid
+        cards:
+          - type: heading
+            icon: ''
+            heading: PV Anlage
+            heading_style: title
+          - type: gauge
+            entity: sensor.productionpower
+            needle: true
+            max: 15
+            severity:
+              green: 7.5
+              yellow: 3
+              red: 0
+            name: akutelle Leistung
+          - type: gauge
+            needle: true
+            max: 18
+            severity:
+              green: 8
+              yellow: 4
+              red: 0
+            name: Vorhersage für nächsten 2 Stunden
+            entity: sensor.solcast_pv_forecast_forecast_next_x_hours
+          - type: gauge
+            entity: sensor.esssoc
+            name: Ladezustand Speicher
+            severity:
+              green: 20
+              yellow: 5
+              red: 0
+            needle: true
+      - type: grid
+        cards:
+          - type: heading
+            icon: ''
+            heading: Heizung
+            heading_style: title
+          - graph: line
+            type: sensor
+            detail: 2
+            name: Außentemperatur
+            entity: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+            grid_options:
+              columns: full
+              rows: 3
+          - type: entities
+            entities:
+              - entity: sensor.flat1_temperatur
+                name: Temperatur Wohnung
+              - entity: sensor.flat1_luftfeuchtigkeit
+                name: Luftfeuchte Wohnung
+              - entity: binary_sensor.ebusd_ctlv2_hc1pumpstatus_onoff
+                name: Heizung
+              - entity: sensor.ebusd_hmu_statuscode
+                name: Wärmepumpe
+              - entity: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
+                name: Warmwasserspeicher
+              - entity: sensor.ebusd_ctlv2_hc1flowtemp_tempv
+                name: Heizungsvorlauf
+              - entity: sensor.heatpump_meter_day
+                name: Stromverbrauch heute
+              - entity: sensor.heatpump_energy_costs_day
+                name: Heizkosten heute
+            state_color: true
