@@ -19,6 +19,9 @@ automation:
           - sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
         below: 2
     conditions:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
       - condition: numeric_state
         entity_id: input_number.flat_temperature_setpoint
         above: 20
