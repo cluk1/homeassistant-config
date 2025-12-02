@@ -45,3 +45,9 @@ automation:
           skip_condition: false
         target:
           entity_id: automation.hotwater_winter_mode
+      - service: automation.trigger
+        metadata: {}
+        data:
+          skip_condition: false
+        target:
+          entity_id: automation.hotwater_transitiontime

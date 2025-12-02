@@ -1,0 +1,33 @@
+automation:
+  - id: hotwater_transitiontime
+    alias: Hotwater Transition Time Mode
+    description: ""
+    trigger:
+      - platform: numeric_state
+        entity_id:
+          - sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+        for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+        above: number.ebusd_ctlv2_hc1summertemplimit_tempv
+    condition:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+    action:
+      - action: script.warmwater_settings
+        metadata: {}
+        data:
+          setpoint: 50
+          maxchargetime: 120
+          chargehysteresis: 20
+          opmode: "auto"
+          hwcmode: "eco"
+          restore: 0
+          timeout: 0
+      - service: !secret notify_admin
+        metadata: {}
+        data:
+          message: Warmwasser Transition Time
+    mode: single
