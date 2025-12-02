@@ -1,7 +1,7 @@
 modbus:
   - name: "fems"
     type: tcp
-    host: 192.168.0.73
+    host: 192.168.0.31
     port: 502
 
     message_wait_milliseconds: 30
