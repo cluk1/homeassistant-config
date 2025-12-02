@@ -1,131 +1,18 @@
 sensor:
   - platform: template
     sensors:
-      flat1_grid_percentage:
-        friendly_name: "Wohnung1 Verbrauchsanteil Netz"
-        unique_id: flat1_grid_percentage
+      grid_percentage:
+        friendly_name: "Verbrauchsanteil Netz"
+        unique_id: grid_percentage
         device_class: power_factor
         value_template: >
-          {% if has_value('sensor.consumptionpower') and has_value('sensor.flat1_power') %}
-            {% set power = states('sensor.flat1_power') | float %}
+          {% if has_value('sensor.consumptionpower') %}
+            {% set power = max(0, states('sensor.consumptionpower') | float) %}
+            {% set grid_power = ( max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
             {% if power > 0 %}
-              {% set part = max(0,(power / states('sensor.consumptionpower') | float)) %}
-              {% set net_power = ( part * max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
-              {% set net_factor = max(0,min(1,(net_power / power))) %}
-              {{ net_factor * 100 }}
+            {% set grid_factor = max(0,min(1,(grid_power / power))) %}
+            {{ grid_factor * 100 }}
             {% else %}
-              {{ 0 }}
-            {% endif %}
-          {% endif %}
-      flat2_grid_percentage:
-        friendly_name: "Wohnung2 Verbrauchsanteil Netz"
-        unique_id: flat2_grid_percentage
-        device_class: power_factor
-        value_template: >
-          {% if has_value('sensor.consumptionpower') and has_value('sensor.flat2_power') %}
-            {% set power = states('sensor.flat2_power') | float %}
-            {% if power > 0 %}
-              {% set part = max(0,(power / states('sensor.consumptionpower') | float)) %}
-              {% set net_power = ( part * max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
-              {% set net_factor = max(0,min(1,(net_power / power))) %}
-              {{ net_factor * 100 }}
-            {% else %}
-              {{ 0 }}
-            {% endif %}
-          {% endif %}
-      flat3_grid_percentage:
-        friendly_name: "Wohnung3 Verbrauchsanteil Netz"
-        unique_id: flat3_grid_percentage
-        device_class: power_factor
-        value_template: >
-          {% if has_value('sensor.consumptionpower') and has_value('sensor.flat3_power') %}
-            {% set power = states('sensor.flat3_power') | float %}
-            {% if power > 0 %}
-              {% set part = max(0,(power / states('sensor.consumptionpower') | float)) %}
-              {% set net_power = ( part * max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
-              {% set net_factor = max(0,min(1,(net_power / power))) %}
-              {{ net_factor * 100 }}
-            {% else %}
-              {{ 0 }}
-            {% endif %}
-          {% endif %}
-      flat4_grid_percentage:
-        friendly_name: "Wohnung4 Verbrauchsanteil Netz"
-        unique_id: flat4_grid_percentage
-        device_class: power_factor
-        value_template: >
-          {% if has_value('sensor.consumptionpower') and has_value('sensor.flat4_power') %}
-            {% set power = states('sensor.flat4_power') | float %}
-            {% if power > 0 %}
-              {% set part = max(0,(power / states('sensor.consumptionpower') | float)) %}
-              {% set net_power = ( part * max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
-              {% set net_factor = max(0,min(1,(net_power / power))) %}
-              {{ net_factor * 100 }}
-            {% else %}
-              {{ 0 }}
-            {% endif %}
-          {% endif %}
-      comm_grid_percentage:
-        friendly_name: "Allgemein Verbrauchsanteil Netz"
-        unique_id: comm_grid_percentage
-        device_class: power_factor
-        value_template: >
-          {% if has_value('sensor.consumptionpower') and has_value('sensor.comm_power') %}
-            {% set power = states('sensor.comm_power') | float %}
-            {% if power > 0 %}
-              {% set part = max(0,(power / states('sensor.consumptionpower') | float)) %}
-              {% set net_power = ( part * max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
-              {% set net_factor = max(0,min(1,(net_power / power))) %}
-              {{ net_factor * 100 }}
-            {% else %}
-              {{ 0 }}
-            {% endif %}
-          {% endif %}
-      heatpump_grid_percentage:
-        friendly_name: "Wärmepumpe Verbrauchsanteil Netz"
-        unique_id: heatpump_grid_percentage
-        device_class: power_factor
-        value_template: >
-          {% if has_value('sensor.consumptionpower') and has_value('sensor.heatpump_power') %}
-            {% set power = states('sensor.heatpump_power') | float %}
-            {% if power > 0 %}
-              {% set part = max(0,(power / states('sensor.consumptionpower') | float)) %}
-              {% set net_power = ( part * max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
-              {% set net_factor = max(0,min(1,(net_power / power))) %}
-              {{ net_factor * 100 }}
-            {% else %}
-              {{ 0 }}
-            {% endif %}
-          {% endif %}
-      wallbox_cp1_grid_percentage:
-        friendly_name: "Wallbox CP1 Verbrauchsanteil Netz"
-        unique_id: wallbox_cp1_grid_percentage
-        device_class: power_factor
-        value_template: >
-          {% if has_value('sensor.consumptionpower') and has_value('sensor.wallbox_cp1_power') %}
-            {% set power = states('sensor.wallbox_cp1_power') | float %}
-            {% if power > 0 %}
-              {% set part = max(0,(power / states('sensor.consumptionpower') | float)) %}
-              {% set net_power = ( part * max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
-              {% set net_factor = max(0,min(1,(net_power / power))) %}
-              {{ net_factor * 100 }}
-            {% else %}
-              {{ 0 }}
-            {% endif %}
-          {% endif %}
-      wallbox_cp2_grid_percentage:
-        friendly_name: "Wallbox CP2 Verbrauchsanteil Netz"
-        unique_id: wallbox_cp2_grid_percentage
-        device_class: power_factor
-        value_template: >
-          {% if has_value('sensor.consumptionpower') and has_value('sensor.wallbox_cp2_power') %}
-            {% set power = states('sensor.wallbox_cp2_power') | float %}
-            {% if power > 0 %}
-              {% set part = max(0,(power / states('sensor.consumptionpower') | float)) %}
-              {% set net_power = ( part * max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
-              {% set net_factor = max(0,min(1,(net_power / power))) %}
-              {{ net_factor * 100 }}
-            {% else %}
-              {{ 0 }}
+            0
             {% endif %}
           {% endif %}
