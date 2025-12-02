@@ -1,6 +1,6 @@
 automation:
-  - id: hotwater_winter_cold
-    alias: Hotwater Winter Mode Cold
+  - id: hotwater_winter_icy
+    alias: Hotwater Winter Mode Icy
     description: ""
     trigger:
       - platform: numeric_state
