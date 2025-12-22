@@ -1,35 +1,27 @@
-sensor:
-  - platform: template
-    sensors:
-      flats_heating_demand:
-        friendly_name: "Wohnungen Heizbedarf"
-        value_template: >
+template:
+  - sensor:
+      - default_entity_id: sensor.flats_heating_demand
+        name: Wohnungen Heizbedarf
+        state: >
           {% set temp_actual = states('sensor.flats_avg_temperature') | float %}
           {% set temp_wanted = ( states('input_number.flat_temperature_setpoint') | float - states('input_number.flat_temperature_tolerance') | float ) %}
           {{ (temp_wanted - temp_actual) | round(1, "half", default=0) }}
-      heatpump_cop:
-        friendly_name: "Heatpump CoP"
-        unique_id: heatpump_cop
+      - default_entity_id: sensor.heatpump_cop
+        name: "Heatpump CoP"
         device_class: power_factor
-        value_template: >
+        state: >
           {% set electricalPower =  states('sensor.ebusd_hmu_currentconsumedpower')|float %}
           {{ ( states('sensor.ebusd_hmu_currentyieldpower')|float + electricalPower) / electricalPower }}
-binary_sensor:
-  - platform: template
-    sensors:
-      flat1_humidity_too_high:
-        friendly_name: "Wohnung 1 Luftfeuchte"
-        value_template: >
+  - binary_sensor:
+      - default_entity_id: binary_sensor.flat1_humidity_too_high
+        name: "Wohnung 1 Luftfeuchte"
+        state: >
           {{ states('sensor.juengst_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
-  - platform: template
-    sensors:
-      flat2_humidity_too_high:
-        friendly_name: "Wohnung 2 Luftfeuchte"
-        value_template: >
+      - default_entity_id: binary_sensor.flat2_humidity_too_high
+        name: "Wohnung 2 Luftfeuchte"
+        state: >
           {{ states('sensor.nunnenmacher_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
-  - platform: template
-    sensors:
-      flat3_humidity_too_high:
-        friendly_name: "Wohnung 3 Luftfeuchte"
-        value_template: >
+      - default_entity_id: binary_sensor.flat3_humidity_too_high
+        name: "Wohnung 3 Luftfeuchte"
+        state: >
           {{ states('sensor.ketterer_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
