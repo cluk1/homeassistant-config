@@ -1,7 +1,7 @@
-sensor:
-  - platform: template
-    sensors:
-      hotwater_legio_days_since_lastrun:
-        friendly_name: "Warmwasser Legioschaltung Tage seit letzter"
-        value_template: >
+template:
+  - sensor:
+      - unique_id: hotwater_legio_days_since_lastrun
+        default_entity_id: sensor.hotwater_legio_days_since_lastrun
+        name: Warmwasser Legioschaltung Tage seit letzter
+        state: >
           {{ int(( int(now() | as_timestamp()) - int(states('input_datetime.hotwater_legio_lastrun') | as_timestamp()) ) / 86400 )  }}

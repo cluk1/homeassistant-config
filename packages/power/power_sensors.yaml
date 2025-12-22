@@ -1,11 +1,10 @@
-sensor:
-  - platform: template
-    sensors:
-      grid_percentage:
-        friendly_name: "Verbrauchsanteil Netz"
-        unique_id: grid_percentage
+template:
+  - sensor:
+      - unique_id: grid_percentage
+        default_entity_id: sensor.grid_percentage
+        name: "Verbrauchsanteil Netz"
         device_class: power_factor
-        value_template: >
+        state: >
           {% if has_value('sensor.consumptionpower') %}
             {% set power = max(0, states('sensor.consumptionpower') | float) %}
             {% set grid_power = ( max(0, states('sensor.gridpower') | float) ) | round(0, "half", default=0) %}
