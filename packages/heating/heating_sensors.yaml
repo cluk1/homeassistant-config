@@ -1,27 +1,32 @@
 template:
   - sensor:
-      - default_entity_id: sensor.flats_heating_demand
+      - unique_id: flats_heating_demand
+        default_entity_id: sensor.flats_heating_demand
         name: Wohnungen Heizbedarf
         state: >
           {% set temp_actual = states('sensor.flats_avg_temperature') | float %}
           {% set temp_wanted = ( states('input_number.flat_temperature_setpoint') | float - states('input_number.flat_temperature_tolerance') | float ) %}
           {{ (temp_wanted - temp_actual) | round(1, "half", default=0) }}
-      - default_entity_id: sensor.heatpump_cop
+      - unique_id: heatpump_cop
+        default_entity_id: sensor.heatpump_cop
         name: "Heatpump CoP"
         device_class: power_factor
         state: >
           {% set electricalPower =  states('sensor.ebusd_hmu_currentconsumedpower')|float %}
           {{ ( states('sensor.ebusd_hmu_currentyieldpower')|float + electricalPower) / electricalPower }}
   - binary_sensor:
-      - default_entity_id: binary_sensor.flat1_humidity_too_high
+      - unique_id: flat1_humidity_too_high
+        default_entity_id: binary_sensor.flat1_humidity_too_high
         name: "Wohnung 1 Luftfeuchte"
         state: >
           {{ states('sensor.juengst_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
-      - default_entity_id: binary_sensor.flat2_humidity_too_high
+      - unique_id: flat2_humidity_too_high
+        default_entity_id: binary_sensor.flat2_humidity_too_high
         name: "Wohnung 2 Luftfeuchte"
         state: >
           {{ states('sensor.nunnenmacher_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
-      - default_entity_id: binary_sensor.flat3_humidity_too_high
+      - unique_id: flat3_humidity_too_high
+        default_entity_id: binary_sensor.flat3_humidity_too_high
         name: "Wohnung 3 Luftfeuchte"
         state: >
           {{ states('sensor.ketterer_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
