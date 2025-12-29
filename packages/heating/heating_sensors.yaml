@@ -7,13 +7,19 @@ template:
           {% set temp_actual = states('sensor.flats_avg_temperature') | float %}
           {% set temp_wanted = ( states('input_number.flat_temperature_setpoint') | float - states('input_number.flat_temperature_tolerance') | float ) %}
           {{ (temp_wanted - temp_actual) | round(1, "half", default=0) }}
+      - unique_id: heatpump_currentoutputpower
+        default_entity_id: sensor.heatpump_currentoutputpower
+        name: "Heatpump Output Power"
+        device_class: power
+        unit_of_measurement: kW
+        state: >
+          {{ states('sensor.ebusd_hmu_currentconsumedpower_value')|float + states('sensor.ebusd_hmu_currentyieldpower_value')|float }}
       - unique_id: heatpump_cop
         default_entity_id: sensor.heatpump_cop
         name: "Heatpump CoP"
         device_class: power_factor
         state: >
-          {% set electricalPower =  states('sensor.ebusd_hmu_currentconsumedpower')|float %}
-          {{ ( states('sensor.ebusd_hmu_currentyieldpower')|float + electricalPower) / electricalPower }}
+          {{ ( states('sensor.heatpump_currentoutputpower')|float / states('sensor.ebusd_hmu_currentconsumedpower_value')|float ) }}
   - binary_sensor:
       - unique_id: flat1_humidity_too_high
         default_entity_id: binary_sensor.flat1_humidity_too_high
