@@ -12,20 +12,20 @@ mqtt:
       min_temp: 35
       max_temp: 65
       current_temperature_topic: "ebusd/ctlv2/HwcStorageTemp"
-      current_temperature_template: "{{ value_json['tempv']['value'] }}"
+      current_temperature_template: "{{ value_json['value']['value'] }}"
       temperature_command_topic: "ebusd/ctlv2/HwcTempDesired/set"
       temperature_state_topic: "ebusd/ctlv2/HwcTempDesired"
-      temperature_state_template: "{{ value_json['tempv']['value'] }}"
+      temperature_state_template: "{{ value_json['value']['value'] }}"
       modes:
         - "off"
         - "auto"
         - "heat"
       mode_command_topic: "ebusd/ctlv2/HwcOpMode/set"
       mode_command_template: >-
-        {% set values = { 'auto':'time controlled', 'heat':'manual', 'off':'off'} %}
-        {{ values[value] if value in values.keys() else 'Time Controlled' }}
+        {% set values = { 'auto':'auto', 'heat':'day', 'off':'off'} %}
+        {{ values[value] if value in values.keys() else 'auto' }}
       mode_state_topic: "ebusd/ctlv2/HwcOpMode"
       mode_state_template: >-
-        {% set values = { 'time controlled':'auto', 'manual':'heat', 'off':'off'} %}
-        {% set val = value_json['opmode2']['value'] %}
+        {% set values = { 'auto':'auto', 'day':'heat', 'off':'off'} %}
+        {% set val = value_json['value']['value'] %}
         {{ values[val] if val in values.keys() else 'auto' }}
