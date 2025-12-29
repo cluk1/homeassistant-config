@@ -5,7 +5,7 @@ automation:
     trigger:
       - platform: numeric_state
         entity_id:
-          - sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+          - sensor.ebusd_ctlv2_displayedoutsidetemp_value
         for:
           hours: 0
           minutes: 15

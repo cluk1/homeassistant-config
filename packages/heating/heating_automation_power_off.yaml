@@ -5,14 +5,14 @@ automation:
     trigger:
       - platform: state
         entity_id:
-          - sensor.ebusd_hmu_state00_compressorstate
-        to: Heating Overrun
+          - sensor.ebusd_hmu_rundatastatuscode_value
+        to: Heating_Overrun
     condition:
       - condition: numeric_state
         entity_id: sensor.flats_heating_demand
         below: -1.4
       - condition: numeric_state
-        entity_id: number.ebusd_ctlv2_hc1summertemplimit_tempv
+        entity_id: number.ebusd_ctlv2_hc1summertemplimit_value
         above: 5
       - condition: sun
         before: sunset
@@ -46,7 +46,7 @@ automation:
               entity_id: sensor.flats_heating_demand
               below: -1.4
             - condition: numeric_state
-              entity_id: number.ebusd_ctlv2_hc1summertemplimit_tempv
+              entity_id: number.ebusd_ctlv2_hc1summertemplimit_value
               above: 5
             - condition: sun
               before: sunset

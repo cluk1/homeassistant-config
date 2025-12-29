@@ -10,12 +10,12 @@ automation:
         entity_id: sensor.hotwater_legio_days_since_lastrun
         above: 21
       - condition: numeric_state
-        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_value
         above: 8
       - condition: or
         conditions:
           - condition: numeric_state
-            entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+            entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_value
             above: 15
           - condition: and
             conditions:
@@ -45,10 +45,10 @@ automation:
           timeout: 150
       - if:
           - condition: numeric_state
-            entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
+            entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_value
             below: 60
         then:
           - service: !secret notify_admin
             data:
-              message: Legio Schaltung abgebrochen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
+              message: Legio Schaltung abgebrochen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
     mode: single

@@ -5,7 +5,7 @@ automation:
     trigger:
       - platform: numeric_state
         entity_id:
-          - sensor.ebusd_ctlv2_hwcstoragetemp_tempv
+          - sensor.ebusd_ctlv2_hwcstoragetemp_value
         for:
           hours: 0
           minutes: 1
@@ -19,5 +19,5 @@ automation:
           date: "{{ now().strftime('%Y-%m-%d') }}"
       - service: !secret notify_admin
         data:
-          message: Legio Termperatur erreicht mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
+          message: Legio Termperatur erreicht mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
     mode: single

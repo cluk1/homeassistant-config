@@ -37,7 +37,7 @@ automation:
         before_offset: "-3:00"
         after: sunrise
       - condition: numeric_state
-        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_value
         above: 0
       - condition: numeric_state
         entity_id: input_number.flat_temperature_setpoint

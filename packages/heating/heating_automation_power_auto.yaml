@@ -10,6 +10,7 @@ automation:
           hours: 0
           minutes: 45
           seconds: 0
+        enabled: false
     condition:
       - condition: state
         entity_id: input_boolean.heating_on_off
@@ -25,7 +26,7 @@ automation:
           temp_max: "{{ states('input_number.heating_power_auto_max_temp') }}"
           temp_min: "{{ states('input_number.heating_power_auto_min_temp') }}"
           aktuelle_temp:
-            "{{ states('number.ebusd_ctlv2_z1heatingroomtempdesiredmanualcontrolled_tempv')
+            "{{ states('number.ebusd_ctlv2_z1actualroomtempdesired_value')
             }}"
           ziel_temp: "{{ states('input_number.flat_temperature_setpoint') }}"
           heizbedarf: "{{ states('sensor.flats_heating_demand') }}"

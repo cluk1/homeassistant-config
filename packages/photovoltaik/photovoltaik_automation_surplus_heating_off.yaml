@@ -16,7 +16,7 @@ automation:
         offset: "-1:00"
       - trigger: numeric_state
         entity_id:
-          - sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+          - sensor.ebusd_ctlv2_displayedoutsidetemp_value
         below: 2
     conditions:
       - condition: state
