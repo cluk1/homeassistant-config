@@ -15,7 +15,7 @@ automation:
     action:
       - variables:
           start_temp:
-            "{{ states('number.ebusd_ctlv2_z1heatingroomtempdesiredmanualcontrolled_tempv')
+            "{{ states('number.ebusd_ctlv2_z1actualroomtempdesired_value')
             }}"
           neue_temp: "{{ start_temp + 1 }}"
       - service: !secret notify_admin
@@ -41,7 +41,7 @@ automation:
     action:
       - variables:
           start_temp:
-            "{{ states('number.ebusd_ctlv2_z1heatingroomtempdesiredmanualcontrolled_tempv')
+            "{{ states('number.ebusd_ctlv2_z1actualroomtempdesired_value')
             }}"
           neue_temp: "{{ start_temp - 1 }}"
       - service: !secret notify_admin

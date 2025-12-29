@@ -77,12 +77,12 @@ automation:
       # send out notification on success or failure
       - if:
           - condition: numeric_state
-            entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
+            entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_value
             below: 60
         then:
           - service: !secret notify_admin
             data:
               message: >-
                 PV Überschuss WW abgebrochen mit {{
-                states('sensor.ebusd_ctlv2_hwcstoragetemp_tempv')}}
+                states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
     mode: single

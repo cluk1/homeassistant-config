@@ -5,8 +5,8 @@ automation:
     trigger:
       - platform: state
         entity_id:
-          - sensor.ebusd_hmu_state00_compressorstate
-        to: Heating Overrun
+          - sensor.ebusd_hmu_rundatastatuscode_value
+        to: Heating_Overrun
     condition: []
     action:
       - service: !secret notify_admin
