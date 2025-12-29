@@ -14,3 +14,5 @@ ebusd/csvs
 solcast-sites.json
 solcast-usage.json
 solcast.json
+.ha_run.lock
+.vscode/settings.json
