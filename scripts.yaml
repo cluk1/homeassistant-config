@@ -3,12 +3,12 @@ warmwater_settings:
   sequence:
     # remember old settings
     - variables:
-        old_setpoint: "{{ states('number.ebusd_ctlv2_hwctempdesired_tempv') }}"
+        old_setpoint: "{{ states('number.ebusd_ctlv2_hwctempdesired_value') }}"
         old_maxchargetime:
-          "{{ states('number.ebusd_ctlv2_hwcmaxchargetime_minutes2')
+          "{{ states('number.ebusd_ctlv2_maxcylinderchargetime_value')
           }}"
         old_chargehysteresis:
-          "{{ states('number.ebusd_ctlv2_hwcchargehysteresis_calibrationv')
+          "{{ states('number.ebusd_ctlv2_cylinderchargehyst_value')
           }}"
         old_hwcmode: "{{ states('select.ebusd_hmu_hwcmode')}}"
     # set all new settings
@@ -17,9 +17,10 @@ warmwater_settings:
         entity_id: select.ebusd_hmu_hwcmode
       data:
         option: "{{ hwcmode }}"
+      enabled: false
     - action: number.set_value
       target:
-        entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+        entity_id: number.ebusd_ctlv2_maxcylinderchargetime_value
       data:
         value: "{{ maxchargetime }}"
     - action: water_heater.set_temperature
@@ -30,7 +31,7 @@ warmwater_settings:
         entity_id: water_heater.ctlv2_hotwater_vaillant
     - action: number.set_value
       target:
-        entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
+        entity_id: number.ebusd_ctlv2_cylinderchargehyst_value
       data:
         value: "{{ chargehysteresis }}"
     # wait for hotwater setpoint to be reached or timeout
@@ -52,12 +53,12 @@ warmwater_settings:
             temperature: "{{ old_setpoint }}"
         - action: number.set_value
           target:
-            entity_id: number.ebusd_ctlv2_hwcmaxchargetime_minutes2
+            entity_id: number.ebusd_ctlv2_maxcylinderchargetime_value
           data:
             value: "{{ old_maxchargetime }}"
         - action: number.set_value
           target:
-            entity_id: number.ebusd_ctlv2_hwcchargehysteresis_calibrationv
+            entity_id: number.ebusd_ctlv2_cylinderchargehyst_value
           data:
             value: "{{ old_chargehysteresis }}"
         - action: select.select_option
@@ -65,6 +66,7 @@ warmwater_settings:
             entity_id: select.ebusd_hmu_hwcmode
           data:
             option: "{{ old_hwcmode }}"
+          enabled: false
   description: ""
   fields:
     setpoint:
