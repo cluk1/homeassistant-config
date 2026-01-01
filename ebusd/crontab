@@ -1,3 +1,0 @@
-*/5     *       *       *       *       bash /config/ebusd/ebus-reader.sh 5
-3,17,33,47 *    *       *       *       bash /config/ebusd/ebus-reader.sh 15
-10      0       *       *       *       bash /config/ebusd/ebus-reader.sh day
