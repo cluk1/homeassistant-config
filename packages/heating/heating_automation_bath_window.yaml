@@ -3,16 +3,18 @@ automation:
     alias: "Heating Bath Window Open"
     description: ""
     trigger:
-      - platform: numeric_state
+      - trigger: state
         entity_id:
-          - !secret climate_bath
+          - binary_sensor.fenster_bad_alarm
+        from:
+          - "off"
+        to:
+          - "on"
         for:
           hours: 0
-          minutes: 10
+          minutes: 15
           seconds: 0
-        attribute: current_temperature
-        below: 18
-    condition:
+    conditions:
       - condition: state
         entity_id: input_boolean.heating_on_off
         state: "on"
