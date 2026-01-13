@@ -1,5 +1,5 @@
 automation:
-  - id: hotwater_summer
+  - id: hotwater_0_summer
     alias: Hotwater Summer Mode
     description: ""
     trigger: []
