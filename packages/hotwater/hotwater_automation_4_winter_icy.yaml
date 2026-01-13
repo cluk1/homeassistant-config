@@ -1,0 +1,33 @@
+automation:
+  - id: hotwater_4_winter_icy
+    alias: Hotwater Winter Mode Icy
+    description: ""
+    triggers:
+      - trigger: numeric_state
+        entity_id:
+          - sensor.ebusd_ctlv2_displayedoutsidetemp_value
+        for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+        below: -5
+    conditions:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+    actions:
+      - action: script.warmwater_settings
+        metadata: {}
+        data:
+          setpoint: 40
+          maxchargetime: 60
+          chargehysteresis: 10
+          opmode: "auto"
+          hwcmode: "normal"
+          restore: 0
+          timeout: 0
+      - service: !secret notify_admin
+        metadata: {}
+        data:
+          message: Warmwasser Winter Icy
+    mode: single
