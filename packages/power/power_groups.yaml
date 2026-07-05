@@ -2,6 +2,9 @@ sensor:
   - platform: group
     name: "flats_power"
     type: sum
+    device_class: power
+    state_class: measurement
+    unit_of_measurement: W
     entities:
       - sensor.flat1_power
       - sensor.flat2_power
@@ -10,19 +13,45 @@ sensor:
   - platform: group
     name: "flats_building1_power"
     type: sum
+    device_class: power
+    state_class: measurement
+    unit_of_measurement: W
+    ignore_non_numeric: true
     entities:
       - sensor.flat1_power
       - sensor.flat2_power
       - sensor.flat3_power
+      - sensor.comm_power
+      - sensor.balkonpv1_leistung
+      - sensor.balkonpv2_leistung
+      - sensor.balkonpv3_leistung
   - platform: group
     name: "flats_building2_power"
     type: sum
+    device_class: power
+    state_class: measurement
+    unit_of_measurement: W
     entities:
       - sensor.flat4_power
   - platform: group
     name: "wallbox_power"
     type: sum
+    device_class: power
+    state_class: measurement
+    unit_of_measurement: W
     entities:
       - sensor.wallbox_cp1_power
       - sensor.wallbox_cp2_power
-
+  - platform: group
+    name: "full_production_power"
+    unique_id: full_production_power
+    type: sum
+    state_class: measurement
+    device_class: power
+    unit_of_measurement: kW
+    ignore_non_numeric: true
+    entities:
+      - sensor.productionpower
+      - sensor.balkonpv1_leistung
+      - sensor.balkonpv2_leistung
+      - sensor.balkonpv3_leistung
