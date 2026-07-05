@@ -11,13 +11,6 @@ automation:
           minutes: 15
           seconds: 0
         below: 5
-      - trigger: numeric_state
-        entity_id:
-          - sensor.ebusd_ctlv2_displayedoutsidetemp_value
-        for:
-          hours: 0
-          minutes: 15
-          seconds: 0
         above: -4
     conditions:
       - condition: state

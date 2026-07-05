@@ -20,7 +20,7 @@ automation:
         metadata: {}
         data:
           setpoint: 40
-          maxchargetime: 60
+          maxchargetime: 40
           chargehysteresis: 10
           opmode: "auto"
           hwcmode: "normal"

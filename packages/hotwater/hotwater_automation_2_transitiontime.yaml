@@ -1,6 +1,6 @@
 automation:
   - id: hotwater_2_transitiontime
-    alias: Hotwater Transition Time Mode
+    alias: Hotwater Transition Time Low
     description: ""
     triggers:
       - trigger: numeric_state
@@ -11,13 +11,6 @@ automation:
           minutes: 15
           seconds: 0
         below: number.ebusd_ctlv2_hc1summertemplimit_value
-      - trigger: numeric_state
-        entity_id:
-          - sensor.ebusd_ctlv2_displayedoutsidetemp_value
-        for:
-          hours: 0
-          minutes: 15
-          seconds: 0
         above: 6
     conditions:
       - condition: state
@@ -27,9 +20,9 @@ automation:
       - action: script.warmwater_settings
         metadata: {}
         data:
-          setpoint: 40
+          setpoint: 45
           maxchargetime: 60
-          chargehysteresis: 10
+          chargehysteresis: 15
           opmode: "auto"
           hwcmode: "eco"
           restore: 0

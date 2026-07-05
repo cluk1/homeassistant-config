@@ -1,6 +1,6 @@
 automation:
   - id: hotwater_1_transitiontime
-    alias: Hotwater Transition Time Mode
+    alias: Hotwater Transition Time High
     description: ""
     triggers:
       - trigger: numeric_state
