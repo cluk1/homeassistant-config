@@ -6,13 +6,13 @@ automation:
       # Trigger automation immediately whenever compressor starts for hotwater
       - trigger: state
         entity_id:
-          - sensor.ebusd_hmu_statuscode
-        to: "Warm Water: Compressor active"
+          - sensor.ebusd_hmu_status00_compressorstate
+        to: "Hot_Water"
       # Trigger also when compressor has been running for heating for 45 mins
       - trigger: state
         entity_id:
-          - sensor.ebusd_hmu_statuscode
-        to: "Heating: Compressor active"
+          - sensor.ebusd_hmu_status00_compressorstate
+        to: "Heating"
         for:
           hours: 0
           minutes: 45
@@ -27,6 +27,11 @@ automation:
           - sensor.esssoc
         above: 70
     condition:
+      # Heatpump is not running in cooling mode
+      - condition: state
+        entity_id: select.heizung_ebusd_ctlv2_z1opmodecooling
+        state:
+          - "off"
       # if PV batterie has at least 70%
       - condition: numeric_state
         entity_id: sensor.esssoc
@@ -57,21 +62,21 @@ automation:
             attribute: current_temperature
             below: 45
           - condition: state
-            entity_id: sensor.ebusd_hmu_statuscode
-            state: "Warm Water: Compressor active"
+            entity_id: sensor.ebusd_hmu_status00_compressorstate
+            state: "Hot_Water"
           - condition: state
-            entity_id: sensor.ebusd_hmu_statuscode
-            state: "Heating: Compressor active"
+            entity_id: sensor.ebusd_hmu_status00_compressorstate
+            state: "Heating"
     action:
       # then use the script to change hotwater settings for overheating
       - action: script.warmwater_settings
         metadata: {}
         data:
-          setpoint: 60
+          setpoint: 55
           maxchargetime: 150
           chargehysteresis: 5
           opmode: "heat"
-          hwcmode: "normal"
+          hwcmode: "eco"
           restore: 1
           timeout: 150
       # send out notification on success or failure

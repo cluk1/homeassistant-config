@@ -10,7 +10,7 @@ automation:
           hours: 0
           minutes: 45
           seconds: 0
-        enabled: false
+        enabled: true
     condition:
       - condition: state
         entity_id: input_boolean.heating_on_off

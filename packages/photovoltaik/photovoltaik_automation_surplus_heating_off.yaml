@@ -36,6 +36,11 @@ automation:
           minutes: 0
           seconds: 10
           milliseconds: 0
+      - action: automation.turn_on
+        metadata: {}
+        target:
+          entity_id: automation.heating_power_auto
+        data: {}
       - action: automation.trigger
         metadata: {}
         data:
