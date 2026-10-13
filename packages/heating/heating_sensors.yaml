@@ -19,7 +19,7 @@ template:
         name: "Heatpump CoP"
         device_class: power_factor
         state: >
-          {{ [[( states('sensor.heatpump_currentoutputpower')|float / states('sensor.ebusd_hmu_currentconsumedpower_value')|float), 6] | min , 2] | max }}
+          {{ [[( states('sensor.heatpump_currentoutputpower')|float / states('sensor.ebusd_hmu_currentconsumedpower_value')|float), 10] | min , 2] | max }}
   - binary_sensor:
       - unique_id: flat1_humidity_too_high
         default_entity_id: binary_sensor.flat1_humidity_too_high
