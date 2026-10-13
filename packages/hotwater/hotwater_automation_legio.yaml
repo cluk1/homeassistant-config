@@ -6,6 +6,11 @@ automation:
       - platform: time
         at: "13:00:00"
     condition:
+      # Heatpump is not running in cooling mode
+      - condition: state
+        entity_id: select.heizung_ebusd_ctlv2_z1opmodecooling
+        state:
+          - "off"
       - condition: numeric_state
         entity_id: sensor.hotwater_legio_days_since_lastrun
         above: 21
