@@ -10,7 +10,7 @@ automation:
           hours: 0
           minutes: 1
           seconds: 0
-        above: 60
+        above: 59
     action:
       - service: input_datetime.set_datetime
         target:

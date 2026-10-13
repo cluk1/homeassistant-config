@@ -72,7 +72,7 @@ automation:
       - action: script.warmwater_settings
         metadata: {}
         data:
-          setpoint: 55
+          setpoint: 57.5
           maxchargetime: 150
           chargehysteresis: 5
           opmode: "heat"
@@ -83,7 +83,7 @@ automation:
       - if:
           - condition: numeric_state
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_value
-            below: 60
+            below: 57
         then:
           - service: !secret notify_admin
             data:
