@@ -16,3 +16,7 @@ solcast-usage.json
 solcast.json
 .ha_run.lock
 .vscode/settings.json
+
+# lokal / privat – nicht im öffentlichen Repo
+automations.yaml
+packages/local/
