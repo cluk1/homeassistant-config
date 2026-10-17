@@ -12,7 +12,7 @@ Vaillant aroTHERM plus VWL 125
 
 ## Prerequisites
 * ebus Adapter: https://ebusd.eu/
-* ebus Daemon running as HA Addon (https://github.com/LukasGrebe/ha-addons) or separate docker container, addon configuration:
+* ebus Daemon running as HA Addon (https://github.com/LukasGrebe/ha-addons) or separate docker container. The addon keeps its files in its own addon config folder (`/addon_configs/2ad9b828_ebusd/` on the host, mounted as `/config` inside the ebusd container), so the paths below are relative to the container. Addon configuration:
 ```
   "scanconfig": true,
   "loglevel_all": "error",
@@ -53,17 +53,17 @@ Vaillant aroTHERM plus VWL 125
   "share_sessions": false,
   "packages": [],
   "init_commands": [
-    "(crontab -l | grep -v ebus; cat /config/ebusd/crontab) | crontab -",
+    "(crontab -l; cat /config/cron.d/*) | crontab -",
     "crond"
   ]
 ```
+* The cron jobs in [cron.d](cron.d) are loaded into the SSH addon's crontab on addon start: [cron.d/ebusd](cron.d/ebusd) periodically triggers ebusd reads via `/addon_configs/2ad9b828_ebusd/ebusd/ebus-reader.sh`, [cron.d/influxdb](cron.d/influxdb) creates a nightly InfluxDB backup. Changes to cron.d only take effect after restarting the SSH addon.
 
 ## Installation
 * Install the ebus hardware adapter
 * Install the required addons as listed above
-* Share one /config folder among all docker containers (ha, ebusd). This happens automatically with HA green.
-* Checkout this repo into /config
-* Checkout the ebusd config from https://github.com/cluk1/ebusd-configuration into /config/ebusd/csvs
+* Checkout this repo into /config (HA config folder)
+* Checkout the ebusd config from https://github.com/cluk1/ebusd-configuration into the ebusd addon config folder (`/addon_configs/2ad9b828_ebusd/ebusd/csvs`), and place `mqtt-hassio.cfg`, `ebus-reader.sh` and `readimportant.sh` in `/addon_configs/2ad9b828_ebusd/ebusd/`
 * Configure the ebusd addon to use the csv files from the checkout (see addon config above).
 * Start the ebusd addon, check if it scans the bus (ebusctl info) and submits messages to mqtt (listen to ebusd/#)
 
