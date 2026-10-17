@@ -1,0 +1,1 @@
+18      0       *       *       *       docker exec addon_a0d7b954_influxdb bash -c "influxd backup -portable /share/influxdb/backup/ && find /share/influxdb/backup/ -type f -mtime +30 -exec rm {} \;"

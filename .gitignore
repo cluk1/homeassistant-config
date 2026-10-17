@@ -10,7 +10,10 @@ custom_components
 deps
 .storage/*
 zigbee2mqtt/*
-ebusd/csvs
+tts/
+.cache/
+www/community/
+solcast_solar/
 solcast-sites.json
 solcast-usage.json
 solcast.json
@@ -20,3 +23,4 @@ solcast.json
 # lokal / privat – nicht im öffentlichen Repo
 automations.yaml
 packages/local/
+saic/
