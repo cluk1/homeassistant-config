@@ -52,6 +52,11 @@ automation:
         metadata: {}
         data:
           message: Gebäude Überheizung ein
+      - action: button.press
+        metadata: {}
+        target:
+          entity_id: button.uberheizung
+        data: {}
       - action: input_number.set_value
         target:
           entity_id: input_number.flat_temperature_setpoint

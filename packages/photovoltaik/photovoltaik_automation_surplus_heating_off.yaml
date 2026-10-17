@@ -47,6 +47,11 @@ automation:
           skip_condition: false
         target:
           entity_id: automation.heating_power_auto
+      - action: button.press
+        metadata: {}
+        target:
+          entity_id: button.heizen_alltag
+        data: {}
       - action: !secret notify_admin
         metadata: {}
         data:
