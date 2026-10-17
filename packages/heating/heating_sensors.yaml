@@ -25,14 +25,14 @@ template:
         default_entity_id: binary_sensor.flat1_humidity_too_high
         name: "Wohnung 1 Luftfeuchte"
         state: >
-          {{ states('sensor.flat1_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
+          {{ states('sensor.flat1_humidity')|float >= states("input_number.flat_humidity_alert")|float }}
       - unique_id: flat2_humidity_too_high
         default_entity_id: binary_sensor.flat2_humidity_too_high
         name: "Wohnung 2 Luftfeuchte"
         state: >
-          {{ states('sensor.flat2_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
+          {{ states('sensor.flat2_humidity')|float >= states("input_number.flat_humidity_alert")|float }}
       - unique_id: flat3_humidity_too_high
         default_entity_id: binary_sensor.flat3_humidity_too_high
         name: "Wohnung 3 Luftfeuchte"
         state: >
-          {{ states('sensor.flat3_luftfeuchtigkeit')|float >= states("input_number.flat_humidity_alert")|float }}
+          {{ states('sensor.flat3_humidity')|float >= states("input_number.flat_humidity_alert")|float }}

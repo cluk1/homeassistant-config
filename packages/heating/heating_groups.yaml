@@ -15,3 +15,23 @@ sensor:
       - !secret flat1_temperature
       - !secret flat2_temperature
       - !secret flat3_temperature
+  # Neutral benannte Stellvertreter für die Luftfeuchte-Sensoren der Wohnungen.
+  # Die echten Entity-IDs enthalten Mieternamen und stehen nur in secrets.yaml.
+  - platform: group
+    name: "flat1_humidity"
+    unique_id: flat1_humidity
+    type: max
+    entities:
+      - !secret flat1_humidity
+  - platform: group
+    name: "flat2_humidity"
+    unique_id: flat2_humidity
+    type: max
+    entities:
+      - !secret flat2_humidity
+  - platform: group
+    name: "flat3_humidity"
+    unique_id: flat3_humidity
+    type: max
+    entities:
+      - !secret flat3_humidity
