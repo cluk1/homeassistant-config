@@ -1,0 +1,13 @@
+sensor:
+  - platform: group
+    name: "max_dewpoint"
+    unique_id: "max_dewpoint"
+    type: max
+    ignore_non_numeric: true
+    entities:
+      - !secret flat1_dewpoint
+      - !secret flat2_dewpoint
+      - !secret flat3_dewpoint
+      - sensor.treppenhaus_taupunkt
+      #- sensor.keller_taupunkt
+      - sensor.heizungskeller_taupunkt

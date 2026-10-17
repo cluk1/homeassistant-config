@@ -1,0 +1,32 @@
+mqtt:
+  - climate:
+      name: "Vaillant"
+      unique_id: "vr720-cooling"
+      device:
+        manufacturer: "Vaillant"
+        model: "Ctlv2-Cooling"
+        name: "Ctlv2-Cooling"
+        suggested_area: "Heating"
+        identifiers:
+          - !secret cooling_device_serial
+      min_temp: 12 
+      max_temp: 25
+      precision: 0.5
+      temp_step: 0.5
+      current_temperature_topic: "ha/flats/avgTemp"
+      temperature_command_topic: "ebusd/ctlv2/Hc1MinCoolingTempDesired/set"
+      temperature_state_topic: "ebusd/ctlv2/Hc1MinCoolingTempDesired"
+      temperature_state_template: "{{ value_json['value']['value'] }}"
+      modes:
+        - "off"
+        - "auto"
+        - "cool"
+      mode_command_topic: "ebusd/ctlv2/Z1OpModeCooling/set"
+      mode_command_template: >-
+        {% set values = { 'auto':'auto', 'cool':'day', 'off':'off'} %}
+        {{ values[value] if value in values.keys() else 'auto' }}
+      mode_state_topic: "ebusd/ctlv2/Z1OpModeCooling"
+      mode_state_template: >-
+        {% set values = { 'auto':'auto', 'day':'cool', 'off':'off'} %}
+        {% set val = value_json['value']['value'] %}
+        {{ values[val] if val in values.keys() else 'auto' }}

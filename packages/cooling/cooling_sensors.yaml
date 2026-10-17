@@ -1,0 +1,27 @@
+template:
+  - sensor:
+      - unique_id: cooling_min_setpoint
+        default_entity_id: sensor.cooling_min_setpoint
+        name: Minimaler Kühlvorlauf
+        state: >
+          {{ states('sensor.max_dewpoint') | round(method='floor') }}
+  - sensor:
+      - unique_id: temperature_forecast_today
+        name: Temperature forecast today
+        state: >
+          {{
+            today['weather.meteoswiss_weather_at_8280'].forecast[0].temperature
+          }}
+        unit_of_measurement: "°C"
+    actions:
+      - action: weather.get_forecasts
+        data:
+          type: daily
+        target:
+          entity_id: weather.meteoswiss_weather_at_8280
+        response_variable: today
+    triggers:
+      - trigger: time
+        at: "08:30:00"
+      - trigger: time
+        at: "10:30:00"
