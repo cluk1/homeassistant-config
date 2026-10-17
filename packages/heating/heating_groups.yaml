@@ -4,7 +4,8 @@ sensor:
     type: mean
     ignore_non_numeric: true
     entities:
-      - !secret flat1_temperature
+      # vorübergehend ausgenommen (seit 2026-10-17)
+      #- !secret flat1_temperature
       - !secret flat2_temperature
       - !secret flat3_temperature
   - platform: group
@@ -12,7 +13,8 @@ sensor:
     type: min
     ignore_non_numeric: true
     entities:
-      - !secret flat1_temperature
+      # vorübergehend ausgenommen (seit 2026-10-17)
+      #- !secret flat1_temperature
       - !secret flat2_temperature
       - !secret flat3_temperature
   # Neutral benannte Stellvertreter für die Luftfeuchte-Sensoren der Wohnungen.
