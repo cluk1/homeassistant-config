@@ -10,7 +10,7 @@ warmwater_settings:
         old_chargehysteresis:
           "{{ states('number.ebusd_ctlv2_cylinderchargehyst_value')
           }}"
-        old_hwcmode: "{{ states('sensor.ebusd_hmu_hwcmode_uch')}}"
+        old_hwcmode: "{{ states('select.ebusd_hmu_hwcmode_uch')}}"
     # set all new settings
     - action: select.select_option
       target:
