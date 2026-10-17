@@ -1,68 +1,115 @@
 automation:
+  # Meldet die Wärmepumpe Heating_Overrun, obwohl die Wohnungen schon deutlich zu
+  # warm sind (z. B. durch Sonneneinstrahlung), wird die Heizung tagsüber
+  # ausgeschaltet und alle 30 Minuten neu geprüft. Sobald eine Bedingung nicht
+  # mehr erfüllt ist, wird wieder eingeschaltet – außer die Heizung wurde
+  # inzwischen global ausgeschaltet.
   - id: heating_power_off
     alias: Heating Power Off
     description: ""
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id:
           - sensor.ebusd_hmu_rundatastatuscode_value
         to: Heating_Overrun
-    condition:
-      - condition: numeric_state
+    conditions:
+      - &heating_on
+        condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+      - &too_warm
+        condition: numeric_state
         entity_id: sensor.flats_heating_demand
         below: -1.4
-      - condition: numeric_state
+      - &mild_outside
+        condition: numeric_state
         entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_value
         above: 5
-      - condition: sun
-        before: sunset
-        before_offset: -01:00
+      - &daytime
+        condition: sun
         after: sunrise
-        after_offset: 02:00
-    action:
-      - repeat:
-          sequence:
-            - service: logbook.log
-              data:
-                name: AM Heizung Temp aus
-                message:
-                  "Bedarf: {{ heizbedarf }}, AktuelleT: {{ aktuelle_temp }}, Schalte
-                  aus"
-            - service: !secret notify_admin
-              data:
-                message: "HzB: {{ heizbedarf }}, AktT: {{ aktuelle_temp }}, Schalte aus"
-            - service: climate.set_hvac_mode
-              data:
-                hvac_mode: "off"
-              target:
-                entity_id: climate.ctlv2_heating_vaillant
-            - delay:
-                hours: 0
-                minutes: 30
-                seconds: 0
-                milliseconds: 0
-          while:
-            - condition: numeric_state
-              entity_id: sensor.flats_heating_demand
-              below: -1.4
-            - condition: numeric_state
-              entity_id: number.ebusd_ctlv2_hc1summertemplimit_value
-              above: 5
-            - condition: sun
-              before: sunset
-              before_offset: -01:00
-              after: sunrise
-              after_offset: 02:00
-      - service: climate.set_hvac_mode
-        data:
-          hvac_mode: heat
+        after_offset: "02:00"
+        before: sunset
+        before_offset: "-01:00"
+    actions:
+      - action: climate.set_hvac_mode
         target:
           entity_id: climate.ctlv2_heating_vaillant
-      - service: logbook.log
+        data:
+          hvac_mode: "off"
+      - variables:
+          message: >-
+            Heizung aus: Bedarf {{ states('sensor.flats_heating_demand') }} K,
+            Wohnungen {{ states('sensor.flats_avg_temperature') }} °C,
+            außen {{ states('sensor.ebusd_ctlv2_displayedoutsidetemp_value') }} °C
+      - action: logbook.log
         data:
           name: AM Heizung Temp aus
-          message: Schalte ein
-      - service: !secret notify_admin
+          message: "{{ message }}"
+      - action: !secret notify_admin
         data:
-          message: Schalte ein
+          message: "{{ message }}"
+      # Warten, solange alle Bedingungen weiter erfüllt sind (Prüfung alle 30 min)
+      - repeat:
+          sequence:
+            - delay:
+                minutes: 30
+          while:
+            - *heating_on
+            - *too_warm
+            - *mild_outside
+            - *daytime
+      # Wurde die Heizung inzwischen global ausgeschaltet, bleibt sie aus
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.ctlv2_heating_vaillant
+        data:
+          hvac_mode: heat
+      - variables:
+          message: >-
+            Heizung wieder ein: Bedarf {{ states('sensor.flats_heating_demand') }} K,
+            Wohnungen {{ states('sensor.flats_avg_temperature') }} °C,
+            außen {{ states('sensor.ebusd_ctlv2_displayedoutsidetemp_value') }} °C
+      - action: logbook.log
+        data:
+          name: AM Heizung Temp aus
+          message: "{{ message }}"
+      - action: !secret notify_admin
+        data:
+          message: "{{ message }}"
+    mode: single
+    max_exceeded: silent
+
+  # Ein HA-Neustart bricht die Warteschleife oben ab, dann bliebe die Heizung
+  # aus. Deshalb nach dem Start: global an, aber Heizgerät aus → wieder ein.
+  - id: heating_power_off_recover
+    alias: Heating Power Off Recover
+    description: ""
+    triggers:
+      - trigger: homeassistant
+        event: start
+    conditions:
+      - condition: state
+        entity_id: input_boolean.heating_on_off
+        state: "on"
+    actions:
+      # MQTT-Zustand der Heizung abwarten (kommt nach dem Start per ebusd)
+      - wait_template: "{{ states('climate.ctlv2_heating_vaillant') not in ['unknown', 'unavailable'] }}"
+        timeout:
+          minutes: 10
+        continue_on_timeout: false
+      - condition: state
+        entity_id: climate.ctlv2_heating_vaillant
+        state: "off"
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.ctlv2_heating_vaillant
+        data:
+          hvac_mode: heat
+      - action: !secret notify_admin
+        data:
+          message: Heizung nach HA-Neustart wieder eingeschaltet
     mode: single
