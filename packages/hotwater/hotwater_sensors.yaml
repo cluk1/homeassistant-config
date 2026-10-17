@@ -5,3 +5,52 @@ template:
         name: Warmwasser Legioschaltung Tage seit letzter
         state: >
           {{ int(( int(now() | as_timestamp()) - int(states('input_datetime.hotwater_legio_lastrun') | as_timestamp()) ) / 86400 )  }}
+
+  # Außentemperatur-Band für die Warmwasser-Einstellungen (siehe hotwater_automation_mode.yaml).
+  # Bänder lückenlos, von kalt nach warm:
+  #   icy             < -5 °C
+  #   winter          -5 … 5 °C
+  #   transition_low   5 … Sommergrenze (number.ebusd_ctlv2_hc1summertemplimit_value)
+  #   transition_high  ab Sommergrenze
+  # Hysterese: ein Bandwechsel passiert erst, wenn die Temperatur die Grenze um
+  # mehr als 0,5 K über- bzw. unterschreitet. Pendelt die Außentemperatur um eine
+  # Grenze, bleibt das Band stehen.
+  - triggers:
+      - trigger: state
+        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_value
+      - trigger: state
+        entity_id: number.ebusd_ctlv2_hc1summertemplimit_value
+      - trigger: homeassistant
+        event: start
+    sensor:
+      - unique_id: hotwater_outside_band
+        default_entity_id: sensor.hotwater_outside_band
+        name: Warmwasser Außentemperatur-Band
+        icon: mdi:thermometer-lines
+        state: >
+          {% set bands = ['icy', 'winter', 'transition_low', 'transition_high'] %}
+          {% set summer_limit = states('number.ebusd_ctlv2_hc1summertemplimit_value') | float(15) %}
+          {% set limits = [-5, 5, summer_limit] %}
+          {% set hyst = 0.5 %}
+          {% set t = states('sensor.ebusd_ctlv2_displayedoutsidetemp_value') | float(none) %}
+          {% set current = this.state if this.state in bands else none %}
+          {% if t is none %}
+            {{ current if current is not none else 'unknown' }}
+          {% else %}
+            {% set ns = namespace(i=0) %}
+            {% if current is none %}
+              {# kein bisheriges Band: direkt einsortieren #}
+              {% for l in limits %}{% if t >= l %}{% set ns.i = loop.index %}{% endif %}{% endfor %}
+            {% else %}
+              {% set ns.i = bands.index(current) %}
+              {# nach oben wandern, solange die nächste Grenze deutlich überschritten ist #}
+              {% for _ in limits %}
+                {% if ns.i < limits | count and t > limits[ns.i] + hyst %}{% set ns.i = ns.i + 1 %}{% endif %}
+              {% endfor %}
+              {# nach unten wandern, solange die untere Grenze deutlich unterschritten ist #}
+              {% for _ in limits %}
+                {% if ns.i > 0 and t < limits[ns.i - 1] - hyst %}{% set ns.i = ns.i - 1 %}{% endif %}
+              {% endfor %}
+            {% endif %}
+            {{ bands[ns.i] }}
+          {% endif %}

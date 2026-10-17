@@ -1,0 +1,68 @@
+automation:
+  # Setzt die Warmwasser-Grundeinstellungen passend zur Jahreszeit:
+  # - Heizung global aus → summer
+  # - sonst nach sensor.hotwater_outside_band (mit Hysterese, siehe hotwater_sensors.yaml)
+  # Ein neues Band muss 30 Minuten stabil sein, bevor umgeschaltet wird.
+  - id: hotwater_mode
+    alias: Hotwater Mode
+    description: ""
+    triggers:
+      - trigger: state
+        entity_id: sensor.hotwater_outside_band
+        not_to:
+          - unknown
+          - unavailable
+        for:
+          minutes: 30
+      - trigger: state
+        entity_id: input_boolean.heating_on_off
+        to:
+          - "on"
+          - "off"
+      - trigger: homeassistant
+        event: start
+        id: start
+    conditions: []
+    actions:
+      - variables:
+          mode: >-
+            {{ 'summer' if is_state('input_boolean.heating_on_off', 'off')
+               else states('sensor.hotwater_outside_band') }}
+          settings:
+            summer:
+              { setpoint: 55, maxchargetime: 120, chargehysteresis: 25, hwcmode: eco }
+            transition_high:
+              { setpoint: 50, maxchargetime: 120, chargehysteresis: 20, hwcmode: eco }
+            transition_low:
+              { setpoint: 45, maxchargetime: 60, chargehysteresis: 15, hwcmode: eco }
+            winter:
+              { setpoint: 40, maxchargetime: 60, chargehysteresis: 10, hwcmode: balance }
+            icy:
+              { setpoint: 40, maxchargetime: 40, chargehysteresis: 10, hwcmode: normal }
+      - condition: template
+        value_template: "{{ mode in settings }}"
+      # script.turn_on wartet nicht: läuft gerade eine Legio- oder PV-Überschuss-
+      # Ladung (restore=1), wird der Aufruf im Script eingereiht und danach angewendet.
+      - action: script.turn_on
+        target:
+          entity_id: script.warmwater_settings
+        data:
+          variables:
+            setpoint: "{{ settings[mode].setpoint }}"
+            maxchargetime: "{{ settings[mode].maxchargetime }}"
+            chargehysteresis: "{{ settings[mode].chargehysteresis }}"
+            hwcmode: "{{ settings[mode].hwcmode }}"
+            opmode: auto
+            restore: 0
+            timeout: 0
+      - if:
+          - condition: template
+            value_template: "{{ trigger.id != 'start' }}"
+        then:
+          - action: !secret notify_admin
+            data:
+              message: >-
+                Warmwasser {{ mode }}: {{ settings[mode].setpoint }} °C,
+                Hysterese {{ settings[mode].chargehysteresis }} K, {{ settings[mode].hwcmode }}
+                (außen {{ states('sensor.ebusd_ctlv2_displayedoutsidetemp_value') }} °C)
+    mode: single
