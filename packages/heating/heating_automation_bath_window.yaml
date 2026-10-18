@@ -1,25 +1,70 @@
+# Badfenster: Thermostat climate_bath (secrets.yaml) beim Öffnen merken und
+# ausschalten, beim Schließen den vorherigen Zustand wiederherstellen.
+# Alarm und Benachrichtigung: heating_bath_window.yaml
 automation:
-  - id: heating_bath_window_open
-    alias: "Heating Bath Window Open"
+  - id: heating_bath_window
+    alias: Heating Bath Window
     description: ""
-    trigger:
+    triggers:
       - trigger: state
-        entity_id:
-          - binary_sensor.fenster_bad_alarm
-        from:
-          - "off"
-        to:
-          - "on"
-        for:
-          hours: 0
-          minutes: 15
-          seconds: 0
-    conditions:
-      - condition: state
-        entity_id: input_boolean.heating_on_off
-        state: "on"
-    action:
-      - service: !secret notify_all
-        data:
-          message: Fenster im Bad offen
-    mode: single
+        entity_id: binary_sensor.fenster_bad_alarm
+        from: "off"
+        to: "on"
+        id: opened
+      - trigger: state
+        entity_id: binary_sensor.fenster_bad_alarm
+        from: "on"
+        to: "off"
+        id: closed
+    conditions: []
+    actions:
+      - choose:
+          - conditions:
+              - condition: trigger
+                id: opened
+              - condition: state
+                entity_id: input_boolean.heating_on_off
+                state: "on"
+            sequence:
+              - action: scene.create
+                data:
+                  scene_id: bath_climate_before_window
+                  snapshot_entities:
+                    - !secret climate_bath
+              - action: climate.set_hvac_mode
+                target:
+                  entity_id: !secret climate_bath
+                data:
+                  hvac_mode: "off"
+          - conditions:
+              - condition: trigger
+                id: closed
+              # Zustand von vor dem Öffnen vorhanden (geht bei HA-Neustart verloren)
+              - condition: template
+                value_template: "{{ states.scene.bath_climate_before_window is not none }}"
+            sequence:
+              - action: scene.turn_on
+                target:
+                  entity_id: scene.bath_climate_before_window
+              - action: scene.delete
+                target:
+                  entity_id: scene.bath_climate_before_window
+          - conditions:
+              - condition: trigger
+                id: closed
+              - condition: state
+                entity_id: input_boolean.heating_on_off
+                state: "on"
+            sequence:
+              # kein gespeicherter Zustand: wie früher heizen im Eco-Modus
+              - action: climate.set_hvac_mode
+                target:
+                  entity_id: !secret climate_bath
+                data:
+                  hvac_mode: heat
+              - action: climate.set_preset_mode
+                target:
+                  entity_id: !secret climate_bath
+                data:
+                  preset_mode: eco
+    mode: queued

@@ -1,0 +1,33 @@
+# Badfenster (FRITZ!DECT-Fensterkontakt binary_sensor.fenster_bad_alarm): Alarm
+#
+# Alarm nur während der Heizsaison, für das Tablet-Dashboard sofort sichtbar,
+# Push nach 15 min, danach alle 30 min, quittierbar, Entwarnung beim Schließen.
+# Thermostat-Steuerung: heating_automation_bath_window.yaml
+#
+# Die Alert-ID muss zum Filter des Tablet-Dashboards passen: alert.flat2_*_warn_alert_active
+
+template:
+  - binary_sensor:
+      - unique_id: bath_window_open_heating
+        default_entity_id: binary_sensor.bath_window_open_heating
+        name: Badfenster offen (Heizbetrieb)
+        device_class: window
+        state: >
+          {{ is_state('binary_sensor.fenster_bad_alarm', 'on')
+             and is_state('input_boolean.heating_on_off', 'on') }}
+
+alert:
+  flat2_bath_window_open_warn_alert_active:
+    name: Bad Fenster offen
+    done_message: Bad Fenster geschlossen
+    entity_id: binary_sensor.bath_window_open_heating
+    state: "on"
+    # erste Meldung nach 15 min, danach alle 30 min
+    skip_first: true
+    repeat:
+      - 15
+      - 30
+    can_acknowledge: true
+    notifiers:
+      # Alert erwartet den notify-Dienst OHNE "notify." (anders als notify_all)
+      - !secret notify_all_alert

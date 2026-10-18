@@ -1,13 +1,3 @@
-flat2_bath_window_open_warn_alert_active:
-  name: Bad Fenster offen
-  done_message: Bad Fenster geschlossen
-  entity_id: binary_sensor.fenster_bad_alarm
-  state: "on"
-  repeat: 30
-  can_acknowledge: true
-  skip_first: false
-  notifiers:
-    - !secret notify_all
 flat1_humidity_warn_alert_active:
   name: Lüften
   done_message: Luftfeuchte ok
