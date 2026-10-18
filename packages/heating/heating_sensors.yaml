@@ -3,6 +3,9 @@ template:
       - unique_id: flats_heating_demand
         default_entity_id: sensor.flats_heating_demand
         name: Wohnungen Heizbedarf
+        # ohne gültige Wohnungstemperatur kein Heizbedarf (sonst regeln die
+        # Automationen auf einen Ersatzwert)
+        availability: "{{ has_value('sensor.flats_avg_temperature') }}"
         state: >
           {% set temp_actual = states('sensor.flats_avg_temperature') | float %}
           {% set temp_wanted = ( states('input_number.flat_temperature_setpoint') | float - states('input_number.flat_temperature_tolerance') | float ) %}
@@ -18,8 +21,19 @@ template:
         default_entity_id: sensor.heatpump_cop
         name: "Heatpump CoP"
         device_class: power_factor
+        # Momentan-COP nur bei stabilem Betrieb: ab 0,8 kW Leistungsaufnahme und
+        # positiver Abgabe. Anlauf, Auslauf und Abtauen ergeben sonst Werte wie
+        # 30 oder negative COPs; dann lieber kein Wert als ein falscher.
+        # Im Kühlbetrieb sind COPs um 10 real, 15 ist nur eine Notbremse.
+        availability: >
+          {{ has_value('sensor.ebusd_hmu_currentconsumedpower_value')
+             and has_value('sensor.heatpump_currentoutputpower')
+             and states('sensor.ebusd_hmu_currentconsumedpower_value') | float(0) >= 0.8
+             and states('sensor.heatpump_currentoutputpower') | float(0) > 0 }}
         state: >
-          {{ [[( states('sensor.heatpump_currentoutputpower')|float / states('sensor.ebusd_hmu_currentconsumedpower_value')|float), 10] | min , 2] | max }}
+          {% set cop = states('sensor.heatpump_currentoutputpower') | float
+                       / states('sensor.ebusd_hmu_currentconsumedpower_value') | float %}
+          {{ [cop, 15] | min | round(2) }}
   - binary_sensor:
       - unique_id: flat1_humidity_too_high
         default_entity_id: binary_sensor.flat1_humidity_too_high
