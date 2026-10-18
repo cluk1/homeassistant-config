@@ -76,7 +76,6 @@ Vaillant aroTHERM plus VWL 125
 <img src="https://energiewende-einfach-machen.net/wp-content/uploads/2024/05/ha-heating-device.png" width="200">
 
 ## Heating Automations
-* [Manually increasing or decreasing heating power](packages/heating/heating_automation_power_manual.yaml): Webhook triggered automation which uses the heating device service to increase (or decrease) the heating setpoint. This can be used from various buttons to manually control heating power.
 * [Automatic heating power control](packages/heating/heating_automation_power_auto.yaml): Triggered by changes in average flat temperatures to reduce heating power when flat temperatures rise due to solar gains.
 * [Automatic heating power off](packages/heating/heating_automation_power_off.yaml): Triggered by heating overruns from the heat pump. If the flats are clearly too warm (heating demand below -1.4 K), it is mild outside (> 5 °C) and daytime, the heating is turned off and the conditions are checked again every 30 minutes. As soon as one condition no longer holds, heating is turned on again, unless it was switched off globally meanwhile. After a HA restart a recovery automation turns the heating back on, since the waiting loop does not survive a restart.
 

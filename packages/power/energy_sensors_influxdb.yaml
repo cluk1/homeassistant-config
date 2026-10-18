@@ -1,7 +1,7 @@
 sensor:
   - platform: influxdb
     host: !secret influx_host
-    username: homeassistant
+    username: !secret influx_user
     password: !secret influx_pwd
     queries:
       - name: flat1_grid_energy_day

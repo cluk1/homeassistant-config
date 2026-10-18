@@ -21,7 +21,7 @@ sys.path.insert(0, str(HERE))
 from pyscript_harness import Env  # noqa: E402
 
 SCRIPT = HERE.parent / "pyscript" / "meters.py"
-CFG = {"meters_persist": [{"dbhost": "x", "dbpassword": "x"}]}
+CFG = {"meters_persist": [{"dbhost": "x", "dbuser": "x", "dbpassword": "x"}]}
 CONSUMERS = ["flat1", "flat2", "flat3", "flat4", "comm", "wallbox_cp1", "wallbox_cp2", "heatpump"]
 SENSORS = {
     "flat1": "flat1_consumption", "flat2": "flat2_consumption", "flat3": "flat3_consumption",

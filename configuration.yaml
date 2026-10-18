@@ -31,11 +31,10 @@ influxdb:
 pyscript:
   allow_all_imports: true
   apps:
+    # Zugangsdaten für pyscript/meters.py (InfluxDB-Datenbank "meter")
     meters_persist:
       - dbhost: !secret influx_host
-        dbpassword: !secret influx_pwd
-    meters_calculate_incs:
-      - dbhost: !secret influx_host
+        dbuser: !secret influx_user
         dbpassword: !secret influx_pwd
 
 automation: !include automations.yaml

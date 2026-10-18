@@ -155,7 +155,7 @@ def clear_alert(key):
 
 def influx():
     cfg = pyscript.config["apps"]["meters_persist"][0]
-    return InfluxDBClient(host=cfg["dbhost"], port=8086, username="homeassistant",
+    return InfluxDBClient(host=cfg["dbhost"], port=8086, username=cfg["dbuser"],
                           password=cfg["dbpassword"], database="meter", timeout=10)
 
 
