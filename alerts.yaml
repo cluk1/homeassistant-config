@@ -1,3 +1,4 @@
+# Luftfeuchte-Alerts werden nur auf den Tablet-Dashboards angezeigt, ohne Benachrichtigung
 flat1_humidity_warn_alert_active:
   name: Lüften
   done_message: Luftfeuchte ok
@@ -6,8 +7,6 @@ flat1_humidity_warn_alert_active:
   repeat: 30
   can_acknowledge: true
   skip_first: false
-  notifiers:
-    - !secret notify_admin
 flat2_humidity_warn_alert_active:
   name: Lüften
   done_message: Luftfeuchte ok
@@ -16,8 +15,6 @@ flat2_humidity_warn_alert_active:
   repeat: 30
   can_acknowledge: true
   skip_first: false
-  notifiers:
-    - !secret notify_admin
 flat3_humidity_warn_alert_active:
   name: Lüften
   done_message: Luftfeuchte ok
@@ -26,5 +23,3 @@ flat3_humidity_warn_alert_active:
   repeat: 30
   can_acknowledge: true
   skip_first: false
-  notifiers:
-    - !secret notify_admin
