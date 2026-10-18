@@ -24,3 +24,4 @@ solcast.json
 automations.yaml
 packages/local/
 saic/
+__pycache__/

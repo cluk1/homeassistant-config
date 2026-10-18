@@ -1,0 +1,21 @@
+automation:
+  # Meldungen der Abrechnungs-Skripte (pyscript/meters.py) an Admin und als
+  # persistente Benachrichtigung in HA
+  - id: meters_alert
+    alias: Meters Alert
+    description: ""
+    triggers:
+      - trigger: event
+        event_type: meters_alert
+    conditions: []
+    actions:
+      - action: persistent_notification.create
+        data:
+          title: Zähler / Abrechnung
+          message: "{{ trigger.event.data.message }}"
+      - action: !secret notify_admin
+        data:
+          title: Zähler / Abrechnung
+          message: "{{ trigger.event.data.message }}"
+    mode: queued
+    max: 20

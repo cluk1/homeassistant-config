@@ -28,10 +28,14 @@ Fenecon Home 30, 15 kWh storage
 ### Reading the internal meters using modbus
 * The installed FEMS system has an internal Modbus-TCP Gateway which can be used to access the meters. If you are using different hardware your config will be a little different. The modbus sensors are defined in [fems.yaml](packages/photovoltaik/fems.yaml)
 
-### Wrting the meter data and grid usage to influxdb
-This is done by two pyscripts:
-* Read all the meaters every 15 mins and write the data to influxdb: [meters_persist.py](pyscript/meters_persist.py)
-* Calculate the usages for the last 15 min interval for all flats, heatpump, wallbox and the share of the grid usage: [meters_calculate_incs.py](pyscript/meters_calculate_incs.py)
+### Writing the meter data and grid usage to influxdb
+This is done by the pyscript [meters.py](pyscript/meters.py):
+* Every 15 minutes (aligned to the UTC quarter hour, independent of daylight saving time) all meter readings are written to the influxdb measurement `meter`. A timestamp is written only if all meters could be read (with retries); frozen modbus readings are skipped.
+* For every timestamp the consumption since the previous complete timestamp (`inc`) and the share of the grid usage (`grid`) are calculated for all flats, heatpump and wallbox: `grid = inc / Σ inc(consumers) × inc(gridbuy)`. After a gap the interval simply becomes longer, so no energy is lost. Missing calculations of the last 7 days are caught up automatically.
+* If a meter jumps back (reset, replacement), its consumption in that interval counts as 0 and the new reading becomes the base. Grid usage without any metered consumption is stored as `grid` with `meter = unallocated`.
+* Problems are fired as event `meters_alert` and sent as notification by [meters_alert.yaml](packages/power/meters_alert.yaml).
+* The behaviour is covered by unit tests in [tests/test_meters.py](tests/test_meters.py) (run `python3 -m unittest discover -s tests -v`), which run the unchanged script against a simulated InfluxDB and check the energy balance for gaps, resets, unit changes, daylight saving time and lost calculations.
+* Service `pyscript.meters_recalculate` (parameters `start`, `end`, e.g. `2025-01-01`, `2025-12-31` in local time) recalculates `inc` and `grid` for a period, e.g. to close gaps before the yearly billing.
 
 ## Energy Management
 * Combining the pv system with the heating system allows various ways to do intelligent energy management using HA automations.
