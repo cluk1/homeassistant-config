@@ -431,6 +431,14 @@ class Report(MetersTestCase):
         for row in r["rows"]:
             self.assertAlmostEqual(row["consumption"], self.expected(sim, row["meter"]), places=3)
 
+    def test_recalculate_and_report_use_same_period(self):
+        """meters_recalculate und meters_report grenzen gleich ab: nach Neuberechnung keine Warnung"""
+        env, mod, sim = self.day(calc=False)
+        mod["meters_recalculate"](start="2026-01-13", end="2026-01-13")
+        md, _ = self.report(env, mod)
+        self.assertNotIn("⚠", md)
+        self.assertAlert(env, "alle Prüfungen ok")
+
     def test_invalid_date(self):
         """Ungültiges Datum (z. B. mit Pfadangabe): nur Meldung, keine Datei, keine Exception"""
         env, mod, sim = self.day()

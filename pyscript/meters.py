@@ -264,9 +264,49 @@ def write_text(path, text):
         f.write(text)
 
 
-def compute(prev, cur):
-    return compute_interval(prev, cur, list(SENSORS), list(CONSUMERS), GRID_METER,
-                            UNALLOCATED, EPSILON)
+# pyscript führt normale Funktionen Anweisung für Anweisung im Event-Loop von HA aus.
+# Alles, was über viele Datenpunkte läuft, steht deshalb in @pyscript_compile-Funktionen
+# und wird per hass.async_add_executor_job in einem eigenen Thread ausgeführt.
+@pyscript_compile
+def fetch_rows(client, q):
+    """InfluxDB-Abfrage ausführen -> [(epoch, value)] (blockierend, im Executor aufrufen)"""
+    from datetime import datetime
+    rows = []
+    for r in client.query(q).get_points():
+        t = int(datetime.fromisoformat(r["time"].replace("Z", "+00:00")).timestamp())
+        rows.append((t, float(r["value"])))
+    return rows
+
+
+@pyscript_compile
+def build_points(series, prev_ts, prev, meters, consumers, grid_meter, unallocated, epsilon,
+                 interval, compute_fn, points_fn):
+    """inc/grid-Punkte für alle vollständigen Zeitpunkte in series (im Executor aufrufen).
+    series: {zähler: {epoch: Stand}}, prev_ts/prev: Basis davor oder None.
+    Rückgabe: (points, stats) mit done, gaps, incomplete, resets, no_base"""
+    from datetime import datetime, timezone
+
+    def iso(epoch):
+        return datetime.fromtimestamp(epoch, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    stats = {"done": 0, "gaps": 0, "incomplete": [], "resets": [], "no_base": None}
+    points = []
+    for ts in sorted(set([t for s in series.values() for t in s])):
+        cur = {m: series[m][ts] for m in meters if ts in series[m]}
+        if len(cur) != len(meters):
+            stats["incomplete"].append(iso(ts))
+            continue
+        if prev is None:
+            stats["no_base"] = iso(ts)  # erster Zeitpunkt dient nur als Basis
+        else:
+            inc, grid, resets = compute_fn(prev, cur, meters, consumers, grid_meter, unallocated, epsilon)
+            points.extend(points_fn(iso(ts), inc, grid))
+            stats["resets"].extend([(iso(ts), m, prev[m], cur[m]) for m in resets])
+            stats["done"] += 1
+            if ts - prev_ts != interval:
+                stats["gaps"] += 1
+        prev_ts, prev = ts, cur
+    return points, stats
 
 
 def to_iso(epoch):
@@ -335,7 +375,7 @@ def meter_rows(client, meter, where, order="ASC", limit=None, measurement="meter
          f"ORDER BY time {order}")
     if limit:
         q += f" LIMIT {limit}"
-    return [(from_iso(r["time"]), float(r["value"])) for r in query(client, q)]
+    return await hass.async_add_executor_job(fetch_rows, client, q)
 
 
 def last_complete(client, before):
@@ -389,34 +429,17 @@ def calculate_range(client, a, b):
     """Berechnet inc/grid für alle vollständigen Zeitpunkte t mit a <= t <= b neu,
     jeweils gegenüber dem vorherigen vollständigen Zeitpunkt (auch vor a).
     Rückgabe: dict mit Zählern und Hinweisen; bei Schreibfehler ok=False."""
-    stats = {"ok": True, "done": 0, "gaps": 0, "incomplete": [], "resets": [], "no_base": None}
     prev_ts, prev = last_complete(client, a)
     series = {m: dict(meter_rows(client, m, f"time >= '{to_iso(a)}' AND time <= '{to_iso(b)}'"))
               for m in SENSORS}
-    times = sorted(set([t for s in series.values() for t in s]))
-    points = []
-    for ts in times:
-        cur = {m: series[m][ts] for m in SENSORS if ts in series[m]}
-        if len(cur) != len(SENSORS):
-            stats["incomplete"].append(to_iso(ts))
-            continue
-        if prev is None:
-            stats["no_base"] = to_iso(ts)  # erster Zeitpunkt dient nur als Basis
-        else:
-            inc, grid, resets = compute(prev, cur)
-            points.extend(interval_points(to_iso(ts), inc, grid))
-            stats["resets"].extend([(to_iso(ts), m, prev[m], cur[m]) for m in resets])
-            stats["done"] += 1
-            if ts - prev_ts != INTERVAL:
-                stats["gaps"] += 1
-        prev_ts, prev = ts, cur
-        if len(points) >= 5000:
-            if not write(client, points):
-                stats["ok"] = False
-                return stats
-            points = []
-    if points and not write(client, points):
-        stats["ok"] = False
+    points, stats = await hass.async_add_executor_job(
+        build_points, series, prev_ts, prev, list(SENSORS), list(CONSUMERS), GRID_METER,
+        UNALLOCATED, EPSILON, INTERVAL, compute_interval, interval_points)
+    stats["ok"] = True
+    for i in range(0, len(points), 5000):
+        if not write(client, points[i:i + 5000]):
+            stats["ok"] = False
+            return stats
     return stats
 
 
@@ -526,18 +549,19 @@ def meters_recalculate(start=None, end=None):
     """Berechnet inc und grid für alle Zählerstände im Zeitraum neu.
 
     start, end: Datum in Ortszeit ('2025-01-01', Ende inklusive) oder ISO-Zeitpunkt.
-    Vorhandene inc/grid-Werte im Zeitraum werden überschrieben."""
+    Wie bei meters_report gilt start < Zeitstempel <= end + 1 Tag (Zeitstempel = Ende
+    des Intervalls). Vorhandene inc/grid-Werte im Zeitraum werden überschrieben."""
     if not start or not end:
         alert("meters_recalculate: start und end angeben, z. B. start: 2025-01-01, end: 2025-12-31")
         return
     try:
-        a, b = parse_day(start), parse_day(end, end=True) - 1
+        a, b = parse_day(start) + 1, parse_day(end, end=True)
     except ValueError:
         alert(f"meters_recalculate: ungültiges Datum '{start}' / '{end}', Format 2025-01-01")
         return
     client = influx()
     stats = calculate_range(client, a, b)
-    msg = f"meters_recalculate {to_iso(a)} – {to_iso(b + 1)}: "
+    msg = f"meters_recalculate {to_iso(a - 1)} – {to_iso(b)}: "
     if not stats["ok"]:
         alert(msg + "Schreiben in InfluxDB fehlgeschlagen, abgebrochen")
         return
@@ -591,10 +615,11 @@ def meters_report(start=None, end=None, grid_price=None, heatpump_price=None, pv
     for m in list(CONSUMERS) + [UNALLOCATED]:
         grid[m] = dict(meter_rows(client, m, where, measurement="grid"))
 
-    report = compute_report(meter, inc, grid, a, b, quarter(time.time()), list(SENSORS),
-                            list(CONSUMERS), GRID_METER, UNALLOCATED, INTERVAL, prices, TOLERANCE)
+    report = await hass.async_add_executor_job(
+        compute_report, meter, inc, grid, a, b, quarter(time.time()), list(SENSORS),
+        list(CONSUMERS), GRID_METER, UNALLOCATED, INTERVAL, prices, TOLERANCE)
     title = f"Abrechnung {start} bis {end}"
-    md, csv = format_report(report, title, prices)
+    md, csv = await hass.async_add_executor_job(format_report, report, title, prices)
     created = datetime.now(LOCAL_TZ).strftime("%d.%m.%Y %H:%M")
     csv = f"Erstellt;{created}\n" + csv
     # Dateiname nur aus harmlosen Zeichen (start/end sind Benutzereingaben)
