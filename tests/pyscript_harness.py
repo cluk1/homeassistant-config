@@ -65,6 +65,8 @@ class Env:
         self.sleeps = []
         self.on_sleep = None  # callback(env, seconds)
         self.modules = {}
+        self.notifications = []  # persistent_notification.create(...)
+        self.config_dir = None   # Verzeichnis für hass.config.path(), vom Test gesetzt
 
     def _state_get(self, name):
         if name not in self.states:
@@ -134,7 +136,11 @@ class Env:
             "log": Log(),
             "state": types.SimpleNamespace(get=self._state_get, getattr=self._state_getattr),
             "event": types.SimpleNamespace(fire=lambda name, **kw: env.events.append((name, kw))),
-            "hass": types.SimpleNamespace(async_add_executor_job=lambda fn, *a: fn(*a)),
+            "hass": types.SimpleNamespace(
+                async_add_executor_job=lambda fn, *a: fn(*a),
+                config=types.SimpleNamespace(path=lambda *p: str(Path(env.config_dir or ".", *p)))),
+            "persistent_notification": types.SimpleNamespace(
+                create=lambda **kw: env.notifications.append(kw)),
             "task": types.SimpleNamespace(sleep=task_sleep, unique=lambda name: None),
             "pyscript": types.SimpleNamespace(config={"apps": config}),
         }

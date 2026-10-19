@@ -25,3 +25,5 @@ automations.yaml
 packages/local/
 saic/
 __pycache__/
+# Abrechnungsberichte von pyscript.meters_report (private Verbrauchsdaten)
+reports/

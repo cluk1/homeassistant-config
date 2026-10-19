@@ -42,6 +42,7 @@ class Sim:
         self.offset = {m: 0.0 for m in SENSORS}  # Anzeige = values + offset (Rücksprung)
         self.scale = {m: 1.0 for m in SENSORS}   # 1000 = Anzeige in Wh
         self.frozen = False
+        self.history = {}  # Zeitstempel (UTC-ISO der Viertelstunde) -> tatsächliche Zählerstände
 
     def advance(self):
         used = 0.0
@@ -125,6 +126,7 @@ class MetersTestCase(unittest.TestCase):
             sim.publish()
             if i == 0:
                 sim.true = {m: 0.0 for m in SENSORS}
+            sim.history[(start + timedelta(minutes=15 * i)).strftime("%Y-%m-%dT%H:%M:%SZ")] = dict(sim.values)
             action = hooks[i](env, sim) if hooks and i in hooks else None
             if action == "skip":
                 continue
@@ -317,6 +319,140 @@ class Recalculation(MetersTestCase):
         mod["meters_recalculate"]()
         self.assertEqual(env.influx.points, before)
         self.assertAlert(env, "start und end angeben")
+
+
+class Report(MetersTestCase):
+    """meters_report: Abrechnungsbericht für 13.01.2026 (Ortszeit = 12.01. 23:00Z – 13.01. 23:00Z)"""
+    A, B = "2026-01-12T23:00:00Z", "2026-01-13T23:00:00Z"
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def day(self, **kw):
+        # Simulation von 12.01. 22:00Z bis 14.01. 01:00Z, damit Basis und Ende abgedeckt sind
+        env, mod, sim = self.run_day(start=datetime(2026, 1, 12, 22, tzinfo=timezone.utc), ticks=108, **kw)
+        env.config_dir = self.tmp.name
+        env.now = datetime(2026, 1, 20, tzinfo=timezone.utc)
+        return env, mod, sim
+
+    def report(self, env, mod, **kw):
+        env.events.clear()
+        env.notifications.clear()
+        mod["meters_report"](start="2026-01-13", end="2026-01-13", **kw)
+        csv = Path(self.tmp.name, "reports", "abrechnung_2026-01-13_2026-01-13.csv")
+        return env.notifications[-1]["message"] if env.notifications else "", csv
+
+    def expected(self, sim, m):
+        return sim.history[self.B][m] - sim.history[self.A][m]
+
+    def compute(self, env, mod, prices=None):
+        """Bericht ohne Formatierung, direkt aus compute_report"""
+        g = mod
+        a, b = g["parse_day"]("2026-01-13"), g["parse_day"]("2026-01-13", end=True)
+        series = lambda meas, m: {g["from_iso"](t): v for t, v in env.influx.series(meas, m).items()}
+        meter = {m: series("meter", m) for m in SENSORS}
+        inc = {m: series("inc", m) for m in SENSORS}
+        grid = {m: series("grid", m) for m in CONSUMERS + ["unallocated"]}
+        return g["compute_report"](meter, inc, grid, a, b, b, list(SENSORS), CONSUMERS, "gridbuy",
+                                   "unallocated", 900, prices or {"grid": None, "heatpump": None, "pv": None},
+                                   0.001)
+
+    def test_totals_match_meter_differences(self):
+        """Verbrauch je Partei = Zählerstand Ende minus Zählerstand Anfang des Tages, alle Prüfungen ok"""
+        env, mod, sim = self.day()
+        r = self.compute(env, mod)
+        for row in r["rows"]:
+            self.assertAlmostEqual(row["consumption"], self.expected(sim, row["meter"]), places=3)
+            self.assertAlmostEqual(row["pv"], row["consumption"] - row["grid"], places=9)
+        self.assertAlmostEqual(r["totals"]["grid"] + r["totals"]["unallocated"],
+                               self.expected(sim, "gridbuy"), places=3)
+        self.assertEqual([c for c in r["checks"] if c[0] != "ok"], [])
+
+    def test_day_boundary_interval_ending_at_midnight_belongs_to_previous_day(self):
+        """Intervall mit Zeitstempel 00:00 Ortszeit zählt zum Vortag, das mit 00:00 am Folgetag zum Tag"""
+        env, mod, sim = self.day()
+        r = self.compute(env, mod)
+        first = env.influx.series("inc", "flat1")[self.A]   # 23:45–00:00 Ortszeit des Vortags
+        last = env.influx.series("inc", "flat1")[self.B]    # 23:45–00:00 des Berichtstags
+        total = [x for x in r["rows"] if x["meter"] == "flat1"][0]["consumption"]
+        all_day = sum(v for t, v in env.influx.series("inc", "flat1").items() if self.A < t <= self.B)
+        self.assertAlmostEqual(total, all_day, places=9)
+        self.assertGreater(first, 0)
+        self.assertGreater(last, 0)
+
+    def test_costs(self):
+        """Kosten: Netz × Netzpreis bzw. Wärmestrompreis, PV × PV-Preis, in Euro"""
+        env, mod, sim = self.day()
+        r = self.compute(env, mod, {"grid": 32.0, "heatpump": 25.0, "pv": 10.0})
+        for row in r["rows"]:
+            price = 25.0 if row["meter"] == "heatpump" else 32.0
+            self.assertAlmostEqual(row["cost_grid"], row["grid"] * price / 100, places=9)
+            self.assertAlmostEqual(row["cost_pv"], row["pv"] * 10.0 / 100, places=9)
+            self.assertAlmostEqual(row["cost"], row["cost_grid"] + row["cost_pv"], places=9)
+
+    def test_report_service_writes_csv_and_notification(self):
+        """Service schreibt CSV (Semikolon, Dezimalkomma) und Benachrichtigung, Meldung 'alle Prüfungen ok'"""
+        env, mod, sim = self.day()
+        md, csv = self.report(env, mod, grid_price="32", pv_price="10")
+        self.assertTrue(csv.exists())
+        text = csv.read_text()
+        self.assertIn("Partei;Verbrauch kWh;Netz kWh;PV kWh;PV-Anteil %;Kosten Netz €", text)
+        flat1 = [l for l in text.splitlines() if l.startswith("flat1;")][0]
+        value = float(flat1.split(";")[1].replace(",", "."))
+        self.assertAlmostEqual(value, self.expected(sim, "flat1"), delta=0.006)  # 2 Nachkommastellen
+        self.assertIn("| Partei |", md)
+        self.assertAlert(env, "alle Prüfungen ok")
+
+    def test_uncomputed_timestamps_warn(self):
+        """Zählerstände ohne Berechnung: Warnung, erst meters_recalculate ausführen"""
+        env, mod, sim = self.day(calc=False)
+        md, _ = self.report(env, mod)
+        self.assertIn("ohne Berechnung", md)
+        self.assertAlert(env, "Warnung")
+
+    def test_reset_is_reported(self):
+        """Rücksprung im Zeitraum: Warnung mit Zähler und Zeitpunkt, Bilanz je Zähler trotzdem ok"""
+        env, mod, sim = self.day(hooks={50: jump_to("wallbox_cp2", 0.0)})
+        r = self.compute(env, mod)
+        texts = [t for s, t in r["checks"]]
+        self.assertTrue(any("Rücksprung wallbox_cp2" in t for t in texts), texts)
+        self.assertIn(("ok", "Verbrauch je Zähler = Zählerdifferenz"), r["checks"])
+
+    def test_gap_is_info_only(self):
+        """Lücke von 2 h: Hinweis auf fehlende Viertelstunden, Bilanz ok"""
+        env, mod, sim = self.day(hooks={i: skip for i in range(30, 38)})
+        r = self.compute(env, mod)
+        self.assertEqual([c for c in r["checks"] if c[0] == "warn"], [])
+        self.assertTrue(any(s == "info" and "ohne eigenen Zählerstand" in t for s, t in r["checks"]))
+        for row in r["rows"]:
+            self.assertAlmostEqual(row["consumption"], self.expected(sim, row["meter"]), places=3)
+
+    def test_invalid_date(self):
+        """Ungültiges Datum (z. B. mit Pfadangabe): nur Meldung, keine Datei, keine Exception"""
+        env, mod, sim = self.day()
+        mod["meters_report"](start="2026-01-13", end="../2026-01-13")
+        mod["meters_recalculate"](start="2026-13-01", end="2026-01-13")
+        self.assertEqual(list(Path(self.tmp.name).rglob("*.csv")), [])
+        self.assertAlert(env, "meters_report: ungültiges Datum")
+        self.assertAlert(env, "meters_recalculate: ungültiges Datum")
+
+    def test_iso_timestamps_give_safe_file_name(self):
+        """Zeitraum als ISO-Zeitpunkte: Doppelpunkte werden im Dateinamen ersetzt"""
+        env, mod, sim = self.day()
+        mod["meters_report"](start="2026-01-13T00:00:00+01:00", end="2026-01-13T12:00:00+01:00")
+        files = [p.name for p in Path(self.tmp.name, "reports").glob("*.csv")]
+        self.assertEqual(files, ["abrechnung_2026-01-13T00_00_00_01_00_2026-01-13T12_00_00_01_00.csv"])
+
+    def test_invalid_price(self):
+        """Preis keine Zahl: nur Meldung, kein Bericht"""
+        env, mod, sim = self.day()
+        md, csv = self.report(env, mod, grid_price="teuer")
+        self.assertFalse(csv.exists())
+        self.assertAlert(env, "Preise als Zahl")
 
 
 class TimeHelpers(MetersTestCase):

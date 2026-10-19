@@ -24,6 +24,7 @@ Services:
 - pyscript.meters_persist             Zählerstände jetzt schreiben (sonst automatisch)
 - pyscript.meters_calculate_incs      inc/grid bis zu einem Zeitpunkt (UTC) berechnen
 - pyscript.meters_recalculate         inc/grid für einen Zeitraum neu berechnen
+- pyscript.meters_report              Abrechnungsbericht für einen Zeitraum (mit Prüfungen)
 """
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -54,7 +55,9 @@ WRITE_RETRY_DELAY = 10            # Sekunden
 EPSILON = 1e-6                    # kWh, kleinere Rücksprünge gelten als Rundungsrauschen
 AUTO_CATCHUP = 7 * 86400          # so weit rechnet die Live-Berechnung fehlende Intervalle nach
 ALERT_REPEAT = 3600               # gleiche Störung höchstens stündlich melden
-LOCAL_TZ = ZoneInfo("Europe/Berlin")   # nur für Datumsangaben in meters_recalculate
+LOCAL_TZ = ZoneInfo("Europe/Berlin")   # für Datumsangaben in meters_recalculate/meters_report
+REPORT_DIR = "reports"            # unter /config, nicht www/ (dort ohne Login abrufbar)
+TOLERANCE = 0.001                 # kWh, Toleranz der Bilanzprüfungen im Bericht
 MEAS = '"meter"."autogen"'
 
 _last_alert = {}                  # Störungsschlüssel -> Zeitpunkt der letzten Meldung
@@ -96,6 +99,169 @@ def interval_points(ts_iso, inc, grid):
             points.append({"measurement": measurement, "tags": {"meter": meter},
                            "time": ts_iso, "fields": {"value": round(value, 6)}})
     return points
+
+
+@pyscript_compile
+def compute_report(meter, inc, grid, a, b, now, meters, consumers, grid_meter, unallocated,
+                   interval, prices, tolerance):
+    """Abrechnungsbericht für alle Intervalle mit a < Zeitstempel <= b.
+
+    meter: {zähler: {epoch: Stand}} inkl. des letzten Stands <= a (Basis)
+    inc, grid: {zähler: {epoch: kWh}} für den Zeitraum
+    prices: {"grid": ct, "heatpump": ct, "pv": ct} oder None-Werte
+    Rückgabe: dict mit rows (je Verbraucher), totals, checks [(status, text)], coverage
+    """
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    def kwh(x):
+        return f"{x:.3f}".replace(".", ",") + " kWh"
+
+    def when(epoch):
+        return datetime.fromtimestamp(epoch, ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M")
+
+    complete = set(meter[grid_meter])
+    for m in meters:
+        complete &= set(meter[m])
+    complete = sorted(complete)
+    base = max([t for t in complete if t <= a], default=None)
+    in_range = [t for t in complete if a < t <= b]
+    seq = ([base] if base is not None else []) + in_range
+
+    # Zählerdifferenzen: Summe der positiven Schritte, Rücksprünge separat
+    delta, resets = {m: 0.0 for m in meters}, []
+    for p, c in zip(seq, seq[1:]):
+        for m in meters:
+            d = meter[m][c] - meter[m][p]
+            if d < 0:
+                resets.append((c, m, meter[m][p], meter[m][c]))
+            else:
+                delta[m] += d
+
+    def total(series, m):
+        return sum([v for t, v in series.get(m, {}).items() if a < t <= b])
+
+    rows = []
+    for m in consumers:
+        cons, net = total(inc, m), total(grid, m)
+        price_net = prices.get("heatpump") if m == "heatpump" else prices.get("grid")
+        row = {"meter": m, "consumption": cons, "grid": net, "pv": cons - net,
+               "pv_share": (cons - net) / cons if cons > 0 else None,
+               "cost_grid": net * price_net / 100 if price_net is not None else None,
+               "cost_pv": (cons - net) * prices["pv"] / 100 if prices.get("pv") is not None else None}
+        costs = [x for x in (row["cost_grid"], row["cost_pv"]) if x is not None]
+        row["cost"] = sum(costs) if costs else None
+        rows.append(row)
+    grid_in = total(inc, grid_meter)
+    unalloc = total(grid, unallocated)
+    totals = {"consumption": sum([r["consumption"] for r in rows]),
+              "grid": sum([r["grid"] for r in rows]), "unallocated": unalloc,
+              "grid_meter": grid_in, "grid_meter_delta": delta[grid_meter]}
+    totals["pv"] = totals["consumption"] - totals["grid"]
+    costs = [r["cost"] for r in rows if r["cost"] is not None]
+    totals["cost"] = sum(costs) if costs else None
+
+    # Vollständigkeit (bei laufendem Zeitraum nur bis jetzt)
+    end = min(b, now)
+    expected = max(0, (end - a) // interval)
+    present = len([t for t in in_range if t <= end])
+    longest = max([c - p for p, c in zip(seq, seq[1:])], default=interval)
+    uncomputed = [t for t in in_range if t not in inc.get(grid_meter, {})]
+    coverage = {"expected": expected, "present": present, "longest_gap": longest,
+                "uncomputed": uncomputed, "base": base}
+
+    checks = []
+    if base is None:
+        checks.append(("warn", "Kein Zählerstand vor dem Zeitraum: das erste Intervall fehlt im Bericht"))
+    if uncomputed:
+        checks.append(("warn", f"{len(uncomputed)} Zeitpunkte ohne Berechnung, erst meters_recalculate ausführen"))
+    else:
+        checks.append(("ok", "Alle Zeitpunkte berechnet"))
+    off = [m for m in meters if abs(total(inc, m) - delta[m]) > tolerance]
+    if off:
+        checks.append(("warn", "Verbrauch weicht von der Zählerdifferenz ab: " + ", ".join(
+            [f"{m} {kwh(total(inc, m))} statt {kwh(delta[m])}" for m in off])))
+    else:
+        checks.append(("ok", "Verbrauch je Zähler = Zählerdifferenz"))
+    grid_all = totals["grid"] + unalloc
+    if abs(grid_all - grid_in) > tolerance or abs(grid_in - delta[grid_meter]) > tolerance:
+        checks.append(("warn", f"Netzbilanz stimmt nicht: Summe Netzanteile {kwh(grid_all)}, "
+                               f"Netzbezug berechnet {kwh(grid_in)}, laut Zähler {kwh(delta[grid_meter])}"))
+    else:
+        checks.append(("ok", f"Summe Netzanteile = Netzbezug laut Zähler ({kwh(grid_in)})"))
+    if present < expected:
+        checks.append(("info", f"{expected - present} von {expected} Viertelstunden ohne eigenen "
+                               f"Zählerstand, Energie im Folgeintervall enthalten "
+                               f"(längste Lücke {longest // 60} min)"))
+    else:
+        checks.append(("ok", f"Alle {expected} Viertelstunden mit Zählerstand"))
+    for t, m, p, c in resets:
+        checks.append(("warn", f"Rücksprung {m} am {when(t)}: {kwh(p)} → {kwh(c)}, Intervall mit 0 gezählt"))
+    if unalloc > tolerance:
+        checks.append(("info", f"{kwh(unalloc)} Netzbezug ohne gemessenen Verbrauch (unallocated)"))
+    return {"rows": rows, "totals": totals, "checks": checks, "coverage": coverage,
+            "resets": resets}
+
+
+@pyscript_compile
+def format_report(report, title, prices):
+    """-> (Markdown für die Benachrichtigung, CSV-Text mit ; und Dezimalkomma)"""
+    def num(x, digits=2):
+        return "" if x is None else f"{x:.{digits}f}".replace(".", ",")
+
+    def pct(x):
+        return "" if x is None else f"{x * 100:.1f}".replace(".", ",")
+
+    with_cost = report["totals"]["cost"] is not None
+    head = ["Partei", "Verbrauch kWh", "Netz kWh", "PV kWh", "PV-Anteil %"]
+    if with_cost:
+        head += ["Kosten Netz €", "Kosten PV €", "Kosten gesamt €"]
+    lines = []
+    for r in report["rows"]:
+        line = [r["meter"], num(r["consumption"]), num(r["grid"]), num(r["pv"]), pct(r["pv_share"])]
+        if with_cost:
+            line += [num(r["cost_grid"]), num(r["cost_pv"]), num(r["cost"])]
+        lines.append(line)
+    t = report["totals"]
+    share = t["pv"] / t["consumption"] if t["consumption"] > 0 else None
+    total_line = ["Summe", num(t["consumption"]), num(t["grid"]), num(t["pv"]), pct(share)]
+    if with_cost:
+        total_line += ["", "", num(t["cost"])]
+    lines.append(total_line)
+
+    symbols = {"ok": "✓", "warn": "⚠", "info": "ℹ"}
+    price_text = ", ".join([f"{k} {v} ct/kWh" for k, v in prices.items() if v is not None])
+    md = [f"**{title}**", ""]
+    md.append("| " + " | ".join(head) + " |")
+    md.append("|" + "---|" * len(head))
+    md += ["| " + " | ".join(line) + " |" for line in lines]
+    md.append("")
+    md.append(f"Netzbezug laut Zähler: {num(t['grid_meter'])} kWh, davon ohne Verbraucher "
+              f"(unallocated): {num(t['unallocated'], 3)} kWh")
+    if price_text:
+        md.append(f"Preise: {price_text}")
+    md.append("")
+    md += [f"{symbols[s]} {text}" for s, text in report["checks"]]
+
+    csv = [f"{title}"]
+    if price_text:
+        csv.append(f"Preise;{price_text}")
+    csv.append(";".join(head))
+    csv += [";".join(line) for line in lines]
+    csv.append(f"Netzbezug laut Zähler kWh;{num(t['grid_meter'])}")
+    csv.append(f"unallocated kWh;{num(t['unallocated'], 3)}")
+    csv.append("")
+    csv.append("Prüfung;Ergebnis")
+    csv += [f"{s};{text}" for s, text in report["checks"]]
+    return "\n".join(md), "\n".join(csv) + "\n"
+
+
+@pyscript_compile
+def write_text(path, text):
+    import os
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
 
 
 def compute(prev, cur):
@@ -164,8 +330,8 @@ def query(client, q):
     return list(rs.get_points())
 
 
-def meter_rows(client, meter, where, order="ASC", limit=None):
-    q = (f'SELECT "value" FROM {MEAS}."meter" WHERE "meter" = \'{meter}\' AND {where} '
+def meter_rows(client, meter, where, order="ASC", limit=None, measurement="meter"):
+    q = (f'SELECT "value" FROM {MEAS}."{measurement}" WHERE "meter" = \'{meter}\' AND {where} '
          f"ORDER BY time {order}")
     if limit:
         q += f" LIMIT {limit}"
@@ -364,7 +530,11 @@ def meters_recalculate(start=None, end=None):
     if not start or not end:
         alert("meters_recalculate: start und end angeben, z. B. start: 2025-01-01, end: 2025-12-31")
         return
-    a, b = parse_day(start), parse_day(end, end=True) - 1
+    try:
+        a, b = parse_day(start), parse_day(end, end=True) - 1
+    except ValueError:
+        alert(f"meters_recalculate: ungültiges Datum '{start}' / '{end}', Format 2025-01-01")
+        return
     client = influx()
     stats = calculate_range(client, a, b)
     msg = f"meters_recalculate {to_iso(a)} – {to_iso(b + 1)}: "
@@ -379,3 +549,60 @@ def meters_recalculate(start=None, end=None):
                 f"({', '.join(stats['incomplete'][:5])})")
     alert(msg)
     report_resets(stats)
+
+
+# ------------------------------------------------------------------ Abrechnungsbericht
+@service
+def meters_report(start=None, end=None, grid_price=None, heatpump_price=None, pv_price=None):
+    """Abrechnungsbericht je Partei für den Zeitraum start..end (Ortszeit, Ende inklusive).
+
+    Gezählt werden alle Intervalle mit start < Zeitstempel <= end + 1 Tag (Zeitstempel
+    = Ende des Intervalls, das Intervall der Silvesternacht gehört zum alten Jahr).
+    Preise optional in ct/kWh: grid_price (Netzstrom), heatpump_price (Wärmestrom,
+    sonst grid_price), pv_price (interner PV-Preis).
+    Ausgabe: persistente Benachrichtigung + CSV unter /config/reports/."""
+    if not start or not end:
+        alert("meters_report: start und end angeben, z. B. start: 2026-01-01, end: 2026-12-31")
+        return
+    try:
+        prices = {"grid": None if grid_price in (None, "") else float(grid_price),
+                  "heatpump": None if heatpump_price in (None, "") else float(heatpump_price),
+                  "pv": None if pv_price in (None, "") else float(pv_price)}
+    except (TypeError, ValueError):
+        alert("meters_report: Preise als Zahl in ct/kWh angeben, z. B. grid_price: 32.5")
+        return
+    if prices["heatpump"] is None:
+        prices["heatpump"] = prices["grid"]
+    try:
+        a, b = parse_day(start), parse_day(end, end=True)
+    except ValueError:
+        alert(f"meters_report: ungültiges Datum '{start}' / '{end}', Format 2026-01-01")
+        return
+    client = influx()
+
+    where = f"time > '{to_iso(a)}' AND time <= '{to_iso(b)}'"
+    base_ts, base = last_complete(client, a + 1)
+    meter, inc, grid = {}, {}, {}
+    for m in SENSORS:
+        meter[m] = dict(meter_rows(client, m, where))
+        if base_ts is not None:
+            meter[m][base_ts] = base[m]
+        inc[m] = dict(meter_rows(client, m, where, measurement="inc"))
+    for m in list(CONSUMERS) + [UNALLOCATED]:
+        grid[m] = dict(meter_rows(client, m, where, measurement="grid"))
+
+    report = compute_report(meter, inc, grid, a, b, quarter(time.time()), list(SENSORS),
+                            list(CONSUMERS), GRID_METER, UNALLOCATED, INTERVAL, prices, TOLERANCE)
+    title = f"Abrechnung {start} bis {end}"
+    md, csv = format_report(report, title, prices)
+    created = datetime.now(LOCAL_TZ).strftime("%d.%m.%Y %H:%M")
+    csv = f"Erstellt;{created}\n" + csv
+    # Dateiname nur aus harmlosen Zeichen (start/end sind Benutzereingaben)
+    safe = "".join([ch if ch.isalnum() or ch in "-_" else "_" for ch in f"{start}_{end}"])
+    path = hass.config.path(REPORT_DIR, f"abrechnung_{safe}.csv")
+    await hass.async_add_executor_job(write_text, path, csv)
+    persistent_notification.create(title=title, message=md + f"\n\nCSV: {path}",
+                                   notification_id=f"meters_report_{start}_{end}")
+    warnings = len([c for c in report["checks"] if c[0] == "warn"])
+    alert(f"{title} erstellt ({path}), " +
+          ("alle Prüfungen ok" if not warnings else f"{warnings} Warnung(en), siehe Benachrichtigung"))
