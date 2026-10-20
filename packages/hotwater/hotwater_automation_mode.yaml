@@ -34,7 +34,7 @@ automation:
             transition_high:
               { setpoint: 50, maxchargetime: 120, chargehysteresis: 20, hwcmode: eco }
             transition_low:
-              { setpoint: 45, maxchargetime: 60, chargehysteresis: 15, hwcmode: eco }
+              { setpoint: 45, maxchargetime: 90, chargehysteresis: 15, hwcmode: eco }
             winter:
               { setpoint: 40, maxchargetime: 60, chargehysteresis: 10, hwcmode: balance }
             icy:
