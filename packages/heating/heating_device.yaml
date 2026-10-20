@@ -1,11 +1,12 @@
 mqtt:
   - climate:
-      name: "Vaillant"
+      # Anzeige = Gerätename
+      name: null
       unique_id: "vr720-heating"
       device:
         manufacturer: "Vaillant"
         model: "Ctlv2-Heating"
-        name: "Ctlv2-Heating"
+        name: "Vaillant Heizung"
         suggested_area: "Heating"
         identifiers:
           - !secret heating_device_serial

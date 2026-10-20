@@ -12,14 +12,14 @@ template:
           {{ (temp_wanted - temp_actual) | round(1, "half", default=0) }}
       - unique_id: heatpump_currentoutputpower
         default_entity_id: sensor.heatpump_currentoutputpower
-        name: "Heatpump Output Power"
+        name: "Wärmepumpe Heizleistung"
         device_class: power
         unit_of_measurement: kW
         state: >
           {{ states('sensor.ebusd_hmu_currentconsumedpower_value')|float + states('sensor.ebusd_hmu_currentyieldpower_value')|float }}
       - unique_id: heatpump_cop
         default_entity_id: sensor.heatpump_cop
-        name: "Heatpump CoP"
+        name: "Wärmepumpe COP"
         device_class: power_factor
         # Momentan-COP nur bei stabilem Betrieb: ab 0,8 kW Leistungsaufnahme und
         # positiver Abgabe. Anlauf, Auslauf und Abtauen ergeben sonst Werte wie
@@ -37,16 +37,16 @@ template:
   - binary_sensor:
       - unique_id: flat1_humidity_too_high
         default_entity_id: binary_sensor.flat1_humidity_too_high
-        name: "Wohnung 1 Luftfeuchte"
+        name: "Wohnung 1 Luftfeuchte zu hoch"
         state: >
           {{ states('sensor.flat1_humidity')|float >= states("input_number.flat_humidity_alert")|float }}
       - unique_id: flat2_humidity_too_high
         default_entity_id: binary_sensor.flat2_humidity_too_high
-        name: "Wohnung 2 Luftfeuchte"
+        name: "Wohnung 2 Luftfeuchte zu hoch"
         state: >
           {{ states('sensor.flat2_humidity')|float >= states("input_number.flat_humidity_alert")|float }}
       - unique_id: flat3_humidity_too_high
         default_entity_id: binary_sensor.flat3_humidity_too_high
-        name: "Wohnung 3 Luftfeuchte"
+        name: "Wohnung 3 Luftfeuchte zu hoch"
         state: >
           {{ states('sensor.flat3_humidity')|float >= states("input_number.flat_humidity_alert")|float }}

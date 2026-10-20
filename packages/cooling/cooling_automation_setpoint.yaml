@@ -11,7 +11,7 @@ automation:
           minutes: 15
     conditions:
       - condition: state
-        entity_id: climate.heating_ctlv2_cooling_vaillant
+        entity_id: climate.ctlv2_cooling_vaillant
         state: cool
     actions:
       - variables:
@@ -23,7 +23,7 @@ automation:
             -> {{ new_setpoint }}
       - action: climate.set_temperature
         target:
-          entity_id: climate.heating_ctlv2_cooling_vaillant
+          entity_id: climate.ctlv2_cooling_vaillant
         data:
           temperature: "{{ new_setpoint }}"
     mode: single

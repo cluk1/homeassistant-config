@@ -9,7 +9,7 @@ modbus:
     timeout: 5
 
     sensors:
-      - name: "EssSoc"
+      - name: "Batterie Ladezustand"
         scan_interval: 60
         data_type: uint16
         input_type: input
@@ -20,7 +20,7 @@ modbus:
         slave: 1
         unique_id: fems_modbus_302
 
-      - name: "GridPower" # Grid Power
+      - name: "Netz Leistung" # Grid Power
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -30,7 +30,7 @@ modbus:
         address: 315
         slave: 1
         unique_id: fems_modbus_315
-      - name: "ProductionPower"
+      - name: "PV Dach Leistung"
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -40,7 +40,7 @@ modbus:
         address: 327
         slave: 1
         unique_id: fems_modbus_327
-      - name: "ConsumptionPower" #House Power
+      - name: "Hausverbrauch Leistung" #House Power
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -50,7 +50,7 @@ modbus:
         address: 343
         slave: 1
         unique_id: fems_modbus_343
-      - name: "EssDischargePower" #Battery Discharge Power
+      - name: "Batterie Entladeleistung" #Battery Discharge Power
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -61,7 +61,7 @@ modbus:
         slave: 1
         unique_id: fems_modbus_415
 
-      - name: "GridBuyEnergy"
+      - name: "Netzbezug Zählerstand"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float64
@@ -71,7 +71,7 @@ modbus:
         address: 359
         slave: 1
         unique_id: fems_modbus_359
-      - name: "GridSellEnergy"
+      - name: "Netzeinspeisung Zählerstand"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float64
@@ -81,7 +81,7 @@ modbus:
         address: 363
         slave: 1
         unique_id: fems_modbus_363
-      - name: "EssDcChargeEnergy"
+      - name: "Batterie Ladeenergie"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float64
@@ -91,7 +91,7 @@ modbus:
         address: 383
         slave: 1
         unique_id: fems_modbus_383
-      - name: "EssDcDischargeEnergy"
+      - name: "Batterie Entladeenergie"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float64
@@ -101,7 +101,7 @@ modbus:
         address: 387
         slave: 1
         unique_id: fems_modbus_387
-      - name: "ProductionEnergy"
+      - name: "PV Dach Erzeugung Zählerstand"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float64
@@ -111,7 +111,7 @@ modbus:
         address: 367
         slave: 1
         unique_id: fems_modbus_367
-      - name: "ConsumptionEnergy"
+      - name: "Hausverbrauch Zählerstand"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float64
@@ -122,7 +122,7 @@ modbus:
         slave: 1
         unique_id: fems_modbus_379
 
-      - name: heatpump_power
+      - name: "Wärmepumpe Leistung"
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -132,7 +132,7 @@ modbus:
         address: 608
         slave: 1
         unique_id: fems_modbus_608
-      - name: heatpump_production
+      - name: "Wärmepumpe Zählerstand Einspeisung"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -142,7 +142,7 @@ modbus:
         address: 614
         slave: 1
         unique_id: fems_modbus_614
-      - name: heatpump_consumption
+      - name: "Wärmepumpe Zählerstand Bezug"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -153,7 +153,7 @@ modbus:
         slave: 1
         unique_id: fems_modbus_612
 
-      - name: flat2_power
+      - name: "Wohnung 2 Leistung"
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -163,7 +163,7 @@ modbus:
         address: 888
         slave: 1
         unique_id: fems_modbus_888
-      - name: flat2_production
+      - name: "Wohnung 2 Zählerstand Einspeisung"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -173,7 +173,7 @@ modbus:
         address: 894
         slave: 1
         unique_id: fems_modbus_894
-      - name: flat2_consumption
+      - name: "Wohnung 2 Zählerstand Bezug"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -184,7 +184,7 @@ modbus:
         slave: 1
         unique_id: fems_modbus_892
 
-      - name: flat1_power
+      - name: "Wohnung 1 Leistung"
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -194,7 +194,7 @@ modbus:
         address: 1168
         slave: 1
         unique_id: fems_modbus_1168
-      - name: flat1_production
+      - name: "Wohnung 1 Zählerstand Einspeisung"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -204,7 +204,7 @@ modbus:
         address: 1174
         slave: 1
         unique_id: fems_modbus_1174
-      - name: flat1_consumption
+      - name: "Wohnung 1 Zählerstand Bezug"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -215,7 +215,7 @@ modbus:
         slave: 1
         unique_id: fems_modbus_1172
 
-      - name: flat3_power
+      - name: "Wohnung 3 Leistung"
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -225,7 +225,7 @@ modbus:
         address: 1448
         slave: 1
         unique_id: fems_modbus_1448
-      - name: flat3_production
+      - name: "Wohnung 3 Zählerstand Einspeisung"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -235,7 +235,7 @@ modbus:
         address: 1454
         slave: 1
         unique_id: fems_modbus_1454
-      - name: flat3_consumption
+      - name: "Wohnung 3 Zählerstand Bezug"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -246,7 +246,7 @@ modbus:
         slave: 1
         unique_id: fems_modbus_1452
 
-      - name: flat4_power
+      - name: "Wohnung 4 Leistung"
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -256,7 +256,7 @@ modbus:
         address: 1728
         slave: 1
         unique_id: fems_modbus_1728
-      - name: flat4_production
+      - name: "Wohnung 4 Zählerstand Einspeisung"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -266,7 +266,7 @@ modbus:
         address: 1734
         slave: 1
         unique_id: fems_modbus_1734
-      - name: flat4_consumption
+      - name: "Wohnung 4 Zählerstand Bezug"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -277,7 +277,7 @@ modbus:
         slave: 1
         unique_id: fems_modbus_1732
 
-      - name: comm_power
+      - name: "Allgemeinstrom Leistung"
         unit_of_measurement: W
         scan_interval: 10
         data_type: float32
@@ -287,7 +287,7 @@ modbus:
         address: 2008
         slave: 1
         unique_id: fems_modbus_2008
-      - name: comm_production
+      - name: "Allgemeinstrom Zählerstand Einspeisung"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32
@@ -297,7 +297,7 @@ modbus:
         address: 2014
         slave: 1
         unique_id: fems_modbus_2014
-      - name: comm_consumption
+      - name: "Allgemeinstrom Zählerstand Bezug"
         unit_of_measurement: Wh
         scan_interval: 60
         data_type: float32

@@ -1,6 +1,6 @@
 sensor:
   - platform: group
-    name: "flats_avg_temperature"
+    name: "Wohnungen Temperatur Mittel"
     unique_id: flats_avg_temperature
     type: mean
     ignore_non_numeric: true
@@ -10,7 +10,7 @@ sensor:
       - !secret flat2_temperature
       - !secret flat3_temperature
   - platform: group
-    name: "flats_min_temperature"
+    name: "Wohnungen Temperatur Minimum"
     unique_id: flats_min_temperature
     type: min
     ignore_non_numeric: true
@@ -22,19 +22,19 @@ sensor:
   # Neutral benannte Stellvertreter für die Luftfeuchte-Sensoren der Wohnungen.
   # Die echten Entity-IDs enthalten Mieternamen und stehen nur in secrets.yaml.
   - platform: group
-    name: "flat1_humidity"
+    name: "Wohnung 1 Luftfeuchte"
     unique_id: flat1_humidity
     type: max
     entities:
       - !secret flat1_humidity
   - platform: group
-    name: "flat2_humidity"
+    name: "Wohnung 2 Luftfeuchte"
     unique_id: flat2_humidity
     type: max
     entities:
       - !secret flat2_humidity
   - platform: group
-    name: "flat3_humidity"
+    name: "Wohnung 3 Luftfeuchte"
     unique_id: flat3_humidity
     type: max
     entities:

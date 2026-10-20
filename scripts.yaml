@@ -1,5 +1,5 @@
 warmwater_settings:
-  alias: Warmwater Settings
+  alias: Warmwasser Einstellungen
   sequence:
     # remember old settings
     - variables:
@@ -73,7 +73,7 @@ warmwater_settings:
           min: 15
           max: 70
           step: 1
-      name: Setpoint
+      name: Solltemperatur
       required: true
     maxchargetime:
       selector:
@@ -81,7 +81,7 @@ warmwater_settings:
           min: 60
           max: 180
           step: 1
-      name: MaxChargeTime
+      name: Max. Ladezeit (min)
       required: true
     chargehysteresis:
       selector:
@@ -89,7 +89,7 @@ warmwater_settings:
           min: 5
           max: 20
           step: 1
-      name: ChargeHysteresis
+      name: Ladehysterese (K)
       required: true
     restore:
       selector:
@@ -97,7 +97,7 @@ warmwater_settings:
           min: 0
           max: 1
           step: 1
-      name: Restore
+      name: Danach wiederherstellen
       required: true
       description: Restore
     timeout:
@@ -106,7 +106,7 @@ warmwater_settings:
           min: 0
           max: 180
           step: 1
-      name: Timeout
+      name: Wartezeit (min)
       default: 0
       required: true
     opmode:
@@ -115,7 +115,7 @@ warmwater_settings:
           options:
             - auto
             - heat
-      name: OpMode
+      name: Betriebsart
       default: heat
       required: true
     hwcmode:
@@ -124,7 +124,7 @@ warmwater_settings:
           options:
             - eco
             - normal
-      name: HwcMode
+      name: HMU-Warmwassermodus
       default: eco
       required: true
   # allow 3 incarnations to be queued as

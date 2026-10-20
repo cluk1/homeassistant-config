@@ -1,6 +1,6 @@
 sensor:
   - platform: group
-    name: "flats_power"
+    name: "Wohnungen Leistung"
     unique_id: flats_power
     type: sum
     device_class: power
@@ -12,7 +12,7 @@ sensor:
       - sensor.flat3_power
       - sensor.flat4_power
   - platform: group
-    name: "flats_building1_power"
+    name: "Vorderhaus Leistung"
     unique_id: flats_building1_power
     type: sum
     device_class: power
@@ -28,7 +28,7 @@ sensor:
       - sensor.balkonpv2_leistung
       - sensor.balkonpv3_leistung
   - platform: group
-    name: "flats_building2_power"
+    name: "Hinterhaus Leistung"
     unique_id: flats_building2_power
     type: sum
     device_class: power
@@ -37,7 +37,7 @@ sensor:
     entities:
       - sensor.flat4_power
   - platform: group
-    name: "wallbox_power"
+    name: "Wallbox Leistung"
     unique_id: wallbox_power
     type: sum
     device_class: power
@@ -47,7 +47,7 @@ sensor:
       - sensor.wallbox_cp1_power
       - sensor.wallbox_cp2_power
   - platform: group
-    name: "full_production_power"
+    name: "PV gesamt Leistung"
     unique_id: full_production_power
     type: sum
     state_class: measurement

@@ -23,3 +23,9 @@
 ## General Information
 * All important configuration is done in yaml files, not the ui editor to be able to store the config in git.
 * Private information (like flat names or notification devices) are stored in secrets.yaml and not part of this repo. A [secrets.yaml.example](secrets.yaml.example) is included which can be easily adapted to your needs.
+
+## Naming conventions
+* **Entity IDs** of own entities (templates, groups, modbus, MQTT devices, helpers) are English snake_case: `<area>_<object>[_<quantity>]`, e.g. `heatpump_cop`, `flats_avg_temperature`, `wallbox_cp1_power`. Areas: `flat1`–`flat4`, `comm` (common electricity), `heatpump`, `heating`, `hotwater`, `cooling`, `wallbox`, `pv`, `grid`.
+* **Display names** (`name:`) are German. Every own entity has a `unique_id`, so changing a display name never changes the entity ID that automations and dashboards use.
+* **Automations**: `id` like an entity ID (`heating_power_auto`), English alias; one file per topic named `<area>_automation_<topic>.yaml`.
+* Entities created by integrations (ebusd, FRITZ!, Shelly, zigbee2mqtt, openWB, myPyllant) keep their names; they are maintained in the respective system.

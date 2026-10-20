@@ -2,7 +2,7 @@ template:
   - sensor:
       - unique_id: grid_percentage
         default_entity_id: sensor.grid_percentage
-        name: "Verbrauchsanteil Netz"
+        name: "Netzanteil Verbrauch"
         device_class: power_factor
         state: >
           {% if has_value('sensor.consumptionpower') %}

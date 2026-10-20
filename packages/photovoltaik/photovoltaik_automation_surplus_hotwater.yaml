@@ -29,7 +29,7 @@ automation:
     condition:
       # Heatpump is not running in cooling mode
       - condition: state
-        entity_id: select.heizung_ebusd_ctlv2_z1opmodecooling
+        entity_id: climate.ctlv2_cooling_vaillant
         state:
           - "off"
       # if PV batterie has at least 70%

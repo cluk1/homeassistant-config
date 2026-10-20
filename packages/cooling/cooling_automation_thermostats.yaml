@@ -9,7 +9,7 @@ automation:
         entity_id: sensor.ebusd_hmu_rundatastatuscode_value
         to: Warm_Water_Compressor_active
       - trigger: state
-        entity_id: climate.heating_ctlv2_cooling_vaillant
+        entity_id: climate.ctlv2_cooling_vaillant
         from: cool
         to: "off"
     conditions: []
@@ -35,11 +35,11 @@ automation:
         entity_id: sensor.ebusd_vr_71_sensordata1_s1_2
         below: 25
       - trigger: state
-        entity_id: climate.heating_ctlv2_cooling_vaillant
+        entity_id: climate.ctlv2_cooling_vaillant
         to: cool
     conditions:
       - condition: state
-        entity_id: climate.heating_ctlv2_cooling_vaillant
+        entity_id: climate.ctlv2_cooling_vaillant
         state: cool
       - condition: numeric_state
         entity_id: sensor.ebusd_vr_71_sensordata1_s1_2

@@ -1,11 +1,12 @@
 mqtt:
   - water_heater:
-      name: "Vaillant"
+      # Anzeige = Gerätename
+      name: null
       unique_id: "vr720-hotwater"
       device:
         manufacturer: "Vaillant"
         model: "Ctlv2-Hotwater"
-        name: "Ctlv2-Hotwater"
+        name: "Vaillant Warmwasser"
         suggested_area: "Heating"
         identifiers:
           - !secret hotwater_device_serial

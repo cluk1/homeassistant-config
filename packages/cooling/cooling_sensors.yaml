@@ -7,7 +7,7 @@ template:
           {{ states('sensor.max_dewpoint') | round(method='floor') }}
   - sensor:
       - unique_id: temperature_forecast_today
-        name: Temperature forecast today
+        name: Temperaturprognose heute
         state: >
           {{
             today['weather.meteoswiss_weather_at_8280'].forecast[0].temperature

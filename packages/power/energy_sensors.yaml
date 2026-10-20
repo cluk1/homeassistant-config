@@ -2,7 +2,7 @@ template:
   - sensor:
       - unique_id: flat1_energy_costs_day
         default_entity_id: sensor.flat1_energy_costs_day
-        name: "Flat1 Energy Cost Today"
+        name: "Wohnung 1 Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
         state: >
@@ -15,7 +15,7 @@ template:
           {% endif %}
       - unique_id: flat2_energy_costs_day
         default_entity_id: sensor.flat2_energy_costs_day
-        name: "Flat2 Energy Cost Today"
+        name: "Wohnung 2 Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
         state: >
@@ -28,7 +28,7 @@ template:
           {% endif %}
       - unique_id: flat3_energy_costs_day
         default_entity_id: sensor.flat3_energy_costs_day
-        name: "Flat3 Energy Cost Today"
+        name: "Wohnung 3 Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
         state: >
@@ -41,7 +41,7 @@ template:
           {% endif %}
       - unique_id: flat4_energy_costs_day
         default_entity_id: sensor.flat4_energy_costs_day
-        name: "Flat4 Energy Cost Today"
+        name: "Wohnung 4 Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
         state: >
@@ -54,7 +54,7 @@ template:
           {% endif %}
       - unique_id: comm_energy_costs_day
         default_entity_id: sensor.comm_energy_costs_day
-        name: "Common Energy Cost Today"
+        name: "Allgemeinstrom Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
         state: >
@@ -67,7 +67,7 @@ template:
           {% endif %}
       - unique_id: heatpump_energy_costs_day
         default_entity_id: sensor.heatpump_energy_costs_day
-        name: "Heatpump Energy Cost Today"
+        name: "Wärmepumpe Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
         state: >
@@ -80,7 +80,7 @@ template:
           {% endif %}
       - unique_id: wallbox_cp1_energy_costs_day
         default_entity_id: sensor.wallbox_cp1_energy_costs_day
-        name: "Wallbox CP1 Charging Cost Today"
+        name: "Wallbox Ladepunkt 1 Ladekosten heute"
         device_class: monetary
         unit_of_measurement: €
         state: >
@@ -93,7 +93,7 @@ template:
           {% endif %}
       - unique_id: wallbox_cp2_energy_costs_day
         default_entity_id: sensor.wallbox_cp2_energy_costs_day
-        name: "Wallbox CP2 Charging Cost Today"
+        name: "Wallbox Ladepunkt 2 Ladekosten heute"
         device_class: monetary
         unit_of_measurement: €
         state: >

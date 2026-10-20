@@ -1,7 +1,7 @@
 sensor:
   - platform: group
-    name: "max_dewpoint"
-    unique_id: "max_dewpoint"
+    name: "Taupunkt maximal"
+    unique_id: "Taupunkt maximal"
     type: max
     ignore_non_numeric: true
     entities:
