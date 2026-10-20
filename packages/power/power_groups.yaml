@@ -1,6 +1,7 @@
 sensor:
   - platform: group
     name: "flats_power"
+    unique_id: flats_power
     type: sum
     device_class: power
     state_class: measurement
@@ -12,6 +13,7 @@ sensor:
       - sensor.flat4_power
   - platform: group
     name: "flats_building1_power"
+    unique_id: flats_building1_power
     type: sum
     device_class: power
     state_class: measurement
@@ -27,6 +29,7 @@ sensor:
       - sensor.balkonpv3_leistung
   - platform: group
     name: "flats_building2_power"
+    unique_id: flats_building2_power
     type: sum
     device_class: power
     state_class: measurement
@@ -35,6 +38,7 @@ sensor:
       - sensor.flat4_power
   - platform: group
     name: "wallbox_power"
+    unique_id: wallbox_power
     type: sum
     device_class: power
     state_class: measurement

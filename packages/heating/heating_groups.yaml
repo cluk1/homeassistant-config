@@ -1,6 +1,7 @@
 sensor:
   - platform: group
     name: "flats_avg_temperature"
+    unique_id: flats_avg_temperature
     type: mean
     ignore_non_numeric: true
     entities:
@@ -10,6 +11,7 @@ sensor:
       - !secret flat3_temperature
   - platform: group
     name: "flats_min_temperature"
+    unique_id: flats_min_temperature
     type: min
     ignore_non_numeric: true
     entities:
