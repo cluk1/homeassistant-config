@@ -1,0 +1,29 @@
+# Kühlvorlauf nachführen: Mindestvorlauf aus dem höchsten Taupunkt (cooling_sensors.yaml),
+# damit an Heizkörpern/Leitungen kein Kondenswasser entsteht.
+automation:
+  - id: cooling_new_setpoint
+    alias: Cooling New Setpoint
+    description: ""
+    triggers:
+      - trigger: state
+        entity_id: sensor.cooling_min_setpoint
+        for:
+          minutes: 15
+    conditions:
+      - condition: state
+        entity_id: climate.heating_ctlv2_cooling_vaillant
+        state: cool
+    actions:
+      - variables:
+          new_setpoint: "{{ states('sensor.cooling_min_setpoint') }}"
+      - action: !secret notify_admin
+        data:
+          message: >-
+            Neuer Kühlvorlauf: {{ states('sensor.max_dewpoint') | round(precision=2) }}
+            -> {{ new_setpoint }}
+      - action: climate.set_temperature
+        target:
+          entity_id: climate.heating_ctlv2_cooling_vaillant
+        data:
+          temperature: "{{ new_setpoint }}"
+    mode: single

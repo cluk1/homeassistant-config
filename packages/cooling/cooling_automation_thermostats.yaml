@@ -1,0 +1,59 @@
+# Heizkörper-Thermostate (FRITZ!-Vorlagen) und Heizkörperlüfter im Kühlbetrieb:
+# auf, sobald der Vorlauf kühl ist; zu bei Warmwasserbereitung oder Kühlen aus.
+automation:
+  - id: cooling_thermostats_close
+    alias: Cooling Close Thermostats
+    description: ""
+    triggers:
+      - trigger: state
+        entity_id: sensor.ebusd_hmu_rundatastatuscode_value
+        to: Warm_Water_Compressor_active
+      - trigger: state
+        entity_id: climate.heating_ctlv2_cooling_vaillant
+        from: cool
+        to: "off"
+    conditions: []
+    actions:
+      - action: !secret notify_admin
+        data:
+          message: "Kühlung: Thermostate zu"
+      - action: button.press
+        target:
+          entity_id: button.heizung_aus
+      - action: switch.turn_off
+        target:
+          entity_id:
+            - switch.hzkluefter1
+            - switch.hzkluefter2
+    mode: single
+
+  - id: cooling_thermostats_open
+    alias: Cooling Open Thermostats
+    description: ""
+    triggers:
+      - trigger: numeric_state
+        entity_id: sensor.ebusd_vr_71_sensordata1_s1_2
+        below: 25
+      - trigger: state
+        entity_id: climate.heating_ctlv2_cooling_vaillant
+        to: cool
+    conditions:
+      - condition: state
+        entity_id: climate.heating_ctlv2_cooling_vaillant
+        state: cool
+      - condition: numeric_state
+        entity_id: sensor.ebusd_vr_71_sensordata1_s1_2
+        below: 25
+    actions:
+      - action: !secret notify_admin
+        data:
+          message: "Kühlung: Thermostate auf"
+      - action: button.press
+        target:
+          entity_id: button.kuhlen
+      - action: switch.turn_on
+        target:
+          entity_id:
+            - switch.hzkluefter1
+            - switch.hzkluefter2
+    mode: single

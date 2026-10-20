@@ -1,0 +1,33 @@
+# Warmwasser früh morgens nachladen, wenn der Speicher unter 35 °C liegt und der
+# Verdichter steht: Ladehysterese kurz auf 5 K, damit die Ladung sicher startet.
+# Läuft unabhängig vom Kühlbetrieb (Name aus der ursprünglichen UI-Automation).
+automation:
+  - id: cooling_hotwater_early
+    alias: Cooling HotWater early
+    description: ""
+    triggers:
+      - trigger: time
+        at: "05:35:00"
+    conditions:
+      - condition: state
+        entity_id: sensor.ebusd_hmu_status00_compressorstate
+        state: "off"
+      - condition: numeric_state
+        entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_value
+        below: 35
+    actions:
+      - variables:
+          old_chargehyst: "{{ states('number.ebusd_ctlv2_cylinderchargehyst_value') }}"
+      - action: number.set_value
+        target:
+          entity_id: number.ebusd_ctlv2_cylinderchargehyst_value
+        data:
+          value: 5
+      - delay:
+          minutes: 5
+      - action: number.set_value
+        target:
+          entity_id: number.ebusd_ctlv2_cylinderchargehyst_value
+        data:
+          value: "{{ old_chargehyst }}"
+    mode: single

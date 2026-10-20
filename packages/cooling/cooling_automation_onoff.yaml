@@ -1,0 +1,72 @@
+# Kühlbetrieb ein/aus: morgens bei heißer Tagesprognose ein, abends oder bei
+# sinkender Außentemperatur aus. Während des Kühlens ist Warmwasser aus.
+automation:
+  - id: cooling_on
+    alias: Cooling on
+    description: ""
+    triggers:
+      - trigger: time
+        at: "08:32:00"
+      - trigger: time
+        at: "10:32:00"
+    conditions:
+      - condition: numeric_state
+        entity_id: sensor.temperature_forecast_today
+        above: 27
+      - condition: state
+        entity_id: climate.heating_ctlv2_cooling_vaillant
+        state: "off"
+    actions:
+      - action: !secret notify_admin
+        data:
+          message: "Kühlen: an"
+      - action: water_heater.set_operation_mode
+        target:
+          entity_id: water_heater.ctlv2_hotwater_vaillant
+        data:
+          operation_mode: "off"
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.heating_ctlv2_cooling_vaillant
+        data:
+          hvac_mode: cool
+      - action: automation.trigger
+        target:
+          entity_id: automation.cooling_new_setpoint
+        data:
+          skip_condition: true
+    mode: single
+
+  - id: cooling_off
+    alias: Cooling off
+    description: ""
+    triggers:
+      - trigger: sun
+        event: sunset
+        offset: "-1:00:00"
+      - trigger: numeric_state
+        entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_value
+        below: 25
+        for:
+          minutes: 30
+    conditions:
+      - condition: state
+        entity_id: climate.heating_ctlv2_cooling_vaillant
+        state: cool
+      - condition: time
+        after: "16:00:00"
+    actions:
+      - action: !secret notify_admin
+        data:
+          message: "Kühlen: aus"
+      - action: climate.set_hvac_mode
+        target:
+          entity_id: climate.heating_ctlv2_cooling_vaillant
+        data:
+          hvac_mode: "off"
+      - action: water_heater.set_operation_mode
+        target:
+          entity_id: water_heater.ctlv2_hotwater_vaillant
+        data:
+          operation_mode: auto
+    mode: single
