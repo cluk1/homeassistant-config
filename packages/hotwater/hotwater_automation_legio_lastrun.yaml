@@ -2,8 +2,8 @@ automation:
   - id: hotwater_legio_lastrun
     alias: "Hotwater Legio Lastrun"
     description: ""
-    trigger:
-      - platform: numeric_state
+    triggers:
+      - trigger: numeric_state
         entity_id:
           - sensor.ebusd_ctlv2_hwcstoragetemp_value
         for:
@@ -11,13 +11,13 @@ automation:
           minutes: 1
           seconds: 0
         above: 59
-    action:
-      - service: input_datetime.set_datetime
+    actions:
+      - action: input_datetime.set_datetime
         target:
           entity_id: input_datetime.hotwater_legio_lastrun
         data:
           date: "{{ now().strftime('%Y-%m-%d') }}"
-      - service: !secret notify_admin
+      - action: !secret notify_admin
         data:
           message: Legio Termperatur erreicht mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
     mode: single

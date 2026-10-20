@@ -77,7 +77,7 @@ automation:
                   attribute: temperature
                   above: 21.8
           sequence:
-            - service: climate.set_temperature
+            - action: climate.set_temperature
               data:
                 temperature: "{{ neue_temp }}"
               target:

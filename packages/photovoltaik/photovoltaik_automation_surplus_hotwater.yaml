@@ -2,7 +2,7 @@ automation:
   - id: photovoltaik_surplus_hotwater
     alias: Photovoltaik Surplus Hotwater
     description: ""
-    trigger:
+    triggers:
       # Trigger automation immediately whenever compressor starts for hotwater
       - trigger: state
         entity_id:
@@ -26,7 +26,7 @@ automation:
         entity_id:
           - sensor.esssoc
         above: 70
-    condition:
+    conditions:
       # Heatpump is not running in cooling mode
       - condition: state
         entity_id: climate.ctlv2_cooling_vaillant
@@ -67,7 +67,7 @@ automation:
           - condition: state
             entity_id: sensor.ebusd_hmu_status00_compressorstate
             state: "Heating"
-    action:
+    actions:
       # then use the script to change hotwater settings for overheating
       - action: script.warmwater_settings
         metadata: {}
@@ -85,7 +85,7 @@ automation:
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_value
             below: 57
         then:
-          - service: !secret notify_admin
+          - action: !secret notify_admin
             data:
               message: >-
                 PV Überschuss WW abgebrochen mit {{

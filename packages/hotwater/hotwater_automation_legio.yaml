@@ -2,10 +2,10 @@ automation:
   - id: hotwater_legio
     alias: "Hotwater Legio"
     description: ""
-    trigger:
-      - platform: time
+    triggers:
+      - trigger: time
         at: "13:00:00"
-    condition:
+    conditions:
       # Heatpump is not running in cooling mode
       - condition: state
         entity_id: climate.ctlv2_cooling_vaillant
@@ -35,7 +35,7 @@ automation:
       - condition: numeric_state
         entity_id: sensor.flats_heating_demand
         below: 0.1
-    action:
+    actions:
       # Enable parallel load?
       # Lower HwcBivalencePoint to enable parallel heater
       - action: script.warmwater_settings
@@ -53,7 +53,7 @@ automation:
             entity_id: sensor.ebusd_ctlv2_hwcstoragetemp_value
             below: 60
         then:
-          - service: !secret notify_admin
+          - action: !secret notify_admin
             data:
               message: Legio Schaltung abgebrochen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
     mode: single

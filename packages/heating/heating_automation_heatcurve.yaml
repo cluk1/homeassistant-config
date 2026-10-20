@@ -2,13 +2,13 @@ automation:
   - id: heating_heatcurve
     alias: Heating Change Heatcurve
     description: ""
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id:
           - input_number.heating_hc1_heating_curve
-    condition: []
-    action:
-      - service: mqtt.publish
+    conditions: []
+    actions:
+      - action: mqtt.publish
         data:
           qos: "0"
           retain: false

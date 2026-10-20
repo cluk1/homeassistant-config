@@ -2,8 +2,8 @@ automation:
   - id: heating_power_auto
     alias: Heating Power Auto
     description: ""
-    trigger:
-      - platform: state
+    triggers:
+      - trigger: state
         entity_id:
           - sensor.flats_avg_temperature
         for:
@@ -11,7 +11,7 @@ automation:
           minutes: 45
           seconds: 0
         enabled: true
-    condition:
+    conditions:
       - condition: state
         entity_id: input_boolean.heating_on_off
         state: "on"
@@ -20,7 +20,7 @@ automation:
         below: 0.1
         # Has to be disabled to enable pv overheating
         enabled: false
-    action:
+    actions:
       - variables:
           temp_offset: "{{ states('input_number.heating_power_auto_offset_temp') }}"
           temp_max: "{{ states('input_number.heating_power_auto_max_temp') }}"
@@ -35,18 +35,18 @@ automation:
           - condition: template
             value_template: "{{ aktuelle_temp != neue_temp }}"
         then:
-          - service: logbook.log
+          - action: logbook.log
             data:
               name: AM Heiztemperatur
               message:
                 "Bedarf: {{ heizbedarf }}, AktuelleT: {{ aktuelle_temp }}, Setze
                 {{ neue_temp }}"
-          - service: !secret notify_admin
+          - action: !secret notify_admin
             data:
               message:
                 "HzB: {{ heizbedarf }}, AktT: {{ aktuelle_temp }}, Setze {{ neue_temp
                 }}"
-          - service: climate.set_temperature
+          - action: climate.set_temperature
             data:
               temperature: "{{ neue_temp }}"
             target:
