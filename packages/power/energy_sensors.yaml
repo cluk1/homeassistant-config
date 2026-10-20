@@ -1,3 +1,5 @@
+# Tageskosten je Partei: Netzanteil heute (energy_sensors_influxdb.yaml) × Strompreis.
+# Wärmepumpe mit Wärmestrompreis. Ohne Netzanteil-Wert kein Kostenwert.
 template:
   - sensor:
       - unique_id: flat1_energy_costs_day
@@ -5,102 +7,70 @@ template:
         name: "Wohnung 1 Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
+        availability: "{{ has_value('sensor.flat1_grid_energy_day') }}"
         state: >
-          {% if states('sensor.flat1_grid_energy_day') in ("unavailable", "unknown") %}
-            {{ 'unknown' }}
-          {% else %}
-            {% set grid = states('sensor.flat1_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price')|float %}
-            {{ ( grid * price / 100) | round(2) }}
-          {% endif %}
+          {{ (states('sensor.flat1_grid_energy_day') | float
+              * states('input_number.energy_grid_price') | float / 100) | round(2) }}
       - unique_id: flat2_energy_costs_day
         default_entity_id: sensor.flat2_energy_costs_day
         name: "Wohnung 2 Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
+        availability: "{{ has_value('sensor.flat2_grid_energy_day') }}"
         state: >
-          {% if states('sensor.flat2_grid_energy_day') in ("unavailable", "unknown") %}
-            {{ 'unknown' }}
-          {% else %}
-            {% set grid = states('sensor.flat2_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price')|float %}
-            {{ ( grid * price / 100) | round(2) }}
-          {% endif %}
+          {{ (states('sensor.flat2_grid_energy_day') | float
+              * states('input_number.energy_grid_price') | float / 100) | round(2) }}
       - unique_id: flat3_energy_costs_day
         default_entity_id: sensor.flat3_energy_costs_day
         name: "Wohnung 3 Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
+        availability: "{{ has_value('sensor.flat3_grid_energy_day') }}"
         state: >
-          {% if states('sensor.flat3_grid_energy_day') in ("unavailable", "unknown") %}
-            {{ 'unknown' }}
-          {% else %}
-            {% set grid = states('sensor.flat3_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price')|float %}
-            {{ ( grid * price / 100) | round(2) }}
-          {% endif %}
+          {{ (states('sensor.flat3_grid_energy_day') | float
+              * states('input_number.energy_grid_price') | float / 100) | round(2) }}
       - unique_id: flat4_energy_costs_day
         default_entity_id: sensor.flat4_energy_costs_day
         name: "Wohnung 4 Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
+        availability: "{{ has_value('sensor.flat4_grid_energy_day') }}"
         state: >
-          {% if states('sensor.flat4_grid_energy_day') in ("unavailable", "unknown") %}
-            {{ 'unknown' }}
-          {% else %}
-            {% set grid = states('sensor.flat4_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price')|float %}
-            {{ ( grid * price / 100) | round(2) }}
-          {% endif %}
+          {{ (states('sensor.flat4_grid_energy_day') | float
+              * states('input_number.energy_grid_price') | float / 100) | round(2) }}
       - unique_id: comm_energy_costs_day
         default_entity_id: sensor.comm_energy_costs_day
         name: "Allgemeinstrom Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
+        availability: "{{ has_value('sensor.comm_grid_energy_day') }}"
         state: >
-          {% if states('sensor.comm_grid_energy_day') in ("unavailable", "unknown") %}
-            {{ 'unknown' }}
-          {% else %}
-            {% set grid = states('sensor.comm_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price')|float %}
-            {{ ( grid * price / 100) | round(2) }}
-          {% endif %}
+          {{ (states('sensor.comm_grid_energy_day') | float
+              * states('input_number.energy_grid_price') | float / 100) | round(2) }}
       - unique_id: heatpump_energy_costs_day
         default_entity_id: sensor.heatpump_energy_costs_day
         name: "Wärmepumpe Stromkosten heute"
         device_class: monetary
         unit_of_measurement: €
+        availability: "{{ has_value('sensor.heatpump_grid_energy_day') }}"
         state: >
-          {% if states('sensor.heatpump_grid_energy_day') in ("unavailable", "unknown") %}
-            {{ 'unknown' }}
-          {% else %}
-            {% set grid = states('sensor.heatpump_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price_heatpump')|float %}
-            {{ ( grid * price / 100) | round(2) }}
-          {% endif %}
+          {{ (states('sensor.heatpump_grid_energy_day') | float
+              * states('input_number.energy_grid_price_heatpump') | float / 100) | round(2) }}
       - unique_id: wallbox_cp1_energy_costs_day
         default_entity_id: sensor.wallbox_cp1_energy_costs_day
         name: "Wallbox Ladepunkt 1 Ladekosten heute"
         device_class: monetary
         unit_of_measurement: €
+        availability: "{{ has_value('sensor.wallbox_cp1_grid_energy_day') }}"
         state: >
-          {% if states('sensor.wallbox_cp1_grid_energy_day') in ("unavailable", "unknown") %}
-            {{ 'unknown' }}
-          {% else %}
-            {% set grid = states('sensor.wallbox_cp1_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price')|float %}
-            {{ ( grid * price / 100) | round(2) }}
-          {% endif %}
+          {{ (states('sensor.wallbox_cp1_grid_energy_day') | float
+              * states('input_number.energy_grid_price') | float / 100) | round(2) }}
       - unique_id: wallbox_cp2_energy_costs_day
         default_entity_id: sensor.wallbox_cp2_energy_costs_day
         name: "Wallbox Ladepunkt 2 Ladekosten heute"
         device_class: monetary
         unit_of_measurement: €
+        availability: "{{ has_value('sensor.wallbox_cp2_grid_energy_day') }}"
         state: >
-          {% if states('sensor.wallbox_cp2_grid_energy_day') in ("unavailable", "unknown") %}
-            {{ 'unknown' }}
-          {% else %}
-            {% set grid = states('sensor.wallbox_cp2_grid_energy_day')|float %}
-            {% set price = states('input_number.energy_grid_price')|float %}
-            {{ ( grid * price / 100) | round(2) }}
-          {% endif %}
+          {{ (states('sensor.wallbox_cp2_grid_energy_day') | float
+              * states('input_number.energy_grid_price') | float / 100) | round(2) }}
