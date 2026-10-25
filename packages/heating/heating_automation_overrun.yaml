@@ -9,7 +9,8 @@ automation:
         to: Heating_Overrun
     conditions: []
     actions:
-      - action: !secret notify_admin
+      - action: script.notify_info
         data:
-          message: Heating Overrun
+          name: Heating Heatpump Overrun
+          message: Wärmepumpe im Nachlauf (Heating_Overrun)
     mode: single

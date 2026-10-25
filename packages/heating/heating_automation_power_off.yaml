@@ -42,12 +42,9 @@ automation:
             Heizung aus: Bedarf {{ states('sensor.flats_heating_demand') }} K,
             Wohnungen {{ states('sensor.flats_avg_temperature') }} °C,
             außen {{ states('sensor.ebusd_ctlv2_displayedoutsidetemp_value') }} °C
-      - action: logbook.log
+      - action: script.notify_info
         data:
-          name: AM Heizung Temp aus
-          message: "{{ message }}"
-      - action: !secret notify_admin
-        data:
+          name: Heating Power Off
           message: "{{ message }}"
       # Warten, solange alle Bedingungen weiter erfüllt sind (Prüfung alle 30 min)
       - repeat:
@@ -73,12 +70,9 @@ automation:
             Heizung wieder ein: Bedarf {{ states('sensor.flats_heating_demand') }} K,
             Wohnungen {{ states('sensor.flats_avg_temperature') }} °C,
             außen {{ states('sensor.ebusd_ctlv2_displayedoutsidetemp_value') }} °C
-      - action: logbook.log
+      - action: script.notify_info
         data:
-          name: AM Heizung Temp aus
-          message: "{{ message }}"
-      - action: !secret notify_admin
-        data:
+          name: Heating Power Off
           message: "{{ message }}"
     mode: single
     max_exceeded: silent

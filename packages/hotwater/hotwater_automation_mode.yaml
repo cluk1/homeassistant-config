@@ -59,8 +59,9 @@ automation:
           - condition: template
             value_template: "{{ trigger.id != 'start' }}"
         then:
-          - action: !secret notify_admin
+          - action: script.notify_info
             data:
+              name: Hotwater Mode
               message: >-
                 Warmwasser {{ mode }}: {{ settings[mode].setpoint }} °C,
                 Hysterese {{ settings[mode].chargehysteresis }} K, {{ settings[mode].hwcmode }}

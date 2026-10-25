@@ -16,8 +16,9 @@ automation:
     actions:
       - variables:
           new_setpoint: "{{ states('sensor.cooling_min_setpoint') }}"
-      - action: !secret notify_admin
+      - action: script.notify_info
         data:
+          name: Cooling New Setpoint
           message: >-
             Neuer Kühlvorlauf: {{ states('sensor.max_dewpoint') | round(precision=2) }}
             -> {{ new_setpoint }}

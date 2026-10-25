@@ -17,8 +17,9 @@ automation:
         entity_id: climate.ctlv2_cooling_vaillant
         state: "off"
     actions:
-      - action: !secret notify_admin
+      - action: script.notify_info
         data:
+          name: Cooling on
           message: "Kühlen: an"
       - action: water_heater.set_operation_mode
         target:
@@ -56,8 +57,9 @@ automation:
       - condition: time
         after: "16:00:00"
     actions:
-      - action: !secret notify_admin
+      - action: script.notify_info
         data:
+          name: Cooling off
           message: "Kühlen: aus"
       - action: climate.set_hvac_mode
         target:

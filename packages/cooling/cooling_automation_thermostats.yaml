@@ -14,8 +14,9 @@ automation:
         to: "off"
     conditions: []
     actions:
-      - action: !secret notify_admin
+      - action: script.notify_info
         data:
+          name: Cooling Close Thermostats
           message: "Kühlung: Thermostate zu"
       - action: button.press
         target:
@@ -45,8 +46,9 @@ automation:
         entity_id: sensor.ebusd_vr_71_sensordata1_s1_2
         below: 25
     actions:
-      - action: !secret notify_admin
+      - action: script.notify_info
         data:
+          name: Cooling Open Thermostats
           message: "Kühlung: Thermostate auf"
       - action: button.press
         target:

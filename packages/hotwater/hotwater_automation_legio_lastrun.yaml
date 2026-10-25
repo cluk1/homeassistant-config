@@ -17,7 +17,8 @@ automation:
           entity_id: input_datetime.hotwater_legio_lastrun
         data:
           date: "{{ now().strftime('%Y-%m-%d') }}"
-      - action: !secret notify_admin
+      - action: script.notify_info
         data:
-          message: Legio Termperatur erreicht mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
+          name: Hotwater Legio Lastrun
+          message: Legionellen-Temperatur erreicht mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
     mode: single

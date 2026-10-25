@@ -52,8 +52,8 @@ automation:
         target:
           entity_id: button.heizen_alltag
         data: {}
-      - action: !secret notify_admin
-        metadata: {}
+      - action: script.notify_info
         data:
+          name: Photovoltaik Surplus Heating off
           message: Gebäude Überheizung aus
     mode: single

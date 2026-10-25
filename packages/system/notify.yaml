@@ -1,0 +1,42 @@
+# Benachrichtigungen in zwei Stufen:
+# - Störungen und Handlungsbedarf: direkt per !secret notify_admin (Push)
+# - Info (Statuswechsel, Sollwerte): script.notify_info schreibt ins Logbuch und schickt
+#   nur dann zusätzlich eine Push-Nachricht, wenn "Debug-Benachrichtigungen" an ist.
+#   So lassen sich Regelungen nach Änderungen beobachten, ohne Code anzufassen.
+
+input_boolean:
+  notify_debug:
+    name: Debug-Benachrichtigungen
+    icon: mdi:bell-cog
+
+script:
+  notify_info:
+    alias: Info-Meldung
+    description: Logbuch-Eintrag, bei aktiven Debug-Benachrichtigungen zusätzlich Push an den Admin
+    mode: parallel
+    max: 20
+    fields:
+      name:
+        name: Absender
+        description: Name im Logbuch, z. B. der Alias der Automation
+        required: true
+        selector:
+          text:
+      message:
+        name: Meldung
+        required: true
+        selector:
+          text:
+    sequence:
+      - action: logbook.log
+        data:
+          name: "{{ name }}"
+          message: "{{ message }}"
+      - if:
+          - condition: state
+            entity_id: input_boolean.notify_debug
+            state: "on"
+        then:
+          - action: !secret notify_admin
+            data:
+              message: "{{ message }}"

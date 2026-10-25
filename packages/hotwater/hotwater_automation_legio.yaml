@@ -55,5 +55,5 @@ automation:
         then:
           - action: !secret notify_admin
             data:
-              message: Legio Schaltung abgebrochen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
+              message: Legionellen-Schaltung abgebrochen mit {{ states('sensor.ebusd_ctlv2_hwcstoragetemp_value')}}
     mode: single

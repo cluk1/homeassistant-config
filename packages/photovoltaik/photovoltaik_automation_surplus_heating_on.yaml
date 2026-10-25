@@ -48,9 +48,9 @@ automation:
         target:
           entity_id: automation.heating_power_auto
         data: {}
-      - action: !secret notify_admin
-        metadata: {}
+      - action: script.notify_info
         data:
+          name: Photovoltaik Surplus Heating On
           message: Gebäude Überheizung ein
       - action: button.press
         metadata: {}

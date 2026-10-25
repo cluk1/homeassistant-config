@@ -1,0 +1,46 @@
+# Zirkulationspumpe auf Knopfdruck (Tablet-Dashboard): Warmwasser für 5 Minuten auf
+# "heat", damit die Zirkulationspumpe läuft, danach den vorherigen Modus wieder
+# herstellen (an Kühltagen ist Warmwasser bewusst aus und muss aus bleiben).
+# Solange das Skript läuft, ist script.hotwater_circulation "an" – daran hängt das
+# Pumpen-Symbol auf dem Tablet.
+script:
+  hotwater_circulation:
+    alias: Zirkulation starten
+    icon: mdi:pump
+    mode: single
+    max_exceeded: silent
+    sequence:
+      # nur werktags 5:30–21:00, am Wochenende 7:00–21:00
+      - if:
+          - condition: not
+            conditions:
+              - condition: or
+                conditions:
+                  - condition: time
+                    after: "05:30:00"
+                    before: "21:00:00"
+                    weekday: [mon, tue, wed, thu, fri]
+                  - condition: time
+                    after: "07:00:00"
+                    before: "21:00:00"
+                    weekday: [sat, sun]
+        then:
+          - action: script.notify_info
+            data:
+              name: Zirkulation starten
+              message: Zirkulation außerhalb der Betriebszeit nicht gestartet
+          - stop: außerhalb der Betriebszeit
+      - variables:
+          previous_mode: "{{ states('water_heater.ctlv2_hotwater_vaillant') }}"
+      - action: water_heater.set_operation_mode
+        target:
+          entity_id: water_heater.ctlv2_hotwater_vaillant
+        data:
+          operation_mode: heat
+      - delay:
+          minutes: 5
+      - action: water_heater.set_operation_mode
+        target:
+          entity_id: water_heater.ctlv2_hotwater_vaillant
+        data:
+          operation_mode: "{{ previous_mode if previous_mode in ['off', 'auto', 'heat'] else 'auto' }}"

@@ -35,17 +35,11 @@ automation:
           - condition: template
             value_template: "{{ aktuelle_temp != neue_temp }}"
         then:
-          - action: logbook.log
+          - action: script.notify_info
             data:
-              name: AM Heiztemperatur
-              message:
-                "Bedarf: {{ heizbedarf }}, AktuelleT: {{ aktuelle_temp }}, Setze
-                {{ neue_temp }}"
-          - action: !secret notify_admin
-            data:
-              message:
-                "HzB: {{ heizbedarf }}, AktT: {{ aktuelle_temp }}, Setze {{ neue_temp
-                }}"
+              name: Heating Power Auto
+              message: >-
+                Heizbedarf {{ heizbedarf }} K, Raumsollwert {{ aktuelle_temp }} → {{ neue_temp }} °C
           - action: climate.set_temperature
             data:
               temperature: "{{ neue_temp }}"
