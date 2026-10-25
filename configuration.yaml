@@ -30,11 +30,29 @@ influxdb:
   max_retries: 3
   default_measurement: state
   include:
+    entities:
+      # Ist-Erzeugung der Dach-PV (FEMS) für den Prognosevergleich (Backlog E8)
+      - sensor.productionenergy
+      - sensor.productionpower
+      # Solcast-Prognose als Referenz (E8)
+      - sensor.solcast_pv_forecast_prognose_heute
+      - sensor.solcast_pv_forecast_prognose_morgen
+      - sensor.solcast_pv_forecast_prognose_verbleibende_leistung_heute
+      - sensor.solcast_pv_forecast_prognose_aktuelle_stunde
+      - sensor.solcast_pv_forecast_prognose_nachste_stunde
+      - sensor.solcast_pv_forecast_aktuelle_leistung
     entity_globs:
       - sensor.*_production
       - sensor.*_consumption
       - sensor.gridbuyenergy
       - sensor.gridsellenergy
+      # Open-Meteo-Prognosen ICON-CH1/CH2/D2 im Test (E8)
+      - sensor.pv_prognose_*_energy_production_today
+      - sensor.pv_prognose_*_energy_production_today_remaining
+      - sensor.pv_prognose_*_energy_production_tomorrow
+      - sensor.pv_prognose_*_energy_current_hour
+      - sensor.pv_prognose_*_energy_next_hour
+      - sensor.pv_prognose_*_power_production_now
 
 pyscript:
   allow_all_imports: true
