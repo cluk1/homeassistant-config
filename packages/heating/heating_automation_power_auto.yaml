@@ -1,49 +1,64 @@
+# Heizleistung nach Heizbedarf: P-Regler auf den Raumsollwert der Vaillant (Z1DayTemp).
+#
+#   neuer Raumsollwert = Soll + Offset + Heizbedarf, begrenzt auf [Min, Max],
+#                        gerundet auf 0,5 °C (Schrittweite der Vaillant)
+#   Heizbedarf         = (Soll − Toleranz) − Mittelwert Wohnungen   (heating_sensors.yaml)
+#
+# Läuft, wenn sich der Mittelwert 45 min nicht geändert hat, und zusätzlich alle
+# 30 min, damit schnell schwankende Temperaturen die Regelung nicht aufhalten.
+# Pausiert, solange die PV-Überheizung läuft (input_boolean.heating_overheating_active),
+# und läuft sofort wieder an, wenn sie endet.
 automation:
   - id: heating_power_auto
     alias: Heating Power Auto
     description: ""
     triggers:
       - trigger: state
-        entity_id:
-          - sensor.flats_avg_temperature
+        entity_id: sensor.flats_avg_temperature
         for:
-          hours: 0
           minutes: 45
-          seconds: 0
-        enabled: true
+      - trigger: time_pattern
+        minutes: "/30"
+      - trigger: state
+        entity_id: input_boolean.heating_overheating_active
+        to: "off"
     conditions:
       - condition: state
         entity_id: input_boolean.heating_on_off
         state: "on"
-      - condition: numeric_state
-        entity_id: sensor.flats_heating_demand
-        below: 0.1
-        # Has to be disabled to enable pv overheating
-        enabled: false
+      - condition: state
+        entity_id: input_boolean.heating_overheating_active
+        state: "off"
+      # ohne gültigen Heizbedarf (keine Wohnungstemperatur) oder ohne bekannten
+      # Raumsollwert der Vaillant (z. B. kurz nach einem Neustart) nichts verändern
+      - condition: template
+        value_template: >-
+          {{ has_value('sensor.flats_heating_demand')
+             and state_attr('climate.ctlv2_heating_vaillant', 'temperature') is not none }}
     actions:
       - variables:
-          temp_offset: "{{ states('input_number.heating_power_auto_offset_temp') }}"
-          temp_max: "{{ states('input_number.heating_power_auto_max_temp') }}"
-          temp_min: "{{ states('input_number.heating_power_auto_min_temp') }}"
-          aktuelle_temp:
-            "{{ states('number.ebusd_ctlv2_z1actualroomtempdesired_value')
-            }}"
-          ziel_temp: "{{ states('input_number.flat_temperature_setpoint') }}"
-          heizbedarf: "{{ states('sensor.flats_heating_demand') }}"
-          neue_temp: "{{ min( [ziel_temp + temp_offset + heizbedarf, temp_max] ) }}"
-      - if:
-          - condition: template
-            value_template: "{{ aktuelle_temp != neue_temp }}"
-        then:
-          - action: script.notify_info
-            data:
-              name: Heating Power Auto
-              message: >-
-                Heizbedarf {{ heizbedarf }} K, Raumsollwert {{ aktuelle_temp }} → {{ neue_temp }} °C
-          - action: climate.set_temperature
-            data:
-              temperature: "{{ neue_temp }}"
-            target:
-              entity_id: climate.ctlv2_heating_vaillant
-        else: []
+          temp_offset: "{{ states('input_number.heating_power_auto_offset_temp') | float(0) }}"
+          temp_max: "{{ states('input_number.heating_power_auto_max_temp') | float(22) }}"
+          temp_min: "{{ states('input_number.heating_power_auto_min_temp') | float(18) }}"
+          ziel_temp: "{{ states('input_number.flat_temperature_setpoint') | float(20) }}"
+          heizbedarf: "{{ states('sensor.flats_heating_demand') | float(0) }}"
+          # gesetzter Tages-Raumsollwert (nicht der aktuelle, der im Absenkbetrieb abweicht)
+          aktuelle_temp: "{{ state_attr('climate.ctlv2_heating_vaillant', 'temperature') | float(0) }}"
+          neue_temp: >
+            {% set roh = ziel_temp + temp_offset + heizbedarf %}
+            {% set begrenzt = [[roh, temp_max] | min, temp_min] | max %}
+            {{ (begrenzt * 2) | round(0) / 2 }}
+      - condition: template
+        value_template: "{{ neue_temp != aktuelle_temp }}"
+      - action: script.notify_info
+        data:
+          name: Heating Power Auto
+          message: >-
+            Heizbedarf {{ heizbedarf }} K, Raumsollwert {{ aktuelle_temp }} → {{ neue_temp }} °C
+      - action: climate.set_temperature
+        target:
+          entity_id: climate.ctlv2_heating_vaillant
+        data:
+          temperature: "{{ neue_temp }}"
     mode: single
+    max_exceeded: silent

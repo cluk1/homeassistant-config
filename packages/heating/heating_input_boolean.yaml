@@ -2,3 +2,8 @@ input_boolean:
   heating_on_off:
     name: "Heizung global an/aus"
     icon: "mdi:hvac-off"
+  # Gesetzt, solange die PV-Überheizung läuft (photovoltaik_automation_surplus_heating_on/off).
+  # heating_power_auto pausiert währenddessen. Hängt der Merker, ist das hier sichtbar.
+  heating_overheating_active:
+    name: "PV-Überheizung aktiv"
+    icon: "mdi:home-thermometer"

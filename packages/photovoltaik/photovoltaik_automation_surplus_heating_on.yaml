@@ -39,15 +39,14 @@ automation:
       - condition: numeric_state
         entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_value
         above: 0
-      - condition: numeric_state
-        entity_id: input_number.flat_temperature_setpoint
-        below: 22
+      - condition: state
+        entity_id: input_boolean.heating_overheating_active
+        state: "off"
     actions:
-      - action: automation.turn_off
-        metadata: {}
+      # heating_power_auto pausiert, solange der Merker gesetzt ist
+      - action: input_boolean.turn_on
         target:
-          entity_id: automation.heating_power_auto
-        data: {}
+          entity_id: input_boolean.heating_overheating_active
       - action: script.notify_info
         data:
           name: Photovoltaik Surplus Heating On
@@ -65,6 +64,8 @@ automation:
       - variables:
           setpoint: "{{ state_attr('climate.ctlv2_heating_vaillant', 'temperature') }}"
           neue_temp: "{{ min( [setpoint + 0.5, 22] ) }}"
+      # Raumsollwert schrittweise anheben; Abbruch auch, wenn die Überheizung
+      # inzwischen beendet wurde (Merker aus), sonst arbeitet die Rampe gegen die Regelung
       - repeat:
           until:
             - condition: or
@@ -76,6 +77,9 @@ automation:
                   entity_id: climate.ctlv2_heating_vaillant
                   attribute: temperature
                   above: 21.8
+                - condition: state
+                  entity_id: input_boolean.heating_overheating_active
+                  state: "off"
           sequence:
             - action: climate.set_temperature
               data:
@@ -91,3 +95,4 @@ automation:
                 setpoint: "{{ state_attr('climate.ctlv2_heating_vaillant', 'temperature') }}"
                 neue_temp: "{{ min( [setpoint + 0.5, 22] ) }}"
     mode: single
+    max_exceeded: silent

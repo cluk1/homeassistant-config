@@ -26,7 +26,8 @@
 
 ## Repository structure
 * [packages/](packages): one folder per area (`heating`, `hotwater`, `cooling`, `photovoltaik`, `power`, `wallbox`, `system`), loaded with `!include_dir_named`
-* [pyscript/meters.py](pyscript/meters.py): meter readings and billing calculation, with unit tests in [tests/](tests) (`python3 -m unittest discover -s tests -v`)
+* [pyscript/meters.py](pyscript/meters.py): meter readings and billing calculation
+* [tests/](tests): unit tests for the billing script and the heating power control (`pip install pyyaml jinja2`, then `python3 -m unittest discover -s tests -v`)
 * [ebusd/](ebusd): own ebusd files (MQTT integration, read scripts), copied into the ebusd addon config folder on deployment
 * [cron.d/](cron.d): cron jobs run by the SSH addon (ebusd reads, InfluxDB backup)
 * [examples/](examples): dashboard examples

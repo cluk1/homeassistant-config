@@ -18,35 +18,30 @@ automation:
         entity_id:
           - sensor.ebusd_ctlv2_displayedoutsidetemp_value
         below: 2
+    # Bewusst ohne Bedingung "Heizung global an": die Überheizung muss auch dann
+    # sauber enden, wenn die Heizung zwischendurch global ausgeschaltet wurde.
     conditions:
-      - condition: state
-        entity_id: input_boolean.heating_on_off
-        state: "on"
-      - condition: numeric_state
-        entity_id: input_number.flat_temperature_setpoint
-        above: 20
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: input_boolean.heating_overheating_active
+            state: "on"
+          - condition: numeric_state
+            entity_id: input_number.flat_temperature_setpoint
+            above: 20
     actions:
       - action: input_number.set_value
         target:
           entity_id: input_number.flat_temperature_setpoint
         data:
           value: 20
+      # kurz warten, bis der Heizbedarf den neuen Sollwert übernommen hat
       - delay:
-          hours: 0
-          minutes: 0
           seconds: 10
-          milliseconds: 0
-      - action: automation.turn_on
-        metadata: {}
+      # Merker aus: heating_power_auto läuft dadurch sofort wieder an
+      - action: input_boolean.turn_off
         target:
-          entity_id: automation.heating_power_auto
-        data: {}
-      - action: automation.trigger
-        metadata: {}
-        data:
-          skip_condition: false
-        target:
-          entity_id: automation.heating_power_auto
+          entity_id: input_boolean.heating_overheating_active
       - action: button.press
         metadata: {}
         target:
