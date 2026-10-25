@@ -12,18 +12,21 @@ Vaillant aroTHERM plus VWL 125
 
 ## Prerequisites
 * ebus Adapter: https://ebusd.eu/
-* ebus Daemon running as HA Addon (https://github.com/LukasGrebe/ha-addons) or separate docker container. The addon keeps its files in its own addon config folder (`/addon_configs/2ad9b828_ebusd/` on the host, mounted as `/config` inside the ebusd container), so the paths below are relative to the container. Addon configuration:
+* ebus Daemon running as HA Addon (https://github.com/LukasGrebe/ha-addons) or separate docker container. The addon only mounts its own addon config folder (`/addon_configs/2ad9b828_ebusd/` on the host, `/config` inside the ebusd container), not the HA config folder, so the paths below are container paths. Addon configuration (`commandline_options`):
 ```
-  "scanconfig": true,
-  "loglevel_all": "error",
-  "mqtttopic": "ebusd",
-  "mqttint": "/config/ebusd/mqtt-hassio.cfg",
-  "mqttjson": true,
-  "mode": "ens",
-  "configpath": "/config/ebusd/csvs/ebusd-2.1.x/en",
-  "latency": 10,
-  "device": "/dev/ttyACM0"
+  seed_mqtt_cfg: false
+  commandline_options:
+    - --mqttjson
+    - --scanconfig
+    - --log=all:error
+    - --mqtttopic=ebusd
+    - --configpath=/config/ebusd/csvs/1755c15-fixes
+    - --mqttvar=filter-non-circuit=,filter-non-name=^Z2|^Z3|^Hc2|^Hc3,filter-name=status|temp|humidity|yield|count|energy|power|runtime|hours|starts|mode|curve|^load$|^party$|sensor|timer|cop|hwc|hc|cylinder|heating,filter-direction=r|u|^w
+    - --mqttint=/config/ebusd/mqtt-hassio.cfg
+  network_device: enh:/dev/serial/by-id/<your ebus adapter>
 ```
+* Own ebusd files are kept in this repo in [ebusd/](ebusd): `mqtt-hassio.cfg` (MQTT integration for HA discovery), `ebus-reader.sh` (called by cron in the SSH addon, runs `readimportant.sh` inside the ebusd container), `readimportant.sh` (actively reads important values every 5/15 minutes and daily), `readall.sh` and `readvaillant.sh` (diagnostics). `deploy.sh` copies them to `/addon_configs/2ad9b828_ebusd/ebusd/`; after a change of `mqtt-hassio.cfg` the ebusd addon has to be restarted.
+* The message definitions (CSV files) come from https://github.com/cluk1/ebusd-configuration (fork of the ebusd configuration with own fixes) and are located in `/addon_configs/2ad9b828_ebusd/ebusd/csvs/`, the variant in use is `1755c15-fixes`.
 * mqtt Broker running as HA Addon (https://github.com/home-assistant/addons/tree/master/mosquitto) or separate docker container, addon configuration:
 ```
   "logins": [],
@@ -63,7 +66,7 @@ Vaillant aroTHERM plus VWL 125
 * Install the ebus hardware adapter
 * Install the required addons as listed above
 * Checkout this repo into /config (HA config folder)
-* Checkout the ebusd config from https://github.com/cluk1/ebusd-configuration into the ebusd addon config folder (`/addon_configs/2ad9b828_ebusd/ebusd/csvs`), and place `mqtt-hassio.cfg`, `ebus-reader.sh` and `readimportant.sh` in `/addon_configs/2ad9b828_ebusd/ebusd/`
+* Checkout the ebusd config from https://github.com/cluk1/ebusd-configuration into the ebusd addon config folder (`/addon_configs/2ad9b828_ebusd/ebusd/csvs`); the files from [ebusd/](ebusd) are copied there by `deploy.sh`
 * Configure the ebusd addon to use the csv files from the checkout (see addon config above).
 * Start the ebusd addon, check if it scans the bus (ebusctl info) and submits messages to mqtt (listen to ebusd/#)
 
