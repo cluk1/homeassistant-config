@@ -8,15 +8,23 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
+# Zustandsverlauf 30 Tage; Langzeitstatistik (Stundenwerte) behält HA unbegrenzt,
+# die Abrechnungsdaten liegen in InfluxDB. Ausgeschlossen sind Werte, die sehr oft
+# schreiben und deren Verlauf niemand braucht (Analyse der Recorder-DB, Oktober 2026).
 recorder:
-  purge_keep_days: 90
+  purge_keep_days: 30
   exclude:
-    entity_globs:
-      - sensor.openwb_chargepoint_*_spannung_l*
-      - sensor.openwb_chargepoint_*_frequenz
-      - sensor.flat*_grid_percentage
-      - sensor.heatpump_grid_percentage
+    entities:
+      - sensor.server_leistung              # Shelly alle 3 s, Energie: sensor.server_energie
+      - sensor.grid_percentage              # Dashboard zeigt nur den aktuellen Wert
       - sensor.full_production_power
+      - sensor.ebusd_global_uptime
+      - sensor.vaillant_api_request_count
+    entity_globs:
+      - sensor.*_spannung*                  # Netzspannungen (openWB, Shelly)
+      - sensor.openwb_chargepoint_*_frequenz
+      - sensor.openwb_vehicle_*_datenaktualisierung
+      - sensor.internetgatewaydevice*_geschwindigkeit*   # FRITZ!Box-Durchsatz
 
 influxdb:
   max_retries: 3
