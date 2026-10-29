@@ -13,7 +13,6 @@ PAIRS=(
 "hmu;CopHwc"
 "hmu;EnergyIntegral"
 "hmu;RunDataCompressorSpeed"
-"hmu;RunDataStatuscode"
 "vr_71;SensorData1"
 "ctlv2;Hc1ActualFlowTempDesired"
 "ctlv2;Hc1FlowTemp"
