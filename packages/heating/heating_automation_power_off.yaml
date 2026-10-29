@@ -1,6 +1,6 @@
 automation:
-  # Meldet die Wärmepumpe Heating_Overrun, obwohl die Wohnungen schon deutlich zu
-  # warm sind (z. B. durch Sonneneinstrahlung), wird die Heizung tagsüber
+  # Meldet die Wärmepumpe Heating_Overrun, obwohl die Wohnungen schon zu warm sind
+  # (z. B. durch Sonneneinstrahlung), wird die Heizung tagsüber
   # ausgeschaltet und alle 30 Minuten neu geprüft. Sobald eine Bedingung nicht
   # mehr erfüllt ist, wird wieder eingeschaltet – außer die Heizung wurde
   # inzwischen global ausgeschaltet.
@@ -17,10 +17,16 @@ automation:
         condition: state
         entity_id: input_boolean.heating_on_off
         state: "on"
+      # zu warm: bei laufender PV-Überheizung (Soll 22 °C) schon ab Heizbedarf <= 0,
+      # sonst erst bei deutlicher Übertemperatur (Heizbedarf < -1,4 K)
       - &too_warm
-        condition: numeric_state
-        entity_id: sensor.flats_heating_demand
-        below: -1.4
+        condition: template
+        value_template: >-
+          {% set bedarf = states('sensor.flats_heating_demand') | float(none) %}
+          {% if bedarf is none %} {{ false }}
+          {% elif is_state('input_boolean.heating_overheating_active', 'on') %} {{ bedarf <= 0 }}
+          {% else %} {{ bedarf < -1.4 }}
+          {% endif %}
       - &mild_outside
         condition: numeric_state
         entity_id: sensor.ebusd_ctlv2_displayedoutsidetemp_value

@@ -42,12 +42,14 @@ class HA:
                            min=min, max=max)
         self.env = env
 
+    _NO_DEFAULT = object()
+
     @staticmethod
-    def _float(value, default=None):
+    def _float(value, default=_NO_DEFAULT):
         try:
             return float(value)
         except (TypeError, ValueError):
-            if default is None:
+            if default is HA._NO_DEFAULT:
                 raise ValueError(f"float got invalid input '{value}'")
             return default
 
@@ -67,6 +69,15 @@ class HA:
         except (ValueError, SyntaxError):
             return out
 
+    @staticmethod
+    def as_boolean(value):
+        """wie HA result_as_boolean: nur true/yes/on/enable bzw. Zahlen ≠ 0 gelten als wahr"""
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, (int, float)):
+            return value != 0
+        return str(value).strip().lower() in ("true", "yes", "on", "enable", "1")
+
     def condition(self, cond, variables):
         kind = cond["condition"]
         if kind == "state":
@@ -81,7 +92,7 @@ class HA:
                 ok &= value < float(cond["below"])
             return ok
         if kind == "template":
-            return bool(self.render(cond["value_template"], variables))
+            return self.as_boolean(self.render(cond["value_template"], variables))
         if kind == "or":
             return any(self.condition(c, variables) for c in cond["conditions"])
         if kind == "and":

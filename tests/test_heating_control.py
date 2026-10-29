@@ -17,6 +17,7 @@ POWER_AUTO = load_automations("heating/heating_automation_power_auto.yaml")["hea
 SURPLUS_ON = load_automations("photovoltaik/photovoltaik_automation_surplus_heating_on.yaml")["photovoltaik_surplus_heating_on"]
 SURPLUS_OFF = load_automations("photovoltaik/photovoltaik_automation_surplus_heating_off.yaml")["photovoltaik_surplus_heating_off"]
 GLOBAL = load_automations("heating/heating_automation_global_onoff.yaml")
+POWER_OFF = load_automations("heating/heating_automation_power_off.yaml")["heating_power_off"]
 FLAG = "input_boolean.heating_overheating_active"
 
 
@@ -116,6 +117,38 @@ class PowerAutoConditions(unittest.TestCase):
         self.assertIn(("state", "sensor.flats_avg_temperature", None, None), kinds)
         self.assertIn(("time_pattern", None, None, "/30"), kinds)
         self.assertIn(("state", FLAG, "off", None), kinds)
+
+
+class PowerOffThreshold(unittest.TestCase):
+    """Heizung aus bei Übertemperatur: Schwelle hängt davon ab, ob die PV-Überheizung läuft"""
+
+    TOO_WARM = [c for c in POWER_OFF["conditions"] if c["condition"] == "template"][0]
+
+    def too_warm(self, demand, overheating):
+        ha = HA(states={"sensor.flats_heating_demand": demand, FLAG: "on" if overheating else "off"})
+        return ha.condition(self.TOO_WARM, {})
+
+    def test_without_overheating(self):
+        """ohne Überheizung erst bei Heizbedarf < -1,4 K"""
+        self.assertFalse(self.too_warm(-1.4, overheating=False))
+        self.assertTrue(self.too_warm(-1.5, overheating=False))
+        self.assertFalse(self.too_warm(0.0, overheating=False))
+
+    def test_during_overheating(self):
+        """bei laufender Überheizung schon ab Heizbedarf <= 0 (Wohnungen haben 22 °C erreicht)"""
+        self.assertTrue(self.too_warm(0.0, overheating=True))
+        self.assertTrue(self.too_warm(-0.5, overheating=True))
+        self.assertFalse(self.too_warm(0.1, overheating=True))
+
+    def test_missing_demand(self):
+        """ohne gültigen Heizbedarf nie ausschalten"""
+        self.assertFalse(self.too_warm("unavailable", overheating=True))
+        self.assertFalse(self.too_warm("unknown", overheating=False))
+
+    def test_waiting_loop_uses_same_condition(self):
+        """die 30-min-Warteschleife prüft dieselbe Bedingung (YAML-Anker)"""
+        loop = [s for s in POWER_OFF["actions"] if "repeat" in s][0]["repeat"]["while"]
+        self.assertIn(self.TOO_WARM, loop)
 
 
 class OverheatingCoupling(unittest.TestCase):
