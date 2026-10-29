@@ -145,6 +145,11 @@ class PowerOffThreshold(unittest.TestCase):
         self.assertFalse(self.too_warm("unavailable", overheating=True))
         self.assertFalse(self.too_warm("unknown", overheating=False))
 
+    def test_triggered_by_compressor_state(self):
+        """Auslöser ist der Verdichterzustand (Status00), nicht der nur alle 5 min abgefragte RunDataStatusCode"""
+        self.assertEqual([(t["entity_id"], t["to"]) for t in POWER_OFF["triggers"]],
+                         [(["sensor.ebusd_hmu_status00_compressorstate"], "Heating_Overrun")])
+
     def test_waiting_loop_uses_same_condition(self):
         """die 30-min-Warteschleife prüft dieselbe Bedingung (YAML-Anker)"""
         loop = [s for s in POWER_OFF["actions"] if "repeat" in s][0]["repeat"]["while"]

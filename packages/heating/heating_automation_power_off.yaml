@@ -7,10 +7,12 @@ automation:
   - id: heating_power_off
     alias: Heating Power Off
     description: ""
+    # Status00 (Verdichterzustand) wird laufend gesendet; RunDataStatusCode nur alle
+    # 5 min abgefragt und verpasst kurze Nachläufe
     triggers:
       - trigger: state
         entity_id:
-          - sensor.ebusd_hmu_rundatastatuscode_value
+          - sensor.ebusd_hmu_status00_compressorstate
         to: Heating_Overrun
     conditions:
       - &heating_on

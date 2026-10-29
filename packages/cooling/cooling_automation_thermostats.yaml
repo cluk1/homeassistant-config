@@ -5,9 +5,10 @@ automation:
     alias: Cooling Close Thermostats
     description: ""
     triggers:
+      # Warmwasserbereitung startet (Status00 statt RunDataStatusCode, schneller aktualisiert)
       - trigger: state
-        entity_id: sensor.ebusd_hmu_rundatastatuscode_value
-        to: Warm_Water_Compressor_active
+        entity_id: sensor.ebusd_hmu_status00_compressorstate
+        to: Hot_Water
       - trigger: state
         entity_id: climate.ctlv2_cooling_vaillant
         from: cool
