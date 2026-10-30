@@ -8,6 +8,18 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
+# Zentrales Dashboard (Backlog G1) als YAML aus dem Repo, erzeugt von
+# g1-skizze/build.py; die übrigen Dashboards bleiben in der UI
+lovelace:
+  dashboards:
+    dashboard-zentral:
+      mode: yaml
+      filename: dashboards/zentral.yaml
+      title: Zentral
+      icon: mdi:home-lightning-bolt
+      show_in_sidebar: true
+      require_admin: true
+
 # Zustandsverlauf 30 Tage; Langzeitstatistik (Stundenwerte) behält HA unbegrenzt,
 # die Abrechnungsdaten liegen in InfluxDB. Ausgeschlossen sind Werte, die sehr oft
 # schreiben und deren Verlauf niemand braucht (Analyse der Recorder-DB, Oktober 2026).

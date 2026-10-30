@@ -34,6 +34,18 @@ template:
           {% set cop = states('sensor.heatpump_currentoutputpower') | float
                        / states('sensor.ebusd_hmu_currentconsumedpower_value') | float %}
           {{ [cop, 15] | min | round(2) }}
+      # Verdichterzustand (Status00) auf Deutsch für das zentrale Dashboard;
+      # unbekannte Zustände werden unverändert angezeigt
+      - unique_id: heatpump_state
+        default_entity_id: sensor.heatpump_state
+        name: "Wärmepumpe Zustand"
+        availability: "{{ has_value('sensor.ebusd_hmu_status00_compressorstate') }}"
+        state: >
+          {% set names = {'Heating': 'Heizen', 'Hot_Water': 'Warmwasser', 'Cooling': 'Kühlen',
+                          'Heating_Overrun': 'Nachlauf', 'Heating_Prerun': 'Vorlauf',
+                          'Heating_Compressor_Blocked': 'Gesperrt', 'off': 'Aus'} %}
+          {% set state = states('sensor.ebusd_hmu_status00_compressorstate') %}
+          {{ names.get(state, state) }}
   - binary_sensor:
       - unique_id: flat1_humidity_too_high
         default_entity_id: binary_sensor.flat1_humidity_too_high

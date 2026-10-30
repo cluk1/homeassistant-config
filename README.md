@@ -30,6 +30,7 @@
 * [tests/](tests): unit tests for the billing script and the heating power control (`pip install pyyaml jinja2`, then `python3 -m unittest discover -s tests -v`)
 * [ebusd/](ebusd): own ebusd files (MQTT integration, read scripts), copied into the ebusd addon config folder on deployment
 * [cron.d/](cron.d): cron jobs run by the SSH addon (ebusd reads, InfluxDB backup)
+* [dashboards/zentral.yaml](dashboards/zentral.yaml) with the images in [www/dashboard/](www/dashboard): central overview dashboard (YAML mode, landscape for PC and portrait for phones), generated from a drawing outside this repo; private entity IDs come from `secrets.yaml`
 * [examples/](examples): dashboard examples
 
 ## Naming conventions

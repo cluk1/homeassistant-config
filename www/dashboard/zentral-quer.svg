@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 900" font-family="Inter, Segoe UI, Roboto, sans-serif">
+  
+  <defs>
+    <style>
+      .bg { fill: #0f1318; }
+      .wall { fill: #1d252e; stroke: #3a4652; stroke-width: 2; }
+      .roof { fill: #2a2224; stroke: #4a3d40; stroke-width: 2; }
+      .floor { stroke: #3a4652; stroke-width: 1.5; }
+      .win { fill: #141a21; stroke: #3a4652; stroke-width: 1.5; }
+      .t { fill: #e6edf3; font-size: 15px; }
+      .ts { fill: #8b98a5; font-size: 12px; }
+      .tl { fill: #e6edf3; font-size: 22px; font-weight: 600; }
+      .tk { fill: #8b98a5; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+      .pv { fill: #f5c542; } .grid { fill: #a78bfa; } .bat { fill: #3ecf8e; } .heat { fill: #ff7a45; }
+      .dot { fill: #3a4652; }
+      .flow { fill: none; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 10; animation: run 1s linear infinite; }
+      .flow.pv { stroke: #f5c542; } .flow.grid { stroke: #a78bfa; } .flow.bat { stroke: #3ecf8e; }
+      .flow.load { stroke: #c0c8d0; } .flow.heat { stroke: #ff7a45; }
+      @keyframes run { to { stroke-dashoffset: -12; } }
+    </style>
+    <linearGradient id="ww" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a45" /><stop offset=".55" stop-color="#ff7a45" stop-opacity=".55" /><stop offset="1" stop-color="#4ea1ff" stop-opacity=".5" />
+    </linearGradient>
+    <linearGradient id="puf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity=".8" /><stop offset="1" stop-color="#ff7a45" stop-opacity=".25" />
+    </linearGradient>
+    <pattern id="pvcell" width="22" height="16" patternUnits="userSpaceOnUse">
+      <rect width="21" height="15" fill="#1c2c42" stroke="#f5c542" stroke-opacity=".35" />
+    </pattern>
+    <pattern id="boards" width="12" height="20" patternUnits="userSpaceOnUse">
+      <rect width="12" height="20" fill="#232b33" /><line x1="0.5" y1="0" x2="0.5" y2="20" stroke="#3a4652" />
+    </pattern>
+    <symbol id="warnicon" viewBox="0 0 20 20"><path d="M10 1 19 18H1Z" fill="#ffb020" /><rect x="9" y="7" width="2" height="6" fill="#0f1318" /><rect x="9" y="14.5" width="2" height="2" fill="#0f1318" /></symbol>
+    <symbol id="car" viewBox="0 0 140 64">
+      <path d="M8 50 Q12 24 38 20 L92 18 Q112 18 124 34 L134 50 Z" fill="#2a3542" stroke="#8b98a5" />
+      <circle cx="36" cy="52" r="10" fill="#0f1318" stroke="#8b98a5" /><circle cx="106" cy="52" r="10" fill="#0f1318" stroke="#8b98a5" />
+    </symbol>
+    
+    <symbol id="dormer" viewBox="0 0 60 80">
+      <polygon points="0,30 30,0 60,30" fill="#2a2224" stroke="#4a3d40" stroke-width="2" />
+      <rect x="6" y="30" width="48" height="50" fill="#232b33" stroke="#3a4652" stroke-width="2" />
+      <rect x="18" y="40" width="24" height="30" fill="#141a21" stroke="#3a4652" />
+    </symbol>
+  </defs>
+
+  <rect class="bg" width="1280" height="900" />
+
+  
+  <g id="header">
+  <rect width="1280" height="78" fill="#141a21" />
+  <g transform="translate(24,26)">
+    <text class="tk">Verbrauch</text><text class="tk" x="140">PV gesamt</text><text class="tk" x="280">Netzanteil</text><text class="tk" x="400">Batterie</text><text class="tk" x="510">PV nächste 2 h</text></g>
+  <g transform="translate(696,24)">
+    <rect width="132" height="30" rx="15" fill="#22303b" /><circle cx="16" cy="15" r="6" class="dot" /><text class="t" x="30" y="20">Heizung ein</text>
+    <rect x="144" width="138" height="30" rx="15" fill="#22303b" /><circle cx="160" cy="15" r="6" class="dot" /><text class="t" x="174" y="20">Überheizung</text>
+    <rect x="294" width="136" height="30" rx="15" fill="#22303b" /><circle cx="310" cy="15" r="6" class="dot" /><text class="t" x="324" y="20">Heizregelung</text>
+    <rect x="442" width="124" height="30" rx="15" fill="#22303b" /><circle cx="458" cy="15" r="6" class="dot" /><text class="t" x="472" y="20">Kühlung</text>
+  </g>
+  </g>
+
+  
+  <g transform="translate(34,112)">
+    <circle cx="22" cy="22" r="16" class="pv" opacity=".9" />
+    <text class="ts" x="52" y="42">außen</text></g>
+
+  <g id="scene" transform="translate(-94,0)">
+  
+  <g id="ground">
+  <line x1="0" y1="680" x2="1530" y2="680" stroke="#3a4652" stroke-width="2" />
+  <rect x="280" y="681" width="510" height="104" fill="#12171d" />
+  </g>
+  <g id="street">
+  <rect y="838" width="1530" height="62" fill="#161b21" />
+  <line x1="0" y1="869" x2="1530" y2="869" stroke="#2c3641" stroke-width="3" stroke-dasharray="30 24" />
+  <text class="ts" x="1354" y="892" text-anchor="end">Straße (Osten)</text>
+  </g>
+
+  
+  <g id="rearhouse">
+  <polygon points="822,505 845,470 1065,470 1088,505" class="roof" opacity=".75" />
+  <g fill="#1c2c42" stroke="#3a4652">
+    <rect x="880" y="476" width="16" height="22" /><rect x="960" y="476" width="16" height="22" /><rect x="982" y="476" width="16" height="22" /><rect x="1025" y="476" width="14" height="22" />
+  </g>
+  <rect x="830" y="505" width="250" height="95" fill="url(#boards)" stroke="#2f3943" stroke-width="2" opacity=".8" />
+  <rect x="842" y="514" width="190" height="78" rx="6" fill="#0f1318" fill-opacity=".82" />
+  <g transform="translate(854,532)">
+    <text class="tk">Hinterhaus · Wohnung 4</text>
+    <text class="ts" y="48">Gastherme</text>
+  </g>
+  </g>
+
+  
+  <g id="fronthouse">
+  
+  <polygon points="276,392 340,164 730,164 794,392" class="roof" />
+  <g fill="url(#pvcell)">
+    <rect x="354" y="178" width="362" height="62" />
+    <rect x="318" y="290" width="40" height="92" />
+    <rect x="420" y="290" width="70" height="92" />
+    <rect x="552" y="290" width="70" height="92" />
+    <rect x="684" y="290" width="74" height="92" />
+  </g>
+  
+  <rect x="450" y="184" width="170" height="40" rx="6" fill="#0f1318" fill-opacity=".85" />
+  <text class="tk" x="464" y="209">PV Dach</text>
+  <use href="#dormer" x="358" y="290" width="60" height="92" />
+  <use href="#dormer" x="490" y="290" width="60" height="92" />
+  <use href="#dormer" x="622" y="290" width="60" height="92" />
+  <rect x="318" y="246" width="420" height="38" rx="6" fill="#0f1318" fill-opacity=".85" />
+  <text class="tk" x="330" y="270">DG · Wohnung 3</text>
+  <rect x="300" y="392" width="470" height="258" class="wall" />
+  <line x1="300" y1="520" x2="690" y2="520" class="floor" />
+  <g class="win">
+    <rect x="316" y="404" width="22" height="34" /><rect x="316" y="532" width="22" height="34" />
+  </g>
+  
+  <rect x="690" y="392" width="80" height="258" fill="#19202a" stroke="#3a4652" stroke-width="1.5" />
+  <text class="tk" x="730" y="420" text-anchor="middle">Treppen-</text><text class="tk" x="730" y="434" text-anchor="middle">haus</text>
+  <text class="tk" x="730" y="530" text-anchor="middle">Allgemein</text><rect x="712" y="590" width="36" height="60" class="win" />
+
+  <g transform="translate(352,422)">
+    <text class="tk">OG · Wohnung 2</text>
+    </g>
+  <g transform="translate(352,550)">
+    <text class="tk">EG · Wohnung 1</text>
+    </g>
+
+  
+  <rect x="246" y="330" width="40" height="28" fill="url(#pvcell)" stroke="#3a4652" />
+  <text class="ts" x="238" y="338" text-anchor="end">BPV3</text><rect x="256" y="472" width="44" height="30" fill="url(#pvcell)" stroke="#3a4652" />
+  <line x1="248" y1="504" x2="300" y2="504" stroke="#3a4652" stroke-width="3" />
+  <text class="ts" x="248" y="480" text-anchor="end">BPV1 Balkon Süd</text><polygon points="204,678 244,650 262,678" fill="url(#pvcell)" stroke="#3a4652" />
+  <text class="ts" x="200" y="624">BPV2 Garten</text><rect x="300" y="650" width="470" height="126" fill="#161c23" stroke="#3a4652" stroke-width="2" />
+  <line x1="300" y1="680" x2="770" y2="680" stroke="#3a4652" stroke-dasharray="4 4" />
+  <text class="tk" x="312" y="696">Heizungskeller</text>
+  <rect x="316" y="720" width="30" height="50" rx="10" fill="url(#puf)" stroke="#3a4652" />
+  <text class="ts" x="354" y="732">Puffer</text><rect x="440" y="700" width="30" height="70" rx="10" fill="url(#ww)" stroke="#3a4652" />
+  <text class="ts" x="478" y="712">Warmwasser</text><rect x="600" y="716" width="30" height="50" rx="4" fill="none" stroke="#3ecf8e" stroke-width="2" />
+  <rect x="700" y="728" width="56" height="38" rx="4" fill="#22303b" stroke="#a78bfa" />
+  <text class="ts" x="728" y="751" text-anchor="middle">HAK</text>
+
+  
+  <rect x="110" y="690" width="180" height="86" rx="8" fill="#22303b" stroke="#ff7a45" stroke-width="1.5" />
+  <circle cx="268" cy="710" r="11" fill="none" stroke="#8b98a5" stroke-width="2" />
+  <path d="M268 701v18M259 710h18" stroke="#8b98a5" stroke-width="2" />
+  <text class="tk" x="122" y="710">Wärmepumpe</text>
+  </g>
+
+  
+  <g id="heatcircuit" transform="translate(830,180)">
+    <text class="tk">Heizkreis</text>
+    </g>
+
+  
+  <g id="grid" transform="translate(870,700)">
+    <path d="M18 0v46M4 10h28M8 22h20" stroke="#a78bfa" stroke-width="3" fill="none" />
+    <text class="tk" x="44" y="12">Netz</text></g>
+
+  
+  <g id="shed" transform="translate(-184,0)">
+  <polygon points="1214,566 1500,580 1500,588 1214,574" fill="#2b333c" stroke="#4a5562" />
+  <line x1="1226" y1="574" x2="1226" y2="680" stroke="#4a5562" stroke-width="3" />
+  <line x1="1490" y1="586" x2="1490" y2="680" stroke="#4a5562" stroke-width="3" />
+  <rect x="1226" y="608" width="264" height="72" fill="url(#boards)" stroke="#3a4652" />
+  <text class="tk" x="1358" y="600" text-anchor="middle">Fahrradschuppen</text>
+  <rect x="1262" y="620" width="30" height="44" rx="5" fill="#141a21" stroke="#c0c8d0" />
+  <circle cx="1277" cy="636" r="5" class="dot" />
+  <rect x="1424" y="620" width="30" height="44" rx="5" fill="#141a21" stroke="#c0c8d0" />
+  <circle cx="1439" cy="636" r="5" class="dot" />
+  <line x1="1358" y1="682" x2="1358" y2="832" stroke="#2c3641" stroke-width="2" />
+
+  <use href="#car" x="1212" y="700" width="134" height="62" />
+  <text class="tk" x="1216" y="786">links · MG4</text>
+  <use href="#car" x="1370" y="700" width="134" height="62" />
+  <text class="tk" x="1374" y="786">rechts · Škoda</text>
+  </g>
+
+  
+  <g id="flows">
+  </g>
+  </g>
+</svg>
