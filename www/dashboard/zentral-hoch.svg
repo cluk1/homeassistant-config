@@ -108,7 +108,8 @@
   <line x1="300" y1="680" x2="770" y2="680" stroke="#3a4652" stroke-dasharray="4 4" />
   <text class="tk" x="312" y="696">Heizungskeller</text>
   <rect x="316" y="720" width="30" height="50" rx="10" fill="url(#puf)" stroke="#3a4652" />
-  <text class="ts" x="354" y="732">Puffer</text><rect x="440" y="700" width="30" height="70" rx="10" fill="url(#ww)" stroke="#3a4652" />
+  <text class="ts" x="354" y="732">Puffer</text>
+  <rect x="440" y="700" width="30" height="70" rx="10" fill="url(#ww)" stroke="#3a4652" />
   <text class="ts" x="478" y="712">Warmwasser</text><rect x="600" y="716" width="30" height="50" rx="4" fill="none" stroke="#3ecf8e" stroke-width="2" />
   <rect x="700" y="728" width="56" height="38" rx="4" fill="#22303b" stroke="#a78bfa" />
   <text class="ts" x="728" y="751" text-anchor="middle">HAK</text>

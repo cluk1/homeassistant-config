@@ -3,6 +3,8 @@ template:
       - unique_id: flats_heating_demand
         default_entity_id: sensor.flats_heating_demand
         name: Wohnungen Heizbedarf
+        # Einheit nur für die Anzeige (Dezimalkomma, "K" im Dashboard)
+        unit_of_measurement: K
         # ohne gültige Wohnungstemperatur kein Heizbedarf (sonst regeln die
         # Automationen auf einen Ersatzwert)
         availability: "{{ has_value('sensor.flats_avg_temperature') }}"
