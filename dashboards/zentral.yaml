@@ -16,7 +16,7 @@ views:
                 media_query: "(orientation: landscape)"
             card:
               type: picture-elements
-              image: "/local/dashboard/zentral-quer.svg?v=9bd32b4d"
+              image: "/local/dashboard/zentral-quer.svg?v=ab8f4b15"
               elements:
                 - type: conditional
                   conditions:
@@ -25,7 +25,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-pv_battery.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-pv_battery.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -43,7 +43,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-battery.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-battery.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -61,7 +61,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-battery-rev.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-battery-rev.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -79,7 +79,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-grid.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-grid.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -97,7 +97,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-grid-rev.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-grid-rev.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -115,7 +115,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-rearhouse.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-rearhouse.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -133,7 +133,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat1.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-flat1.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -151,7 +151,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat2.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-flat2.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -169,7 +169,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat2-rev.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-flat2-rev.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -187,7 +187,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat3.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-flat3.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -205,7 +205,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat3-rev.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-flat3-rev.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -223,7 +223,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp1.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-cp1.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -241,7 +241,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp2.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-cp2.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -259,7 +259,25 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-heatpump.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-heatpump.svg?v=ab8f4b15"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.ebusd_ctlv2_hc1actualflowtempdesired_value
+                      above: 20
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-quer-hc_flow.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -277,7 +295,7 @@ views:
                       above: 0.1
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-heat.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-heat.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -295,7 +313,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv3.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-bpv3.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -313,7 +331,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv1.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-bpv1.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -331,7 +349,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv2.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-quer-bpv2.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -796,7 +814,7 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(27.03% - 8px)"
+                    left: "calc(30.31% - 8px)"
                     top: "calc(68.45% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
@@ -809,7 +827,7 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(31.25% - 8px)"
+                    left: "calc(36.56% - 8px)"
                     top: "calc(68.45% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
@@ -818,11 +836,51 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                     font-weight: 400
                 - type: state-label
+                  entity: sensor.ebusd_ctlv2_hc1flowtemp_value
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(20.16% - 8px)"
+                    top: "calc(73.93% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
+                    font-weight: 400
+                - type: state-label
+                  entity: sensor.ebusd_ctlv2_hc1actualflowtempdesired_value
+                  prefix: "Soll "
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(20.16% - 8px)"
+                    top: "calc(76.29% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#8b98a5"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                    font-weight: 400
+                - type: state-label
+                  entity: sensor.ebusd_vr_71_sensordata1_s1_2
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(27.97%)"
+                    top: "calc(82.91% - 8px)"
+                    transform: "translate(-50%, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
+                    font-weight: 400
+                - type: state-label
                   entity: sensor.ebusd_ctlv2_hwcstoragetemp_value
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(32.50%)"
+                    left: "calc(36.02%)"
                     top: "calc(82.91% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
@@ -836,7 +894,7 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(32.50%)"
+                    left: "calc(36.02%)"
                     top: "calc(85.27% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
@@ -946,41 +1004,13 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                     font-weight: 400
                 - type: state-label
-                  entity: sensor.ebusd_ctlv2_hc1flowtemp_value
-                  prefix: "Vorlauf "
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(57.50% - 8px)"
-                    top: "calc(21.85% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
-                    font-weight: 400
-                - type: state-label
-                  entity: sensor.ebusd_ctlv2_hc1actualflowtempdesired_value
-                  prefix: "Soll "
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(68.44% - 8px)"
-                    top: "calc(21.85% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
-                    font-weight: 400
-                - type: state-label
                   entity: sensor.flats_heating_demand
                   prefix: "Bedarf "
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(57.50% - 8px)"
-                    top: "calc(24.16% - 8px)"
+                    top: "calc(21.85% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -996,7 +1026,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(68.44% - 8px)"
-                    top: "calc(24.16% - 8px)"
+                    top: "calc(21.85% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1010,7 +1040,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(57.50% - 8px)"
-                    top: "calc(26.52% - 8px)"
+                    top: "calc(24.21% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1024,7 +1054,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(68.44% - 8px)"
-                    top: "calc(26.52% - 8px)"
+                    top: "calc(24.21% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1190,7 +1220,7 @@ views:
                 media_query: "(orientation: portrait)"
             card:
               type: picture-elements
-              image: "/local/dashboard/zentral-hoch.svg?v=9bd32b4d"
+              image: "/local/dashboard/zentral-hoch.svg?v=ab8f4b15"
               elements:
                 - type: conditional
                   conditions:
@@ -1199,7 +1229,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-pv_battery.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-pv_battery.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1217,7 +1247,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-battery.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-battery.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1235,7 +1265,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-battery-rev.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-battery-rev.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1253,7 +1283,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat1.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-flat1.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1271,7 +1301,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat2.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-flat2.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1289,7 +1319,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat2-rev.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-flat2-rev.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1307,7 +1337,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat3.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-flat3.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1325,7 +1355,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat3-rev.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-flat3-rev.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1343,7 +1373,25 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-heatpump.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-heatpump.svg?v=ab8f4b15"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.ebusd_ctlv2_hc1actualflowtempdesired_value
+                      above: 20
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-hoch-hc_flow.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1361,7 +1409,7 @@ views:
                       above: 0.1
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-heat.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-heat.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1379,7 +1427,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv3.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-bpv3.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1397,7 +1445,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv1.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-bpv1.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1415,7 +1463,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv2.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-bpv2.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1433,7 +1481,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-grid.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-grid.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1451,7 +1499,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-grid-rev.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-grid-rev.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1469,7 +1517,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-rearhouse.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-rearhouse.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1487,7 +1535,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp1.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-cp1.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1505,7 +1553,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp2.svg?v=9bd32b4d"
+                      image: "/local/dashboard/zentral-hoch-cp2.svg?v=ab8f4b15"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1673,41 +1721,13 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01667)"
                     font-weight: 400
                 - type: state-label
-                  entity: sensor.ebusd_ctlv2_hc1flowtemp_value
-                  prefix: "Vorlauf "
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(52.78% - 8px)"
-                    top: "calc(16.89% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02083)"
-                    font-weight: 400
-                - type: state-label
-                  entity: sensor.ebusd_ctlv2_hc1actualflowtempdesired_value
-                  prefix: "Soll "
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(72.22% - 8px)"
-                    top: "calc(16.89% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02083)"
-                    font-weight: 400
-                - type: state-label
                   entity: sensor.flats_heating_demand
                   prefix: "Bedarf "
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(52.78% - 8px)"
-                    top: "calc(18.36% - 8px)"
+                    top: "calc(16.89% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1723,7 +1743,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(72.22% - 8px)"
-                    top: "calc(18.36% - 8px)"
+                    top: "calc(16.89% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1737,7 +1757,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(52.78% - 8px)"
-                    top: "calc(19.86% - 8px)"
+                    top: "calc(18.39% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1751,7 +1771,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(72.22% - 8px)"
-                    top: "calc(19.86% - 8px)"
+                    top: "calc(18.39% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -2043,7 +2063,7 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(47.22% - 8px)"
+                    left: "calc(53.06% - 8px)"
                     top: "calc(54.72% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
@@ -2056,7 +2076,7 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(54.72% - 8px)"
+                    left: "calc(64.17% - 8px)"
                     top: "calc(54.72% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
@@ -2065,11 +2085,51 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01667)"
                     font-weight: 400
                 - type: state-label
+                  entity: sensor.ebusd_ctlv2_hc1flowtemp_value
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(35.00% - 8px)"
+                    top: "calc(58.21% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02083)"
+                    font-weight: 400
+                - type: state-label
+                  entity: sensor.ebusd_ctlv2_hc1actualflowtempdesired_value
+                  prefix: "Soll "
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(35.00% - 8px)"
+                    top: "calc(59.72% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#8b98a5"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01667)"
+                    font-weight: 400
+                - type: state-label
+                  entity: sensor.ebusd_vr_71_sensordata1_s1_2
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(48.89%)"
+                    top: "calc(63.95% - 8px)"
+                    transform: "translate(-50%, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02083)"
+                    font-weight: 400
+                - type: state-label
                   entity: sensor.ebusd_ctlv2_hwcstoragetemp_value
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(56.94%)"
+                    left: "calc(63.19%)"
                     top: "calc(63.95% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
@@ -2083,7 +2143,7 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(56.94%)"
+                    left: "calc(63.19%)"
                     top: "calc(65.45% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
