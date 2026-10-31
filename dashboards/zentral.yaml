@@ -16,7 +16,7 @@ views:
                 media_query: "(orientation: landscape)"
             card:
               type: picture-elements
-              image: "/local/dashboard/zentral-quer.svg?v=a04b22ff"
+              image: "/local/dashboard/zentral-quer.svg?v=9bd32b4d"
               elements:
                 - type: conditional
                   conditions:
@@ -25,7 +25,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-pv_battery.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-pv_battery.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -43,7 +43,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-battery.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-battery.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -61,7 +61,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-battery-rev.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-battery-rev.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -79,7 +79,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-grid.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-grid.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -97,7 +97,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-grid-rev.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-grid-rev.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -115,7 +115,97 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-rearhouse.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-rearhouse.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat1_power
+                      above: 10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-quer-flat1.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat2_power
+                      above: 10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-quer-flat2.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat2_power
+                      below: -10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-quer-flat2-rev.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat3_power
+                      above: 10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-quer-flat3.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat3_power
+                      below: -10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-quer-flat3-rev.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -133,7 +223,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp1.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-cp1.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -151,7 +241,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp2.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-cp2.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -169,7 +259,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-heatpump.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-heatpump.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -187,7 +277,7 @@ views:
                       above: 0.1
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-heat.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-heat.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -205,7 +295,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv3.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-bpv3.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -223,7 +313,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv1.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-bpv1.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -241,7 +331,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv2.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-quer-bpv2.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -258,7 +348,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(1.88% - 8px)"
-                    top: "calc(4.22% - 8px)"
+                    top: "calc(4.37% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -271,7 +361,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(12.81% - 8px)"
-                    top: "calc(4.22% - 8px)"
+                    top: "calc(4.37% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -285,7 +375,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(23.75% - 8px)"
-                    top: "calc(4.22% - 8px)"
+                    top: "calc(4.37% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -298,7 +388,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(33.12% - 8px)"
-                    top: "calc(4.22% - 8px)"
+                    top: "calc(4.37% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -311,7 +401,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(41.72% - 8px)"
-                    top: "calc(4.22% - 8px)"
+                    top: "calc(4.37% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -330,7 +420,7 @@ views:
                       entity: input_boolean.heating_on_off
                       style:
                         left: "55.62%"
-                        top: "4.33%"
+                        top: "4.49%"
                         color: "#ff7a45"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01125)"
                 - type: conditional
@@ -345,7 +435,7 @@ views:
                       entity: input_boolean.heating_overheating_active
                       style:
                         left: "66.88%"
-                        top: "4.33%"
+                        top: "4.49%"
                         color: "#f5c542"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01125)"
                 - type: conditional
@@ -360,7 +450,7 @@ views:
                       entity: automation.heating_power_auto
                       style:
                         left: "78.59%"
-                        top: "4.33%"
+                        top: "4.49%"
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01125)"
                 - type: conditional
@@ -378,7 +468,7 @@ views:
                       entity: climate.ctlv2_cooling_vaillant
                       style:
                         left: "90.16%"
-                        top: "4.33%"
+                        top: "4.49%"
                         color: "#4ea1ff"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01125)"
                 - type: state-label
@@ -387,7 +477,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(6.72% - 8px)"
-                    top: "calc(12.88% - 8px)"
+                    top: "calc(13.36% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -401,7 +491,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(9.84% - 8px)"
-                    top: "calc(16.02% - 8px)"
+                    top: "calc(16.61% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -414,7 +504,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(59.38% - 8px)"
-                    top: "calc(60.44% - 8px)"
+                    top: "calc(51.38% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -427,7 +517,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(34.22% - 8px)"
-                    top: "calc(21.55% - 8px)"
+                    top: "calc(21.54% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -439,8 +529,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(27.81% - 8px)"
-                    top: "calc(28.33% - 8px)"
+                    left: "calc(20.16% - 8px)"
+                    top: "calc(29.72% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -452,8 +542,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(36.41% - 8px)"
-                    top: "calc(28.74% - 8px)"
+                    left: "calc(30.31% - 8px)"
+                    top: "calc(30.38% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -465,8 +555,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(42.66% - 8px)"
-                    top: "calc(28.74% - 8px)"
+                    left: "calc(36.56% - 8px)"
+                    top: "calc(30.38% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -484,8 +574,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "48.05%"
-                        top: "29.44%"
+                        left: "41.80%"
+                        top: "31.22%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01547)"
                 - type: state-label
@@ -507,7 +597,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(49.69%)"
-                    top: "calc(52.24% - 8px)"
+                    top: "calc(52.09% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -520,20 +610,32 @@ views:
                     action: more-info
                   style:
                     left: "calc(49.69%)"
-                    top: "calc(59.74% - 8px)"
+                    top: "calc(57.11% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
                     font-weight: 400
+                - type: state-icon
+                  entity: lock.haustur
+                  tap_action:
+                    action: toggle
+                    confirmation:
+                      text: "Haustür auf- bzw. zuschließen?"
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "49.69%"
+                    top: "63.94%"
+                    --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
                 - type: state-label
                   entity: sensor.flat2_power
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(20.16% - 8px)"
-                    top: "calc(48.66% - 8px)"
+                    top: "calc(49.53% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -546,7 +648,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(30.31% - 8px)"
-                    top: "calc(49.30% - 8px)"
+                    top: "calc(50.20% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -559,7 +661,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(36.56% - 8px)"
-                    top: "calc(49.30% - 8px)"
+                    top: "calc(50.20% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -578,7 +680,7 @@ views:
                         action: more-info
                       style:
                         left: "41.80%"
-                        top: "50.11%"
+                        top: "51.04%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01547)"
                 - type: conditional
@@ -592,8 +694,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "31.02%"
-                        top: "54.33%"
+                        left: "43.67%"
+                        top: "51.04%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01547)"
                 - type: state-label
@@ -602,7 +704,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(20.16% - 8px)"
-                    top: "calc(62.88% - 8px)"
+                    top: "calc(60.48% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -615,7 +717,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(30.31% - 8px)"
-                    top: "calc(63.52% - 8px)"
+                    top: "calc(61.14% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -628,7 +730,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(36.56% - 8px)"
-                    top: "calc(63.52% - 8px)"
+                    top: "calc(61.14% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -647,7 +749,7 @@ views:
                         action: more-info
                       style:
                         left: "41.80%"
-                        top: "64.33%"
+                        top: "61.98%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01547)"
                 - type: state-label
@@ -656,7 +758,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(11.25% + 8px)"
-                    top: "calc(38.19% - 8px)"
+                    top: "calc(39.60% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -669,7 +771,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(12.03% + 8px)"
-                    top: "calc(53.97% - 8px)"
+                    top: "calc(52.96% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -682,7 +784,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(8.28% - 8px)"
-                    top: "calc(69.97% - 8px)"
+                    top: "calc(61.26% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -694,8 +796,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(17.03% - 8px)"
-                    top: "calc(78.02% - 8px)"
+                    left: "calc(27.03% - 8px)"
+                    top: "calc(68.45% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -707,8 +809,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(21.25% - 8px)"
-                    top: "calc(78.02% - 8px)"
+                    left: "calc(31.25% - 8px)"
+                    top: "calc(68.45% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -720,9 +822,9 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(30.00% - 8px)"
-                    top: "calc(79.97% - 8px)"
-                    transform: "translate(0, 0)"
+                    left: "calc(32.50%)"
+                    top: "calc(82.91% - 8px)"
+                    transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
@@ -734,9 +836,9 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(30.00% - 8px)"
-                    top: "calc(82.24% - 8px)"
-                    transform: "translate(0, 0)"
+                    left: "calc(32.50%)"
+                    top: "calc(85.27% - 8px)"
+                    transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#8b98a5"
@@ -747,9 +849,9 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(42.34% - 8px)"
-                    top: "calc(80.41% - 8px)"
-                    transform: "translate(0, 0)"
+                    left: "calc(49.45%)"
+                    top: "calc(82.91% - 8px)"
+                    transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#3ecf8e"
@@ -760,9 +862,9 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(42.34% - 8px)"
-                    top: "calc(82.68% - 8px)"
-                    transform: "translate(0, 0)"
+                    left: "calc(49.45%)"
+                    top: "calc(85.27% - 8px)"
+                    transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#8b98a5"
@@ -773,8 +875,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(2.19% - 8px)"
-                    top: "calc(79.97% - 8px)"
+                    left: "calc(1.72% - 8px)"
+                    top: "calc(72.55% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -794,8 +896,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "calc(7.50% - 8px)"
-                        top: "calc(79.97% - 8px)"
+                        left: "calc(1.72% - 8px)"
+                        top: "calc(75.08% - 8px)"
                         transform: "translate(0, 0)"
                         line-height: 1
                         white-space: nowrap
@@ -807,8 +909,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(2.19% - 8px)"
-                    top: "calc(82.19% - 8px)"
+                    left: "calc(1.72% - 8px)"
+                    top: "calc(79.46% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -821,8 +923,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(7.50% - 8px)"
-                    top: "calc(82.19% - 8px)"
+                    left: "calc(7.97% - 8px)"
+                    top: "calc(79.46% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -835,8 +937,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(2.19% - 8px)"
-                    top: "calc(84.24% - 8px)"
+                    left: "calc(1.72% - 8px)"
+                    top: "calc(82.51% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -850,7 +952,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(57.50% - 8px)"
-                    top: "calc(21.08% - 8px)"
+                    top: "calc(21.85% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -864,7 +966,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(68.44% - 8px)"
-                    top: "calc(21.08% - 8px)"
+                    top: "calc(21.85% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -878,7 +980,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(57.50% - 8px)"
-                    top: "calc(23.30% - 8px)"
+                    top: "calc(24.16% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -894,7 +996,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(68.44% - 8px)"
-                    top: "calc(23.30% - 8px)"
+                    top: "calc(24.16% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -908,7 +1010,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(57.50% - 8px)"
-                    top: "calc(25.57% - 8px)"
+                    top: "calc(26.52% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -922,7 +1024,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(68.44% - 8px)"
-                    top: "calc(25.57% - 8px)"
+                    top: "calc(26.52% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -935,7 +1037,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(64.06% - 8px)"
-                    top: "calc(80.22% - 8px)"
+                    top: "calc(79.49% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -955,7 +1057,7 @@ views:
                       entity: sensor.wallbox_cp1_power
                       style:
                         left: "78.05%"
-                        top: "70.67%"
+                        top: "61.98%"
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: conditional
@@ -971,7 +1073,7 @@ views:
                       entity: sensor.wallbox_cp2_power
                       style:
                         left: "90.70%"
-                        top: "70.67%"
+                        top: "61.98%"
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: state-label
@@ -980,7 +1082,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(73.28% - 8px)"
-                    top: "calc(88.19% - 8px)"
+                    top: "calc(80.15% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -993,7 +1095,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(78.75% - 8px)"
-                    top: "calc(88.19% - 8px)"
+                    top: "calc(80.15% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1006,7 +1108,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(73.28% - 8px)"
-                    top: "calc(90.46% - 8px)"
+                    top: "calc(82.51% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1025,7 +1127,7 @@ views:
                         action: more-info
                       style:
                         left: "81.41%"
-                        top: "86.67%"
+                        top: "78.57%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01375)"
                 - type: state-label
@@ -1034,7 +1136,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(85.62% - 8px)"
-                    top: "calc(88.19% - 8px)"
+                    top: "calc(80.15% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1047,7 +1149,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(91.09% - 8px)"
-                    top: "calc(88.19% - 8px)"
+                    top: "calc(80.15% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1060,7 +1162,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(85.62% - 8px)"
-                    top: "calc(90.46% - 8px)"
+                    top: "calc(82.51% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1079,7 +1181,7 @@ views:
                         action: more-info
                       style:
                         left: "95.00%"
-                        top: "86.67%"
+                        top: "78.57%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01375)"
           - type: conditional
@@ -1088,7 +1190,7 @@ views:
                 media_query: "(orientation: portrait)"
             card:
               type: picture-elements
-              image: "/local/dashboard/zentral-hoch.svg?v=a04b22ff"
+              image: "/local/dashboard/zentral-hoch.svg?v=9bd32b4d"
               elements:
                 - type: conditional
                   conditions:
@@ -1097,7 +1199,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-pv_battery.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-pv_battery.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1115,7 +1217,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-battery.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-battery.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1133,7 +1235,97 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-battery-rev.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-battery-rev.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat1_power
+                      above: 10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-hoch-flat1.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat2_power
+                      above: 10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-hoch-flat2.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat2_power
+                      below: -10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-hoch-flat2-rev.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat3_power
+                      above: 10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-hoch-flat3.svg?v=9bd32b4d"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat3_power
+                      below: -10
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-hoch-flat3-rev.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1151,7 +1343,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-heatpump.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-heatpump.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1169,7 +1361,7 @@ views:
                       above: 0.1
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-heat.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-heat.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1187,7 +1379,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv3.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-bpv3.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1205,7 +1397,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv1.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-bpv1.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1223,7 +1415,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv2.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-bpv2.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1241,7 +1433,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-grid.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-grid.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1259,7 +1451,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-grid-rev.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-grid-rev.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1277,7 +1469,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-rearhouse.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-rearhouse.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1295,7 +1487,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp1.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-cp1.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1313,7 +1505,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp2.svg?v=a04b22ff"
+                      image: "/local/dashboard/zentral-hoch-cp2.svg?v=9bd32b4d"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1572,7 +1764,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(60.00% - 8px)"
-                    top: "calc(25.29% - 8px)"
+                    top: "calc(24.78% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1584,8 +1776,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(48.61% - 8px)"
-                    top: "calc(29.78% - 8px)"
+                    left: "calc(35.00% - 8px)"
+                    top: "calc(30.00% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1597,8 +1789,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(63.89% - 8px)"
-                    top: "calc(30.05% - 8px)"
+                    left: "calc(53.06% - 8px)"
+                    top: "calc(30.42% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1610,8 +1802,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(75.00% - 8px)"
-                    top: "calc(30.05% - 8px)"
+                    left: "calc(64.17% - 8px)"
+                    top: "calc(30.42% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1629,8 +1821,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "84.58%"
-                        top: "30.51%"
+                        left: "73.47%"
+                        top: "30.96%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02750)"
                 - type: state-label
@@ -1639,7 +1831,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(87.50%)"
-                    top: "calc(44.10% - 8px)"
+                    top: "calc(42.92% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1652,7 +1844,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(87.50%)"
-                    top: "calc(45.60% - 8px)"
+                    top: "calc(44.28% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1665,20 +1857,32 @@ views:
                     action: more-info
                   style:
                     left: "calc(87.50%)"
-                    top: "calc(50.57% - 8px)"
+                    top: "calc(47.48% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02083)"
                     font-weight: 400
+                - type: state-icon
+                  entity: lock.haustur
+                  tap_action:
+                    action: toggle
+                    confirmation:
+                      text: "Haustür auf- bzw. zuschließen?"
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "87.50%"
+                    top: "51.84%"
+                    --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
                 - type: state-label
                   entity: sensor.flat2_power
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(35.00% - 8px)"
-                    top: "calc(43.23% - 8px)"
+                    top: "calc(42.64% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1691,7 +1895,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(53.06% - 8px)"
-                    top: "calc(43.65% - 8px)"
+                    top: "calc(43.07% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1704,7 +1908,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(64.17% - 8px)"
-                    top: "calc(43.65% - 8px)"
+                    top: "calc(43.07% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1723,7 +1927,7 @@ views:
                         action: more-info
                       style:
                         left: "73.47%"
-                        top: "44.19%"
+                        top: "43.60%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02750)"
                 - type: conditional
@@ -1737,8 +1941,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "54.31%"
-                        top: "46.99%"
+                        left: "76.81%"
+                        top: "43.60%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02750)"
                 - type: state-label
@@ -1747,7 +1951,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(35.00% - 8px)"
-                    top: "calc(52.64% - 8px)"
+                    top: "calc(49.63% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1760,7 +1964,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(53.06% - 8px)"
-                    top: "calc(53.07% - 8px)"
+                    top: "calc(50.05% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1773,7 +1977,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(64.17% - 8px)"
-                    top: "calc(53.07% - 8px)"
+                    top: "calc(50.05% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1792,7 +1996,7 @@ views:
                         action: more-info
                       style:
                         left: "73.47%"
-                        top: "53.60%"
+                        top: "50.59%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02750)"
                 - type: state-label
@@ -1814,7 +2018,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(20.56% + 8px)"
-                    top: "calc(46.74% - 8px)"
+                    top: "calc(44.83% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1827,7 +2031,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(13.89% - 8px)"
-                    top: "calc(57.33% - 8px)"
+                    top: "calc(50.12% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1839,8 +2043,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(29.44% - 8px)"
-                    top: "calc(62.66% - 8px)"
+                    left: "calc(47.22% - 8px)"
+                    top: "calc(54.72% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1852,8 +2056,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(36.94% - 8px)"
-                    top: "calc(62.66% - 8px)"
+                    left: "calc(54.72% - 8px)"
+                    top: "calc(54.72% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1865,9 +2069,9 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(52.50% - 8px)"
+                    left: "calc(56.94%)"
                     top: "calc(63.95% - 8px)"
-                    transform: "translate(0, 0)"
+                    transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
@@ -1879,9 +2083,9 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(52.50% - 8px)"
+                    left: "calc(56.94%)"
                     top: "calc(65.45% - 8px)"
-                    transform: "translate(0, 0)"
+                    transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#8b98a5"
@@ -1892,9 +2096,9 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(74.44% - 8px)"
-                    top: "calc(64.24% - 8px)"
-                    transform: "translate(0, 0)"
+                    left: "calc(87.08%)"
+                    top: "calc(63.95% - 8px)"
+                    transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#3ecf8e"
@@ -1905,9 +2109,9 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(74.44% - 8px)"
-                    top: "calc(65.75% - 8px)"
-                    transform: "translate(0, 0)"
+                    left: "calc(87.08%)"
+                    top: "calc(65.45% - 8px)"
+                    transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#8b98a5"
@@ -1918,8 +2122,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(3.06% - 8px)"
-                    top: "calc(63.95% - 8px)"
+                    left: "calc(2.22% - 8px)"
+                    top: "calc(57.33% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1939,8 +2143,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "calc(12.50% - 8px)"
-                        top: "calc(63.95% - 8px)"
+                        left: "calc(2.22% - 8px)"
+                        top: "calc(58.95% - 8px)"
                         transform: "translate(0, 0)"
                         line-height: 1
                         white-space: nowrap
@@ -1952,8 +2156,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(3.06% - 8px)"
-                    top: "calc(65.42% - 8px)"
+                    left: "calc(2.22% - 8px)"
+                    top: "calc(61.74% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1966,8 +2170,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(12.50% - 8px)"
-                    top: "calc(65.42% - 8px)"
+                    left: "calc(13.33% - 8px)"
+                    top: "calc(61.74% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1980,8 +2184,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(3.06% - 8px)"
-                    top: "calc(66.78% - 8px)"
+                    left: "calc(2.22% - 8px)"
+                    top: "calc(63.69% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -2007,7 +2211,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(64.44% - 8px)"
-                    top: "calc(71.91% - 8px)"
+                    top: "calc(72.20% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
