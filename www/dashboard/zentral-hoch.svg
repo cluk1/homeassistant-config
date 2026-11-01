@@ -80,7 +80,7 @@
   <text class="ts" x="316" y="962" text-anchor="middle">Puffer</text>
   <text class="ts" x="443" y="962" text-anchor="middle">Warmwasser</text>
   <text class="ts" x="650" y="962" text-anchor="middle">Batterie</text>
-  <rect x="20" y="1088" width="330" height="150" rx="10" fill="#22303b" stroke="#ff7a45" stroke-width="1.5" />
+  <rect x="20" y="1088" width="330" height="160" rx="10" fill="#22303b" stroke="#ff7a45" stroke-width="1.5" />
   <circle cx="290" cy="1150" r="42" fill="#1b232c" stroke="#8b98a5" stroke-width="2" />
   <circle cx="290" cy="1150" r="31" fill="none" stroke="#3a4652" stroke-width="1" />
   <g fill="#5d6b78">
@@ -89,7 +89,7 @@
     <path d="M290 1150 C284 1130 293 1113 307 1113 C307 1130 298 1141 290 1150Z" transform="rotate(240 290 1150)" />
   </g>
   <circle cx="290" cy="1150" r="7" fill="#8b98a5" />
-  <text class="tk" x="36" y="1120">Wärmepumpe</text>
+  <text class="tk" x="36" y="1118">Wärmepumpe</text>
   <path d="M452 1112v46M438 1122h28M442 1134h20" stroke="#a78bfa" stroke-width="3" fill="none" />
   <text class="tk" x="490" y="1126">Netz</text><line x1="0" y1="1262" x2="720" y2="1262" stroke="#3a4652" stroke-width="2" />
   <polygon points="20,1320 60,1282 360,1282 400,1320" class="roof" opacity=".75" />
