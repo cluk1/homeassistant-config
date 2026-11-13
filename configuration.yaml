@@ -18,7 +18,7 @@ lovelace:
       title: Zentral
       icon: mdi:home-lightning-bolt
       show_in_sidebar: true
-      require_admin: true
+      require_admin: false
 
 # Zustandsverlauf 30 Tage; Langzeitstatistik (Stundenwerte) behält HA unbegrenzt,
 # die Abrechnungsdaten liegen in InfluxDB. Ausgeschlossen sind Werte, die sehr oft
