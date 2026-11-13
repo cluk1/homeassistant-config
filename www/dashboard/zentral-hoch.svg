@@ -60,8 +60,8 @@
   <rect x="130" y="560" width="570" height="240" class="wall" />
   <line x1="130" y1="680" x2="580" y2="680" class="floor" />
   <text class="tk" x="152" y="594">Wohnung 2</text>
-  <text class="ts" x="362" y="594">1</text>
-  <text class="ts" x="418" y="594">2</text>
+  <text class="ts" x="358" y="594">1</text>
+  <text class="ts" x="486" y="594">2</text>
   <text class="tk" x="152" y="714">Wohnung 1</text>
   <rect x="580" y="560" width="120" height="240" fill="#19202a" stroke="#3a4652" stroke-width="1.5" />
   <text class="tk" x="640" y="592" text-anchor="middle">Treppen-</text><text class="tk" x="640" y="614" text-anchor="middle">haus</text>
