@@ -152,7 +152,7 @@
   </g>
   <circle cx="250" cy="642" r="5" fill="#8b98a5" />
   <text class="tk" x="116" y="614">Wärmepumpe</text>
-  <rect x="214" y="717" width="66" height="9" rx="3" fill="#2c3641" />
+  <rect x="152" y="717" width="128" height="9" rx="3" fill="#2c3641" />
   </g>
 
   
