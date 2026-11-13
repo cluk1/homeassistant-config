@@ -131,7 +131,8 @@
   <text class="ts" x="238" y="454" text-anchor="end">BPV1</text><polygon points="204,580 244,552 262,580" fill="url(#pvcell)" stroke="#3a4652" />
   <text class="ts" x="238" y="526" text-anchor="end">BPV2</text><rect x="300" y="582" width="470" height="190" fill="#161c23" stroke="#3a4652" stroke-width="2" />
   <text class="tk" x="312" y="604">Heizungskeller</text>
-  <text class="tk" x="352" y="634">Vorlauf</text>
+  <text class="ts" x="352" y="634">Gebäudekreis</text>
+  <text class="ts" x="352" y="704">Heizkreis</text>
   <rect x="437" y="622" width="30" height="70" rx="10" fill="url(#puf)" stroke="#3a4652" />
   <text class="ts" x="452" y="712" text-anchor="middle">Puffer</text>
   <rect x="540" y="622" width="30" height="70" rx="10" fill="url(#ww)" stroke="#3a4652" />

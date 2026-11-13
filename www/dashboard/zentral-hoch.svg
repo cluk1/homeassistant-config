@@ -52,7 +52,10 @@
   <polygon points="104,560 164,340 670,340 716,560" class="roof" />
   <rect x="190" y="352" width="460" height="74" fill="url(#pvcell)" />
   <rect x="250" y="354" width="270" height="58" rx="8" fill="#0f1318" fill-opacity=".85" />
-  <text class="tk" x="266" y="390">PV Dach</text><rect x="140" y="440" width="440" height="104" rx="6" class="wall" />
+  <text class="tk" x="266" y="390">PV Dach</text>
+  
+  <rect x="532" y="354" width="128" height="58" rx="8" fill="#0f1318" fill-opacity=".85" />
+  <text class="tk" x="546" y="376">Bedarf</text><rect x="140" y="440" width="440" height="104" rx="6" class="wall" />
   <text class="tk" x="152" y="472">Wohnung 3</text>
   <rect x="130" y="560" width="570" height="240" class="wall" />
   <line x1="130" y1="680" x2="580" y2="680" class="floor" />
@@ -71,12 +74,13 @@
   <line x1="0" y1="800" x2="720" y2="800" stroke="#3a4652" stroke-width="2" />
   <rect x="130" y="800" width="570" height="234" fill="#161c23" stroke="#3a4652" stroke-width="2" />
   <text class="tk" x="152" y="834">Keller</text>
+  <text class="ts" x="152" y="862">Gebäudekreis</text>
   <rect x="301" y="860" width="30" height="80" rx="10" fill="url(#puf)" stroke="#3a4652" />
   <rect x="428" y="860" width="30" height="80" rx="10" fill="url(#ww)" stroke="#3a4652" />
   <rect x="520" y="870" width="76" height="60" rx="4" fill="#22303b" stroke="#a78bfa" />
   <text class="ts" x="558" y="908" text-anchor="middle">HAK</text>
   <rect x="635" y="860" width="30" height="46" rx="4" fill="none" stroke="#3ecf8e" stroke-width="2" />
-  <text class="tk" x="152" y="962">Vorlauf</text>
+  <text class="ts" x="152" y="962">Heizkreis</text>
   <text class="ts" x="316" y="962" text-anchor="middle">Puffer</text>
   <text class="ts" x="443" y="962" text-anchor="middle">Warmwasser</text>
   <text class="ts" x="650" y="962" text-anchor="middle">Batterie</text>
