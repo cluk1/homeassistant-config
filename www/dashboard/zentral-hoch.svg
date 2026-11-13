@@ -90,6 +90,8 @@
   </g>
   <circle cx="290" cy="1150" r="7" fill="#8b98a5" />
   <text class="tk" x="36" y="1118">Wärmepumpe</text>
+  <rect x="214" y="1222" width="120" height="16" rx="5" fill="#2c3641" />
+
   <path d="M452 1112v46M438 1122h28M442 1134h20" stroke="#a78bfa" stroke-width="3" fill="none" />
   <text class="tk" x="490" y="1126">Netz</text><line x1="0" y1="1262" x2="720" y2="1262" stroke="#3a4652" stroke-width="2" />
   <polygon points="20,1320 60,1282 360,1282 400,1320" class="roof" opacity=".75" />

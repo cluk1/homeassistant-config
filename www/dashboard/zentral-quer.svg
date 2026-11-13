@@ -128,8 +128,8 @@
   <rect x="246" y="330" width="40" height="28" fill="url(#pvcell)" stroke="#3a4652" />
   <text class="ts" x="238" y="338" text-anchor="end">BPV3</text><rect x="256" y="446" width="44" height="30" fill="url(#pvcell)" stroke="#3a4652" />
   <line x1="248" y1="478" x2="300" y2="478" stroke="#3a4652" stroke-width="3" />
-  <text class="ts" x="248" y="454" text-anchor="end">BPV1 Balkon Süd</text><polygon points="204,580 244,552 262,580" fill="url(#pvcell)" stroke="#3a4652" />
-  <text class="ts" x="200" y="526">BPV2 Garten</text><rect x="300" y="582" width="470" height="190" fill="#161c23" stroke="#3a4652" stroke-width="2" />
+  <text class="ts" x="238" y="454" text-anchor="end">BPV1</text><polygon points="204,580 244,552 262,580" fill="url(#pvcell)" stroke="#3a4652" />
+  <text class="ts" x="238" y="526" text-anchor="end">BPV2</text><rect x="300" y="582" width="470" height="190" fill="#161c23" stroke="#3a4652" stroke-width="2" />
   <text class="tk" x="312" y="604">Heizungskeller</text>
   <text class="tk" x="352" y="634">Vorlauf</text>
   <rect x="437" y="622" width="30" height="70" rx="10" fill="url(#puf)" stroke="#3a4652" />
@@ -153,6 +153,7 @@
   </g>
   <circle cx="250" cy="642" r="5" fill="#8b98a5" />
   <text class="tk" x="116" y="614">Wärmepumpe</text>
+  <rect x="214" y="717" width="66" height="9" rx="3" fill="#2c3641" />
   </g>
 
   
