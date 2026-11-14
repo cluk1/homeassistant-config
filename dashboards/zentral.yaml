@@ -16,7 +16,7 @@ views:
                 media_query: "(orientation: landscape)"
             card:
               type: picture-elements
-              image: "/local/dashboard/zentral-quer.svg?v=797d1e70"
+              image: "/local/dashboard/zentral-quer.svg?v=b74cb8b8"
               elements:
                 - type: conditional
                   conditions:
@@ -25,7 +25,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-pv_battery.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-pv_battery.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -43,7 +43,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-battery.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-battery.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -61,7 +61,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-battery-rev.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-battery-rev.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -79,7 +79,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-grid.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-grid.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -97,7 +97,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-grid-rev.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-grid-rev.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -115,7 +115,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-rearhouse.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-rearhouse.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -133,7 +133,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat1.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-flat1.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -151,7 +151,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat2.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-flat2.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -169,7 +169,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat2-rev.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-flat2-rev.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -187,7 +187,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat3.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-flat3.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -205,7 +205,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat3-rev.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-flat3-rev.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -223,7 +223,7 @@ views:
                       state: "on"
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp1_cable.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-cp1_cable.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -241,7 +241,7 @@ views:
                       state: "on"
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp2_cable.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-cp2_cable.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -259,7 +259,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp1.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-cp1.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -277,7 +277,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp2.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-cp2.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -295,7 +295,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-heatpump.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-heatpump.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -314,7 +314,7 @@ views:
                       below: 1.5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hc_flow.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hc_flow.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -333,7 +333,7 @@ views:
                       below: 2.5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hc_cool.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hc_cool.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -351,7 +351,7 @@ views:
                       state: Warmwasser
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-dhw_load.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-dhw_load.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -369,7 +369,7 @@ views:
                       above: 0.1
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-heat.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-heat.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -387,7 +387,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv3.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-bpv3.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -405,7 +405,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv1.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-bpv1.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -423,7 +423,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv2.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-bpv2.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -442,7 +442,7 @@ views:
                       below: 5.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-01.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-01.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -461,7 +461,7 @@ views:
                       below: 10.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-02.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-02.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -480,7 +480,7 @@ views:
                       below: 15.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-03.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-03.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -499,7 +499,7 @@ views:
                       below: 20.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-04.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-04.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -518,7 +518,7 @@ views:
                       below: 25.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-05.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-05.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -537,7 +537,7 @@ views:
                       below: 30.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-06.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-06.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -556,7 +556,7 @@ views:
                       below: 35.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-07.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-07.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -575,7 +575,7 @@ views:
                       below: 40.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-08.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-08.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -594,7 +594,7 @@ views:
                       below: 45.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-09.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-09.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -613,7 +613,7 @@ views:
                       below: 50.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-10.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-10.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -632,7 +632,7 @@ views:
                       below: 55.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-11.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-11.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -651,7 +651,7 @@ views:
                       below: 60.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-12.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-12.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -670,7 +670,7 @@ views:
                       below: 65.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-13.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-13.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -689,7 +689,7 @@ views:
                       below: 70.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-14.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-14.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -708,7 +708,7 @@ views:
                       below: 75.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-15.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-15.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -727,7 +727,7 @@ views:
                       below: 80.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-16.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-16.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -746,7 +746,7 @@ views:
                       below: 85.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-17.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-17.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -765,7 +765,7 @@ views:
                       below: 90.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-18.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-18.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -784,7 +784,7 @@ views:
                       below: 95.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-19.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-19.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -803,7 +803,7 @@ views:
                       below: 100.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-20.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-20.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -815,12 +815,12 @@ views:
                         transform: "none"
                         pointer-events: "none"
                 - type: state-label
-                  entity: sensor.consumptionpower
+                  entity: sensor.ebusd_ctlv2_displayedoutsidetemp_value
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(1.88% - 8px)"
-                    top: "calc(4.75% - 8px)"
+                    top: "calc(9.33% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -828,58 +828,19 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
                     font-weight: 600
                 - type: state-label
-                  entity: sensor.full_production_power
+                  entity: sensor.meteoswiss_relative_humidity_at_8280
+                  suffix: " rF"
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(12.81% - 8px)"
-                    top: "calc(4.75% - 8px)"
+                    left: "calc(8.12% - 8px)"
+                    top: "calc(10.42% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
-                    color: "#f5c542"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
-                    font-weight: 600
-                - type: state-label
-                  entity: sensor.grid_percentage
-                  suffix: " %"
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(23.75% - 8px)"
-                    top: "calc(4.75% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
-                    font-weight: 600
-                - type: state-label
-                  entity: sensor.esssoc
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(33.12% - 8px)"
-                    top: "calc(4.75% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#3ecf8e"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
-                    font-weight: 600
-                - type: state-label
-                  entity: sensor.solcast_pv_forecast_forecast_next_x_hours
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(41.72% - 8px)"
-                    top: "calc(4.75% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#f5c542"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
-                    font-weight: 600
+                    color: "#8b98a5"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                    font-weight: 400
                 - type: conditional
                   conditions:
                     - entity: input_boolean.heating_on_off
@@ -891,25 +852,23 @@ views:
                         action: more-info
                       entity: input_boolean.heating_on_off
                       style:
-                        left: "55.62%"
-                        top: "4.88%"
+                        left: "2.34%"
+                        top: "17.33%"
                         color: "#ff7a45"
-                        --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01125)"
-                - type: conditional
-                  conditions:
-                    - entity: input_boolean.heating_overheating_active
-                      state: "on"
-                  elements:
-                    - type: icon
-                      icon: mdi:circle
-                      tap_action:
-                        action: more-info
-                      entity: input_boolean.heating_overheating_active
-                      style:
-                        left: "66.88%"
-                        top: "4.88%"
-                        color: "#f5c542"
-                        --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01125)"
+                        --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                - type: image
+                  image: "/local/dashboard/zentral-tap.svg?v=b74cb8b8"
+                  entity: climate.ctlv2_heating_vaillant
+                  tap_action:
+                    action: more-info
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "1.56%"
+                    top: "15.87%"
+                    width: "9.69%"
+                    height: "2.93%"
+                    transform: "none"
                 - type: conditional
                   conditions:
                     - entity: automation.heating_power_auto
@@ -921,10 +880,25 @@ views:
                         action: more-info
                       entity: automation.heating_power_auto
                       style:
-                        left: "78.59%"
-                        top: "4.88%"
+                        left: "2.34%"
+                        top: "21.07%"
                         color: "#3ecf8e"
-                        --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01125)"
+                        --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                - type: conditional
+                  conditions:
+                    - entity: input_boolean.heating_overheating_active
+                      state: "on"
+                  elements:
+                    - type: icon
+                      icon: mdi:circle
+                      tap_action:
+                        action: more-info
+                      entity: input_boolean.heating_overheating_active
+                      style:
+                        left: "2.34%"
+                        top: "24.80%"
+                        color: "#f5c542"
+                        --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: conditional
                   conditions:
                     - entity: climate.ctlv2_cooling_vaillant
@@ -939,44 +913,30 @@ views:
                         action: more-info
                       entity: climate.ctlv2_cooling_vaillant
                       style:
-                        left: "90.16%"
-                        top: "4.88%"
+                        left: "2.34%"
+                        top: "28.53%"
                         color: "#4ea1ff"
-                        --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01125)"
-                - type: state-label
-                  entity: sensor.ebusd_ctlv2_displayedoutsidetemp_value
+                        --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                - type: image
+                  image: "/local/dashboard/zentral-tap.svg?v=b74cb8b8"
+                  entity: climate.ctlv2_cooling_vaillant
                   tap_action:
                     action: more-info
-                  style:
-                    left: "calc(6.72% - 8px)"
-                    top: "calc(14.49% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
-                    font-weight: 600
-                - type: state-label
-                  entity: sensor.meteoswiss_relative_humidity_at_8280
-                  suffix: " rF"
-                  tap_action:
+                  hold_action:
                     action: more-info
                   style:
-                    left: "calc(9.84% - 8px)"
-                    top: "calc(18.02% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#8b98a5"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
-                    font-weight: 400
+                    left: "1.56%"
+                    top: "27.07%"
+                    width: "9.69%"
+                    height: "2.93%"
+                    transform: "none"
                 - type: state-label
                   entity: sensor.flat4_power
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(59.38% - 8px)"
-                    top: "calc(49.49% - 8px)"
+                    left: "calc(70.08% - 8px)"
+                    top: "calc(46.13% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -989,7 +949,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(34.22% - 8px)"
-                    top: "calc(23.37% - 8px)"
+                    top: "calc(9.99% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -997,12 +957,81 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
                     font-weight: 600
                 - type: state-label
+                  entity: sensor.full_production_power
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(19.69% - 8px)"
+                    top: "calc(20.79% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#f5c542"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
+                    font-weight: 600
+                - type: state-label
+                  entity: sensor.solcast_pv_forecast_forecast_next_x_hours
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(27.97% - 8px)"
+                    top: "calc(20.79% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#f5c542"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
+                    font-weight: 600
+                - type: state-label
+                  entity: sensor.grid_percentage
+                  suffix: " %"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(36.88% - 8px)"
+                    top: "calc(20.79% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
+                    font-weight: 600
+                - type: state-label
+                  entity: sensor.flats_heating_demand
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(44.53% - 8px)"
+                    top: "calc(20.79% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
+                    font-weight: 600
+                - type: state-label
+                  entity: climate.ctlv2_heating_vaillant
+                  attribute: temperature
+                  prefix: "Raumsoll "
+                  suffix: " °C"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(44.53% - 8px)"
+                    top: "calc(24.55% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#8b98a5"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                    font-weight: 400
+                - type: state-label
                   entity: sensor.flat3_power
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(20.16% - 8px)"
-                    top: "calc(32.24% - 8px)"
+                    top: "calc(37.99% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1015,26 +1044,51 @@ views:
                     action: more-info
                   style:
                     left: "calc(30.31% - 8px)"
-                    top: "calc(32.96% - 8px)"
+                    top: "calc(38.76% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.flat3_humidity
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(36.56% - 8px)"
-                    top: "calc(32.96% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat3_humidity
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat3_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(36.56% - 8px)"
+                        top: "calc(39.09% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat3_humidity
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat3_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(36.56% - 8px)"
+                        top: "calc(39.09% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
                 - type: conditional
                   conditions:
                     - entity: binary_sensor.flat3_humidity_too_high
@@ -1047,7 +1101,7 @@ views:
                         action: more-info
                       style:
                         left: "41.80%"
-                        top: "33.88%"
+                        top: "39.73%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01547)"
                 - type: state-label
@@ -1056,33 +1110,58 @@ views:
                     action: more-info
                   style:
                     left: "calc(49.69%)"
-                    top: "calc(54.21% - 8px)"
+                    top: "calc(51.16% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(49.69%)"
-                    top: "calc(56.52% - 8px)"
-                    transform: "translate(-50%, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#8b98a5"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(49.69%)"
+                        top: "calc(53.62% - 8px)"
+                        transform: "translate(-50%, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(49.69%)"
+                        top: "calc(53.62% - 8px)"
+                        transform: "translate(-50%, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
                 - type: state-label
                   entity: sensor.comm_power
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(49.69%)"
-                    top: "calc(61.96% - 8px)"
+                    top: "calc(59.43% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1099,7 +1178,7 @@ views:
                     action: more-info
                   style:
                     left: "49.69%"
-                    top: "69.38%"
+                    top: "67.33%"
                     --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01719)"
                 - type: state-label
                   entity: sensor.flat2_power
@@ -1107,7 +1186,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(20.16% - 8px)"
-                    top: "calc(53.74% - 8px)"
+                    top: "calc(50.66% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1120,26 +1199,51 @@ views:
                     action: more-info
                   style:
                     left: "calc(30.31% - 8px)"
-                    top: "calc(54.46% - 8px)"
+                    top: "calc(51.43% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.flat2_humidity
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(36.56% - 8px)"
-                    top: "calc(54.46% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat2_humidity
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat2_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(36.56% - 8px)"
+                        top: "calc(51.75% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat2_humidity
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat2_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(36.56% - 8px)"
+                        top: "calc(51.75% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
                 - type: conditional
                   conditions:
                     - entity: binary_sensor.flat2_humidity_too_high
@@ -1152,7 +1256,7 @@ views:
                         action: more-info
                       style:
                         left: "41.80%"
-                        top: "55.38%"
+                        top: "52.40%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01547)"
                 - type: conditional
@@ -1167,7 +1271,7 @@ views:
                         action: more-info
                       style:
                         left: "43.67%"
-                        top: "55.38%"
+                        top: "52.40%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01547)"
                 - type: conditional
@@ -1184,7 +1288,7 @@ views:
                         action: more-info
                       style:
                         left: "30.98%"
-                        top: "51.19%"
+                        top: "47.93%"
                         color: "#4ea1ff"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01328)"
                 - type: conditional
@@ -1201,7 +1305,7 @@ views:
                         action: more-info
                       style:
                         left: "30.98%"
-                        top: "51.19%"
+                        top: "47.93%"
                         color: "#5d6b78"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01328)"
                 - type: conditional
@@ -1218,7 +1322,7 @@ views:
                         action: more-info
                       style:
                         left: "37.23%"
-                        top: "51.19%"
+                        top: "47.93%"
                         color: "#4ea1ff"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01328)"
                 - type: conditional
@@ -1235,7 +1339,7 @@ views:
                         action: more-info
                       style:
                         left: "37.23%"
-                        top: "51.19%"
+                        top: "47.93%"
                         color: "#5d6b78"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01328)"
                 - type: conditional
@@ -1251,7 +1355,7 @@ views:
                         action: more-info
                       style:
                         left: "30.94%"
-                        top: "58.25%"
+                        top: "55.47%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01375)"
                 - type: conditional
@@ -1266,7 +1370,7 @@ views:
                         action: more-info
                       style:
                         left: "calc(31.88% - 8px)"
-                        top: "calc(57.65% - 8px)"
+                        top: "calc(54.82% - 8px)"
                         transform: "translate(0, 0)"
                         line-height: 1
                         white-space: nowrap
@@ -1286,7 +1390,7 @@ views:
                         action: more-info
                       style:
                         left: "37.19%"
-                        top: "58.25%"
+                        top: "55.47%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01375)"
                 - type: conditional
@@ -1301,7 +1405,7 @@ views:
                         action: more-info
                       style:
                         left: "calc(38.12% - 8px)"
-                        top: "calc(57.65% - 8px)"
+                        top: "calc(54.82% - 8px)"
                         transform: "translate(0, 0)"
                         line-height: 1
                         white-space: nowrap
@@ -1314,7 +1418,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(20.16% - 8px)"
-                    top: "calc(65.62% - 8px)"
+                    top: "calc(63.33% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1327,26 +1431,51 @@ views:
                     action: more-info
                   style:
                     left: "calc(30.31% - 8px)"
-                    top: "calc(66.34% - 8px)"
+                    top: "calc(64.09% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.flat1_humidity
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(36.56% - 8px)"
-                    top: "calc(66.34% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat1_humidity
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat1_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(36.56% - 8px)"
+                        top: "calc(64.42% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat1_humidity
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat1_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(36.56% - 8px)"
+                        top: "calc(64.42% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
                 - type: conditional
                   conditions:
                     - entity: binary_sensor.flat1_humidity_too_high
@@ -1359,7 +1488,7 @@ views:
                         action: more-info
                       style:
                         left: "41.80%"
-                        top: "67.25%"
+                        top: "65.07%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01547)"
                 - type: state-label
@@ -1368,7 +1497,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(11.25% + 8px)"
-                    top: "calc(42.96% - 8px)"
+                    top: "calc(39.16% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1381,7 +1510,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(11.25% + 8px)"
-                    top: "calc(57.46% - 8px)"
+                    top: "calc(54.63% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1394,7 +1523,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(11.25% + 8px)"
-                    top: "calc(66.46% - 8px)"
+                    top: "calc(64.23% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1407,33 +1536,58 @@ views:
                     action: more-info
                   style:
                     left: "calc(30.31% - 8px)"
-                    top: "calc(74.27% - 8px)"
+                    top: "calc(72.55% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#8b98a5"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.my_home_zone_heizung_circuit_0_humidity
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(36.56% - 8px)"
-                    top: "calc(74.27% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#8b98a5"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.my_home_zone_heizung_circuit_0_humidity
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.my_home_zone_heizung_circuit_0_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(36.56% - 8px)"
+                        top: "calc(72.55% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.my_home_zone_heizung_circuit_0_humidity
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.my_home_zone_heizung_circuit_0_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(36.56% - 8px)"
+                        top: "calc(72.55% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                        font-weight: 400
                 - type: state-label
                   entity: sensor.ebusd_ctlv2_hc1flowtemp_value
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(26.25% + 8px)"
-                    top: "calc(78.46% - 8px)"
+                    left: "calc(25.00% + 8px)"
+                    top: "calc(77.03% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1446,8 +1600,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(26.25% + 8px)"
-                    top: "calc(80.77% - 8px)"
+                    left: "calc(25.00% + 8px)"
+                    top: "calc(79.49% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1460,7 +1614,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(17.03% - 8px)"
-                    top: "calc(86.46% - 8px)"
+                    top: "calc(85.56% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1474,7 +1628,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(17.03% - 8px)"
-                    top: "calc(88.77% - 8px)"
+                    top: "calc(88.02% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1487,7 +1641,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(27.97%)"
-                    top: "calc(89.96% - 8px)"
+                    top: "calc(79.96% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1500,7 +1654,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(36.02%)"
-                    top: "calc(89.96% - 8px)"
+                    top: "calc(79.96% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1514,7 +1668,20 @@ views:
                     action: more-info
                   style:
                     left: "calc(36.02%)"
-                    top: "calc(92.52% - 8px)"
+                    top: "calc(89.35% - 8px)"
+                    transform: "translate(-50%, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#8b98a5"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
+                    font-weight: 400
+                - type: state-label
+                  entity: sensor.essdischargepower
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(49.45%)"
+                    top: "calc(76.02% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1527,7 +1694,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(49.45%)"
-                    top: "calc(75.71% - 8px)"
+                    top: "calc(81.03% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1535,29 +1702,16 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
                     font-weight: 400
                 - type: state-label
-                  entity: sensor.essdischargepower
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(49.45%)"
-                    top: "calc(78.02% - 8px)"
-                    transform: "translate(-50%, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#8b98a5"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
-                    font-weight: 400
-                - type: state-label
                   entity: sensor.heatpump_state
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(1.72% - 8px)"
-                    top: "calc(78.71% - 8px)"
+                    left: "calc(1.41% - 8px)"
+                    top: "calc(78.09% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
-                    color: "#ff7a45"
+                    color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
                     font-weight: 400
                 - type: conditional
@@ -1573,8 +1727,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "calc(1.72% - 8px)"
-                        top: "calc(81.46% - 8px)"
+                        left: "calc(1.41% - 8px)"
+                        top: "calc(81.56% - 8px)"
                         transform: "translate(0, 0)"
                         line-height: 1
                         white-space: nowrap
@@ -1586,8 +1740,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(1.72% - 8px)"
-                    top: "calc(86.21% - 8px)"
+                    left: "calc(1.41% - 8px)"
+                    top: "calc(87.43% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1600,8 +1754,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(7.97% - 8px)"
-                    top: "calc(86.21% - 8px)"
+                    left: "calc(7.66% - 8px)"
+                    top: "calc(87.43% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1613,66 +1767,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(1.72% - 8px)"
-                    top: "calc(89.52% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#8b98a5"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
-                    font-weight: 400
-                - type: state-label
-                  entity: sensor.flats_heating_demand
-                  prefix: "Bedarf "
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(57.50% - 8px)"
-                    top: "calc(23.71% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
-                    font-weight: 400
-                - type: state-label
-                  entity: climate.ctlv2_heating_vaillant
-                  attribute: temperature
-                  prefix: "Raumsoll "
-                  suffix: " °C"
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(68.44% - 8px)"
-                    top: "calc(23.71% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01172)"
-                    font-weight: 400
-                - type: state-label
-                  entity: sensor.flats_avg_temperature
-                  prefix: "Wohnungen ⌀ "
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(57.50% - 8px)"
-                    top: "calc(26.27% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#8b98a5"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
-                    font-weight: 400
-                - type: state-label
-                  entity: sensor.flats_min_temperature
-                  prefix: "min "
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(68.44% - 8px)"
-                    top: "calc(26.27% - 8px)"
+                    left: "calc(1.41% - 8px)"
+                    top: "calc(92.29% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1685,7 +1781,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(59.53% - 8px)"
-                    top: "calc(91.50% - 8px)"
+                    top: "calc(90.93% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1705,7 +1801,7 @@ views:
                       entity: sensor.wallbox_cp1_power
                       style:
                         left: "72.19%"
-                        top: "67.25%"
+                        top: "65.07%"
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: conditional
@@ -1721,7 +1817,7 @@ views:
                       entity: sensor.wallbox_cp2_power
                       style:
                         left: "84.84%"
-                        top: "67.25%"
+                        top: "65.07%"
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: state-label
@@ -1730,7 +1826,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(67.42% - 8px)"
-                    top: "calc(86.96% - 8px)"
+                    top: "calc(79.43% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1743,7 +1839,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(72.89% - 8px)"
-                    top: "calc(86.96% - 8px)"
+                    top: "calc(79.43% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1756,7 +1852,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(67.42% - 8px)"
-                    top: "calc(89.52% - 8px)"
+                    top: "calc(82.42% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1774,8 +1870,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "75.55%"
-                        top: "85.25%"
+                        left: "76.80%"
+                        top: "77.33%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01375)"
                 - type: state-label
@@ -1783,8 +1879,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(79.77% - 8px)"
-                    top: "calc(86.96% - 8px)"
+                    left: "calc(79.92% - 8px)"
+                    top: "calc(79.43% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1796,8 +1892,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(85.23% - 8px)"
-                    top: "calc(86.96% - 8px)"
+                    left: "calc(85.39% - 8px)"
+                    top: "calc(79.43% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1809,8 +1905,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(79.77% - 8px)"
-                    top: "calc(89.52% - 8px)"
+                    left: "calc(79.92% - 8px)"
+                    top: "calc(82.42% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -1828,8 +1924,8 @@ views:
                       tap_action:
                         action: more-info
                       style:
-                        left: "89.14%"
-                        top: "85.25%"
+                        left: "89.30%"
+                        top: "77.33%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.01375)"
           - type: conditional
@@ -1838,7 +1934,7 @@ views:
                 media_query: "(orientation: portrait)"
             card:
               type: picture-elements
-              image: "/local/dashboard/zentral-hoch.svg?v=797d1e70"
+              image: "/local/dashboard/zentral-hoch.svg?v=b74cb8b8"
               elements:
                 - type: conditional
                   conditions:
@@ -1847,7 +1943,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-pv_battery.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-pv_battery.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1865,7 +1961,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-battery.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-battery.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1883,7 +1979,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-battery-rev.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-battery-rev.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1901,7 +1997,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-grid.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-grid.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1919,7 +2015,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-grid-rev.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-grid-rev.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1937,7 +2033,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat1.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-flat1.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1955,7 +2051,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat2.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-flat2.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1973,7 +2069,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat2-rev.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-flat2-rev.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -1991,7 +2087,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat3.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-flat3.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2009,7 +2105,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat3-rev.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-flat3-rev.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2027,7 +2123,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-heatpump.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-heatpump.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2045,7 +2141,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-rearhouse.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-rearhouse.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2063,7 +2159,7 @@ views:
                       state: "on"
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp1_cable.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-cp1_cable.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2081,7 +2177,7 @@ views:
                       state: "on"
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp2_cable.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-cp2_cable.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2099,7 +2195,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp1.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-cp1.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2117,7 +2213,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp2.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-cp2.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2135,7 +2231,7 @@ views:
                       above: 0.1
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-heat.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-heat.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2154,7 +2250,7 @@ views:
                       below: 1.5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hc_flow.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hc_flow.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2173,7 +2269,7 @@ views:
                       below: 2.5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hc_cool.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hc_cool.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2191,7 +2287,7 @@ views:
                       state: Warmwasser
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-dhw_load.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-dhw_load.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2209,7 +2305,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv3.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-bpv3.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2227,7 +2323,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv1.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-bpv1.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2245,7 +2341,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv2.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-bpv2.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2264,7 +2360,7 @@ views:
                       below: 5.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-01.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-01.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2283,7 +2379,7 @@ views:
                       below: 10.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-02.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-02.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2302,7 +2398,7 @@ views:
                       below: 15.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-03.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-03.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2321,7 +2417,7 @@ views:
                       below: 20.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-04.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-04.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2340,7 +2436,7 @@ views:
                       below: 25.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-05.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-05.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2359,7 +2455,7 @@ views:
                       below: 30.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-06.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-06.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2378,7 +2474,7 @@ views:
                       below: 35.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-07.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-07.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2397,7 +2493,7 @@ views:
                       below: 40.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-08.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-08.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2416,7 +2512,7 @@ views:
                       below: 45.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-09.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-09.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2435,7 +2531,7 @@ views:
                       below: 50.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-10.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-10.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2454,7 +2550,7 @@ views:
                       below: 55.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-11.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-11.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2473,7 +2569,7 @@ views:
                       below: 60.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-12.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-12.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2492,7 +2588,7 @@ views:
                       below: 65.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-13.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-13.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2511,7 +2607,7 @@ views:
                       below: 70.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-14.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-14.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2530,7 +2626,7 @@ views:
                       below: 75.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-15.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-15.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2549,7 +2645,7 @@ views:
                       below: 80.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-16.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-16.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2568,7 +2664,7 @@ views:
                       below: 85.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-17.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-17.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2587,7 +2683,7 @@ views:
                       below: 90.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-18.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-18.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2606,7 +2702,7 @@ views:
                       below: 95.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-19.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-19.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2625,7 +2721,7 @@ views:
                       below: 100.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-20.svg?v=797d1e70"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-20.svg?v=b74cb8b8"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2637,69 +2733,16 @@ views:
                         transform: "none"
                         pointer-events: "none"
                 - type: state-label
-                  entity: sensor.consumptionpower
+                  entity: sensor.ebusd_ctlv2_displayedoutsidetemp_value
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(3.33% - 8px)"
-                    top: "calc(3.19% - 8px)"
+                    top: "calc(3.64% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
-                    font-weight: 600
-                - type: state-label
-                  entity: sensor.full_production_power
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(36.67% - 8px)"
-                    top: "calc(3.19% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#f5c542"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
-                    font-weight: 600
-                - type: state-label
-                  entity: sensor.grid_percentage
-                  suffix: " %"
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(70.00% - 8px)"
-                    top: "calc(3.19% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
-                    font-weight: 600
-                - type: state-label
-                  entity: sensor.esssoc
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(3.33% - 8px)"
-                    top: "calc(7.92% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#3ecf8e"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
-                    font-weight: 600
-                - type: state-label
-                  entity: sensor.solcast_pv_forecast_forecast_next_x_hours
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(36.67% - 8px)"
-                    top: "calc(7.92% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#f5c542"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
                     font-weight: 600
                 - type: state-label
@@ -2708,27 +2751,14 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(97.22% + 8px)"
-                    top: "calc(6.15% - 8px)"
-                    transform: "translate(-100%, 0)"
+                    left: "calc(20.28% - 8px)"
+                    top: "calc(4.20% - 8px)"
+                    transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#8b98a5"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.ebusd_ctlv2_displayedoutsidetemp_value
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(70.00% - 8px)"
-                    top: "calc(7.92% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
-                    font-weight: 600
                 - type: conditional
                   conditions:
                     - entity: input_boolean.heating_on_off
@@ -2740,10 +2770,23 @@ views:
                         action: more-info
                       entity: input_boolean.heating_on_off
                       style:
-                        left: "6.94%"
-                        top: "12.20%"
+                        left: "43.61%"
+                        top: "2.39%"
                         color: "#ff7a45"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
+                - type: image
+                  image: "/local/dashboard/zentral-tap.svg?v=b74cb8b8"
+                  entity: climate.ctlv2_heating_vaillant
+                  tap_action:
+                    action: more-info
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "41.67%"
+                    top: "1.25%"
+                    width: "26.39%"
+                    height: "2.27%"
+                    transform: "none"
                 - type: conditional
                   conditions:
                     - entity: input_boolean.heating_overheating_active
@@ -2755,8 +2798,8 @@ views:
                         action: more-info
                       entity: input_boolean.heating_overheating_active
                       style:
-                        left: "55.28%"
-                        top: "12.20%"
+                        left: "71.39%"
+                        top: "2.39%"
                         color: "#f5c542"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
                 - type: conditional
@@ -2770,8 +2813,8 @@ views:
                         action: more-info
                       entity: automation.heating_power_auto
                       style:
-                        left: "6.94%"
-                        top: "15.27%"
+                        left: "43.61%"
+                        top: "5.00%"
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
                 - type: conditional
@@ -2788,34 +2831,103 @@ views:
                         action: more-info
                       entity: climate.ctlv2_cooling_vaillant
                       style:
-                        left: "55.28%"
-                        top: "15.27%"
+                        left: "71.39%"
+                        top: "5.00%"
                         color: "#4ea1ff"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
-                - type: state-label
-                  entity: sensor.flats_heating_demand
+                - type: image
+                  image: "/local/dashboard/zentral-tap.svg?v=b74cb8b8"
+                  entity: climate.ctlv2_cooling_vaillant
                   tap_action:
                     action: more-info
+                  hold_action:
+                    action: more-info
                   style:
-                    left: "calc(75.83% - 8px)"
-                    top: "calc(21.03% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
-                    font-weight: 400
+                    left: "69.44%"
+                    top: "3.86%"
+                    width: "26.39%"
+                    height: "2.27%"
+                    transform: "none"
                 - type: state-label
                   entity: sensor.productionpower
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(52.78% - 8px)"
-                    top: "calc(20.12% - 8px)"
+                    top: "calc(9.44% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#f5c542"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
+                    font-weight: 600
+                - type: state-label
+                  entity: sensor.full_production_power
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(26.39% - 8px)"
+                    top: "calc(15.12% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#f5c542"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
+                    font-weight: 600
+                - type: state-label
+                  entity: sensor.solcast_pv_forecast_forecast_next_x_hours
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(61.11% - 8px)"
+                    top: "calc(15.12% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#f5c542"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
+                    font-weight: 600
+                - type: state-label
+                  entity: sensor.flats_heating_demand
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(26.39% - 8px)"
+                    top: "calc(20.01% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
+                    font-weight: 600
+                - type: state-label
+                  entity: climate.ctlv2_heating_vaillant
+                  attribute: temperature
+                  prefix: "Raumsoll "
+                  suffix: " °C"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(26.39% - 8px)"
+                    top: "calc(22.38% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#8b98a5"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                    font-weight: 400
+                - type: state-label
+                  entity: sensor.grid_percentage
+                  suffix: " %"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(61.11% - 8px)"
+                    top: "calc(20.01% - 8px)"
+                    transform: "translate(0, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04722)"
                     font-weight: 600
                 - type: conditional
@@ -2830,7 +2942,7 @@ views:
                         action: more-info
                       style:
                         left: "65.42%"
-                        top: "25.44%"
+                        top: "26.31%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03972)"
                 - type: state-label
@@ -2839,7 +2951,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(21.11% - 8px)"
-                    top: "calc(26.93% - 8px)"
+                    top: "calc(27.85% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -2852,26 +2964,51 @@ views:
                     action: more-info
                   style:
                     left: "calc(45.83% - 8px)"
-                    top: "calc(27.29% - 8px)"
+                    top: "calc(28.22% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.flat3_humidity
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(63.61% - 8px)"
-                    top: "calc(27.29% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat3_humidity
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat3_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(63.61% - 8px)"
+                        top: "calc(28.41% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat3_humidity
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat3_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(63.61% - 8px)"
+                        top: "calc(28.41% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
                 - type: conditional
                   conditions:
                     - entity: binary_sensor.flat2_humidity_too_high
@@ -2884,7 +3021,7 @@ views:
                         action: more-info
                       style:
                         left: "72.78%"
-                        top: "32.14%"
+                        top: "33.24%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03667)"
                 - type: conditional
@@ -2899,7 +3036,7 @@ views:
                         action: more-info
                       style:
                         left: "76.67%"
-                        top: "32.14%"
+                        top: "33.24%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03667)"
                 - type: conditional
@@ -2916,7 +3053,7 @@ views:
                         action: more-info
                       style:
                         left: "47.64%"
-                        top: "32.14%"
+                        top: "33.24%"
                         color: "#4ea1ff"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                 - type: conditional
@@ -2933,7 +3070,7 @@ views:
                         action: more-info
                       style:
                         left: "47.64%"
-                        top: "32.14%"
+                        top: "33.24%"
                         color: "#5d6b78"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                 - type: conditional
@@ -2950,7 +3087,7 @@ views:
                         action: more-info
                       style:
                         left: "65.42%"
-                        top: "32.14%"
+                        top: "33.24%"
                         color: "#4ea1ff"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                 - type: conditional
@@ -2967,7 +3104,7 @@ views:
                         action: more-info
                       style:
                         left: "65.42%"
-                        top: "32.14%"
+                        top: "33.24%"
                         color: "#5d6b78"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                 - type: conditional
@@ -2983,7 +3120,7 @@ views:
                         action: more-info
                       style:
                         left: "47.36%"
-                        top: "36.48%"
+                        top: "37.73%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03361)"
                 - type: conditional
@@ -2998,7 +3135,7 @@ views:
                         action: more-info
                       style:
                         left: "calc(49.44% - 8px)"
-                        top: "calc(35.99% - 8px)"
+                        top: "calc(37.21% - 8px)"
                         transform: "translate(0, 0)"
                         line-height: 1
                         white-space: nowrap
@@ -3018,7 +3155,7 @@ views:
                         action: more-info
                       style:
                         left: "65.14%"
-                        top: "36.48%"
+                        top: "37.73%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03361)"
                 - type: conditional
@@ -3033,7 +3170,7 @@ views:
                         action: more-info
                       style:
                         left: "calc(67.22% - 8px)"
-                        top: "calc(35.99% - 8px)"
+                        top: "calc(37.21% - 8px)"
                         transform: "translate(0, 0)"
                         line-height: 1
                         white-space: nowrap
@@ -3046,7 +3183,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(21.11% - 8px)"
-                    top: "calc(33.74% - 8px)"
+                    top: "calc(34.89% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3059,26 +3196,51 @@ views:
                     action: more-info
                   style:
                     left: "calc(45.83% - 8px)"
-                    top: "calc(34.10% - 8px)"
+                    top: "calc(35.27% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.flat2_humidity
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(63.61% - 8px)"
-                    top: "calc(34.10% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat2_humidity
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat2_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(63.61% - 8px)"
+                        top: "calc(35.45% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat2_humidity
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat2_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(63.61% - 8px)"
+                        top: "calc(35.45% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
                 - type: conditional
                   conditions:
                     - entity: binary_sensor.flat1_humidity_too_high
@@ -3091,7 +3253,7 @@ views:
                         action: more-info
                       style:
                         left: "65.42%"
-                        top: "38.74%"
+                        top: "40.06%"
                         color: "#ffb020"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03972)"
                 - type: state-label
@@ -3100,7 +3262,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(21.11% - 8px)"
-                    top: "calc(40.34% - 8px)"
+                    top: "calc(41.71% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3113,59 +3275,109 @@ views:
                     action: more-info
                   style:
                     left: "calc(45.83% - 8px)"
-                    top: "calc(40.70% - 8px)"
+                    top: "calc(42.08% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.flat1_humidity
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(63.61% - 8px)"
-                    top: "calc(40.70% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat1_humidity
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat1_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(63.61% - 8px)"
+                        top: "calc(42.27% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.flat1_humidity
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.flat1_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(63.61% - 8px)"
+                        top: "calc(42.27% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
                 - type: state-label
                   entity: sensor.heizung_shelly_ht2_temperatur
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(88.89%)"
-                    top: "calc(34.43% - 8px)"
+                    top: "calc(35.61% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(88.89%)"
-                    top: "calc(36.04% - 8px)"
-                    transform: "translate(-50%, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#8b98a5"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(88.89%)"
+                        top: "calc(37.27% - 8px)"
+                        transform: "translate(-50%, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.heizung_shelly_ht2_luftfeuchtigkeit
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(88.89%)"
+                        top: "calc(37.27% - 8px)"
+                        transform: "translate(-50%, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
                 - type: state-label
                   entity: sensor.comm_power
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(88.89%)"
-                    top: "calc(39.38% - 8px)"
+                    top: "calc(40.72% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3182,7 +3394,7 @@ views:
                     action: more-info
                   style:
                     left: "88.89%"
-                    top: "42.64%"
+                    top: "44.09%"
                     --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03889)"
                 - type: state-label
                   entity: sensor.balkonpv3_leistung
@@ -3190,7 +3402,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(2.78% - 8px)"
-                    top: "calc(26.08% - 8px)"
+                    top: "calc(26.97% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3203,7 +3415,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(2.78% - 8px)"
-                    top: "calc(33.22% - 8px)"
+                    top: "calc(34.36% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3216,7 +3428,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(2.78% - 8px)"
-                    top: "calc(39.49% - 8px)"
+                    top: "calc(40.83% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3229,33 +3441,58 @@ views:
                     action: more-info
                   style:
                     left: "calc(45.83% - 8px)"
-                    top: "calc(44.65% - 8px)"
+                    top: "calc(46.17% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                     font-weight: 400
-                - type: state-label
-                  entity: sensor.my_home_zone_heizung_circuit_0_humidity
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(63.61% - 8px)"
-                    top: "calc(44.65% - 8px)"
-                    transform: "translate(0, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
-                    font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.my_home_zone_heizung_circuit_0_humidity
+                      below: 70.001
+                  elements:
+                    - type: state-label
+                      entity: sensor.my_home_zone_heizung_circuit_0_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(63.61% - 8px)"
+                        top: "calc(46.36% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#8b98a5"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
+                - type: conditional
+                  conditions:
+                    - condition: numeric_state
+                      entity: sensor.my_home_zone_heizung_circuit_0_humidity
+                      above: 70
+                  elements:
+                    - type: state-label
+                      entity: sensor.my_home_zone_heizung_circuit_0_humidity
+                      tap_action:
+                        action: more-info
+                      style:
+                        left: "calc(63.61% - 8px)"
+                        top: "calc(46.36% - 8px)"
+                        transform: "translate(0, 0)"
+                        line-height: 1
+                        white-space: nowrap
+                        color: "#ffb020"
+                        font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
+                        font-weight: 400
                 - type: state-label
                   entity: sensor.ebusd_ctlv2_hc1flowtemp_value
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(40.56% + 8px)"
-                    top: "calc(46.85% - 8px)"
+                    left: "calc(36.67% + 8px)"
+                    top: "calc(48.45% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3268,8 +3505,8 @@ views:
                   tap_action:
                     action: more-info
                   style:
-                    left: "calc(40.56% + 8px)"
-                    top: "calc(48.46% - 8px)"
+                    left: "calc(36.67% + 8px)"
+                    top: "calc(50.11% - 8px)"
                     transform: "translate(-100%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3277,12 +3514,51 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
                     font-weight: 400
                 - type: state-label
+                  entity: sensor.ebusd_vr_71_sensordata1_s1_2
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(43.89%)"
+                    top: "calc(50.49% - 8px)"
+                    transform: "translate(-50%, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
+                    font-weight: 400
+                - type: state-label
+                  entity: sensor.ebusd_ctlv2_hwcstoragetemp_value
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(61.53%)"
+                    top: "calc(50.49% - 8px)"
+                    transform: "translate(-50%, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#e6edf3"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
+                    font-weight: 400
+                - type: state-label
+                  entity: sensor.esssoc
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "calc(90.28%)"
+                    top: "calc(49.64% - 8px)"
+                    transform: "translate(-50%, 0)"
+                    line-height: 1
+                    white-space: nowrap
+                    color: "#3ecf8e"
+                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
+                    font-weight: 400
+                - type: state-label
                   entity: sensor.ebusd_hmu_status01_temp
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(21.11% - 8px)"
-                    top: "calc(51.80% - 8px)"
+                    top: "calc(53.56% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3296,38 +3572,12 @@ views:
                     action: more-info
                   style:
                     left: "calc(21.11% - 8px)"
-                    top: "calc(53.40% - 8px)"
+                    top: "calc(55.23% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
                     color: "#8b98a5"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
-                    font-weight: 400
-                - type: state-label
-                  entity: sensor.ebusd_vr_71_sensordata1_s1_2
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(43.89%)"
-                    top: "calc(53.33% - 8px)"
-                    transform: "translate(-50%, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
-                    font-weight: 400
-                - type: state-label
-                  entity: sensor.ebusd_ctlv2_hwcstoragetemp_value
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(61.53%)"
-                    top: "calc(53.33% - 8px)"
-                    transform: "translate(-50%, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#e6edf3"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                     font-weight: 400
                 - type: state-label
                   entity: number.ebusd_ctlv2_hwctempdesired_value
@@ -3336,7 +3586,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(61.53%)"
-                    top: "calc(54.94% - 8px)"
+                    top: "calc(55.34% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3344,25 +3594,12 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
                     font-weight: 400
                 - type: state-label
-                  entity: sensor.esssoc
-                  tap_action:
-                    action: more-info
-                  style:
-                    left: "calc(90.28%)"
-                    top: "calc(53.33% - 8px)"
-                    transform: "translate(-50%, 0)"
-                    line-height: 1
-                    white-space: nowrap
-                    color: "#3ecf8e"
-                    font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
-                    font-weight: 400
-                - type: state-label
                   entity: sensor.essdischargepower
                   tap_action:
                     action: more-info
                   style:
                     left: "calc(90.28%)"
-                    top: "calc(54.94% - 8px)"
+                    top: "calc(55.34% - 8px)"
                     transform: "translate(-50%, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3375,11 +3612,11 @@ views:
                     action: more-info
                   style:
                     left: "calc(5.00% - 8px)"
-                    top: "calc(62.13% - 8px)"
+                    top: "calc(64.24% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
-                    color: "#ff7a45"
+                    color: "#e6edf3"
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03611)"
                     font-weight: 400
                 - type: conditional
@@ -3396,7 +3633,7 @@ views:
                         action: more-info
                       style:
                         left: "calc(5.00% - 8px)"
-                        top: "calc(63.77% - 8px)"
+                        top: "calc(65.95% - 8px)"
                         transform: "translate(0, 0)"
                         line-height: 1
                         white-space: nowrap
@@ -3409,7 +3646,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(5.00% - 8px)"
-                    top: "calc(65.42% - 8px)"
+                    top: "calc(67.65% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3423,7 +3660,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(20.83% - 8px)"
-                    top: "calc(65.42% - 8px)"
+                    top: "calc(67.65% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3436,7 +3673,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(5.00% - 8px)"
-                    top: "calc(67.03% - 8px)"
+                    top: "calc(69.32% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3449,7 +3686,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(68.06% - 8px)"
-                    top: "calc(62.31% - 8px)"
+                    top: "calc(64.44% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3462,7 +3699,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(8.06% - 8px)"
-                    top: "calc(75.28% - 8px)"
+                    top: "calc(77.85% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3482,7 +3719,7 @@ views:
                       entity: sensor.wallbox_cp1_power
                       style:
                         left: "25.00%"
-                        top: "82.09%"
+                        top: "84.89%"
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
                 - type: conditional
@@ -3498,7 +3735,7 @@ views:
                       entity: sensor.wallbox_cp2_power
                       style:
                         left: "72.22%"
-                        top: "82.09%"
+                        top: "84.89%"
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
                 - type: conditional
@@ -3513,7 +3750,7 @@ views:
                         action: more-info
                       style:
                         left: "42.36%"
-                        top: "93.90%"
+                        top: "93.12%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04583)"
                 - type: state-label
@@ -3522,7 +3759,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(5.56% - 8px)"
-                    top: "calc(95.09% - 8px)"
+                    top: "calc(94.81% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3535,7 +3772,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(20.83% - 8px)"
-                    top: "calc(95.09% - 8px)"
+                    top: "calc(94.81% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3548,7 +3785,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(5.56% - 8px)"
-                    top: "calc(96.92% - 8px)"
+                    top: "calc(96.82% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3567,7 +3804,7 @@ views:
                         action: more-info
                       style:
                         left: "90.97%"
-                        top: "93.90%"
+                        top: "93.12%"
                         color: "#c0c8d0"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.04583)"
                 - type: state-label
@@ -3576,7 +3813,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(54.17% - 8px)"
-                    top: "calc(95.09% - 8px)"
+                    top: "calc(94.81% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3589,7 +3826,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(69.44% - 8px)"
-                    top: "calc(95.09% - 8px)"
+                    top: "calc(94.81% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap
@@ -3602,7 +3839,7 @@ views:
                     action: more-info
                   style:
                     left: "calc(54.17% - 8px)"
-                    top: "calc(96.92% - 8px)"
+                    top: "calc(96.82% - 8px)"
                     transform: "translate(0, 0)"
                     line-height: 1
                     white-space: nowrap

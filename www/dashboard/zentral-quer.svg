@@ -1,15 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Inter, Segoe UI, Roboto, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 750" font-family="Inter, Segoe UI, Roboto, sans-serif">
   
   <defs>
     <style>
       .bg { fill: #0f1318; }
-      .wall { fill: #1d252e; stroke: #3a4652; stroke-width: 2; }
-      .roof { fill: #2a2224; stroke: #4a3d40; stroke-width: 2; }
-      .floor { stroke: #3a4652; stroke-width: 1.5; }
+      .wall { fill: #18202a; stroke: #2c3641; stroke-width: 1.5; }
+      .roof { fill: #151a20; stroke: #2c3641; stroke-width: 1.5; }
+      .floor { stroke: #2c3641; stroke-width: 1.5; }
       .win { fill: #141a21; stroke: #3a4652; stroke-width: 1.5; }
       .t { fill: #e6edf3; font-size: 15px; }
       .ts { fill: #8b98a5; font-size: 12px; }
       .tl { fill: #e6edf3; font-size: 22px; font-weight: 600; }
+      .tm { fill: #8b98a5; font-size: 14px; }
       .tk { fill: #8b98a5; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
       .pv { fill: #f5c542; } .grid { fill: #a78bfa; } .bat { fill: #3ecf8e; } .heat { fill: #ff7a45; }
       .dot { fill: #3a4652; }
@@ -25,10 +26,10 @@
       <stop offset="0" stop-color="#ff7a45" stop-opacity=".8" /><stop offset="1" stop-color="#ff7a45" stop-opacity=".25" />
     </linearGradient>
     <pattern id="pvcell" width="22" height="16" patternUnits="userSpaceOnUse">
-      <rect width="21" height="15" fill="#1c2c42" stroke="#f5c542" stroke-opacity=".35" />
+      <rect width="22" height="16" fill="#1b232d" />
     </pattern>
     <pattern id="boards" width="12" height="20" patternUnits="userSpaceOnUse">
-      <rect width="12" height="20" fill="#232b33" /><line x1="0.5" y1="0" x2="0.5" y2="20" stroke="#3a4652" />
+      <rect width="12" height="20" fill="#151a20" />
     </pattern>
     <symbol id="warnicon" viewBox="0 0 20 20"><path d="M10 1 19 18H1Z" fill="#ffb020" /><rect x="9" y="7" width="2" height="6" fill="#0f1318" /><rect x="9" y="14.5" width="2" height="2" fill="#0f1318" /></symbol>
     <symbol id="car" viewBox="0 0 140 64">
@@ -46,37 +47,24 @@
   <rect class="bg" width="1280" height="800" />
 
   
-  <g id="header">
-  <rect width="1280" height="78" fill="#141a21" />
-  <g transform="translate(24,26)">
-    <text class="tk">Verbrauch</text><text class="tk" x="140">PV gesamt</text><text class="tk" x="280">Netzanteil</text><text class="tk" x="400">Batterie</text><text class="tk" x="510">PV nächste 2 h</text></g>
-  <g transform="translate(696,24)">
-    <rect width="132" height="30" rx="15" fill="#22303b" /><circle cx="16" cy="15" r="6" class="dot" /><text class="t" x="30" y="20">Heizung ein</text>
-    <rect x="144" width="138" height="30" rx="15" fill="#22303b" /><circle cx="160" cy="15" r="6" class="dot" /><text class="t" x="174" y="20">Überheizung</text>
-    <rect x="294" width="136" height="30" rx="15" fill="#22303b" /><circle cx="310" cy="15" r="6" class="dot" /><text class="t" x="324" y="20">Heizregelung</text>
-    <rect x="442" width="124" height="30" rx="15" fill="#22303b" /><circle cx="458" cy="15" r="6" class="dot" /><text class="t" x="472" y="20">Kühlung</text>
-  </g>
-  </g>
+  <text class="tk" x="24" y="60">Außen</text>
+  <g transform="translate(24,130)">
+    <circle cx="6" cy="0" r="5" class="dot" /><text class="tm" x="18" y="5">Heizung ein</text>
+    <circle cx="6" cy="28" r="5" class="dot" /><text class="tm" x="18" y="33">Heizregelung</text>
+    <circle cx="6" cy="56" r="5" class="dot" /><text class="tm" x="18" y="61">Überheizung</text>
+    <circle cx="6" cy="84" r="5" class="dot" /><text class="tm" x="18" y="89">Kühlung</text>
+    </g>
 
-  
-  <g transform="translate(34,112)">
-    <circle cx="22" cy="22" r="16" class="pv" opacity=".9" />
-    <text class="ts" x="52" y="42">außen</text></g>
-
-  <g id="scene" transform="translate(-94,0)">
+  <g id="scene" transform="translate(-94,-50)">
   
   <g id="ground">
   <line x1="0" y1="582" x2="1530" y2="582" stroke="#3a4652" stroke-width="2" />
-  <rect x="280" y="583" width="510" height="210" fill="#12171d" />
   </g>
 
   
-  <g id="rearhouse" transform="translate(0,-50)">
-  <polygon points="822,407 845,372 1065,372 1088,407" class="roof" opacity=".75" />
-  <g fill="#1c2c42" stroke="#3a4652">
-    <rect x="880" y="378" width="16" height="22" /><rect x="960" y="378" width="16" height="22" /><rect x="982" y="378" width="16" height="22" /><rect x="1025" y="378" width="14" height="22" />
-  </g>
-  <rect x="830" y="407" width="250" height="95" fill="url(#boards)" stroke="#2f3943" stroke-width="2" opacity=".8" />
+  <g id="rearhouse" transform="translate(137,-50)">
+  <polygon points="822,407 845,372 1079,372 1102,407" class="roof" opacity=".75" />
+  <rect x="830" y="407" width="264" height="95" fill="url(#boards)" stroke="#2f3943" stroke-width="2" opacity=".8" />
   <rect x="842" y="416" width="190" height="78" rx="6" class="wall" />
   <g transform="translate(854,434)">
     <text class="tk">Hinterhaus · Wohnung 4</text>
@@ -87,37 +75,23 @@
   
   <g id="fronthouse">
   
-  <polygon points="276,392 340,164 730,164 794,392" class="roof" />
+  <polygon points="276,297 340,100 730,100 794,297" class="roof" />
   <g fill="url(#pvcell)">
-    <rect x="354" y="178" width="362" height="62" />
-    <rect x="318" y="290" width="40" height="92" />
-    <rect x="420" y="290" width="70" height="92" />
-    <rect x="552" y="290" width="70" height="92" />
-    <rect x="684" y="290" width="74" height="92" />
+    <rect x="354" y="112" width="362" height="46" />
   </g>
   
-  <rect x="450" y="178" width="170" height="38" rx="6" fill="#0f1318" fill-opacity=".85" />
-  <text class="tk" x="464" y="202">PV Dach</text>
-  <use href="#dormer" x="358" y="290" width="60" height="92" />
-  <use href="#dormer" x="490" y="290" width="60" height="92" />
-  <use href="#dormer" x="622" y="290" width="60" height="92" />
-  
-  <rect x="318" y="224" width="420" height="62" rx="6" class="wall" />
-  <g transform="translate(352,224)">
-    <text class="tk" y="20">Wohnung 3</text>
-    </g>
-
-  
-  <rect x="300" y="392" width="470" height="190" class="wall" />
+  <rect x="450" y="115" width="170" height="40" rx="6" fill="#0f1318" fill-opacity=".85" />
+  <text class="tk" x="464" y="140">PV Dach</text>
+  <text class="tk" x="346" y="196">PV gesamt</text><text class="tk" x="452" y="196">PV nächste 2 h</text><text class="tk" x="566" y="196">Netzanteil</text><text class="tk" x="664" y="196">Heizbedarf</text><rect x="300" y="297" width="470" height="285" class="wall" />
+  <line x1="300" y1="392" x2="690" y2="392" class="floor" />
   <line x1="300" y1="487" x2="690" y2="487" class="floor" />
-  <g class="win">
-    <rect x="316" y="404" width="22" height="30" /><rect x="316" y="499" width="22" height="30" />
-  </g>
+  <g transform="translate(352,297)">
+    <text class="tk" y="22">Wohnung 3</text>
+    </g>
   
-  <rect x="690" y="392" width="80" height="190" fill="#19202a" stroke="#3a4652" stroke-width="1.5" />
+  <rect x="690" y="297" width="80" height="285" fill="#19202a" stroke="#2c3641" stroke-width="1.5" />
   <text class="tk" x="730" y="410" text-anchor="middle">Treppen-</text><text class="tk" x="730" y="423" text-anchor="middle">haus</text>
-  <text class="tk" x="730" y="490" text-anchor="middle">Allgemein</text><rect x="712" y="528" width="36" height="54" class="win" />
-  <g transform="translate(352,392)">
+  <text class="tk" x="730" y="490" text-anchor="middle">Allgemein</text><g transform="translate(352,392)">
     <text class="tk" y="22">Wohnung 2</text>
     <text class="ts" x="150" y="22">1</text>
     <text class="ts" x="230" y="22">2</text>
@@ -131,19 +105,20 @@
   <text class="ts" x="238" y="338" text-anchor="end">BPV3</text><rect x="256" y="446" width="44" height="30" fill="url(#pvcell)" stroke="#3a4652" />
   <line x1="248" y1="478" x2="300" y2="478" stroke="#3a4652" stroke-width="3" />
   <text class="ts" x="238" y="454" text-anchor="end">BPV1</text><polygon points="204,580 244,552 262,580" fill="url(#pvcell)" stroke="#3a4652" />
-  <text class="ts" x="238" y="526" text-anchor="end">BPV2</text><rect x="300" y="582" width="470" height="190" fill="#161c23" stroke="#3a4652" stroke-width="2" />
+  <text class="ts" x="238" y="526" text-anchor="end">BPV2</text><rect x="300" y="582" width="470" height="190" class="wall" />
   <text class="tk" x="312" y="604">Heizungskeller</text>
-  <rect x="437" y="622" width="30" height="70" rx="10" fill="url(#puf)" stroke="#3a4652" />
+  <rect x="424" y="622" width="56" height="70" rx="12" fill="url(#puf)" stroke="#3a4652" />
   <text class="ts" x="452" y="712" text-anchor="middle">Puffer</text>
-  <rect x="540" y="622" width="30" height="70" rx="10" fill="url(#ww)" stroke="#3a4652" />
+  <rect x="527" y="622" width="56" height="70" rx="12" fill="url(#ww)" stroke="#3a4652" />
   <text class="ts" x="555" y="712" text-anchor="middle">Warmwasser</text>
-  <text class="ts" x="727" y="600" text-anchor="middle">Batterie</text>
-  <rect x="712" y="642" width="30" height="46" rx="4" fill="none" stroke="#3ecf8e" stroke-width="2" />
-  <rect x="640" y="700" width="100" height="56" rx="4" fill="#22303b" stroke="#a78bfa" />
+  <text class="ts" x="727" y="612" text-anchor="middle">Batterie</text>
+  <rect x="701" y="640" width="52" height="48" rx="6" fill="#1b232d" stroke="#3ecf8e" stroke-opacity=".6" stroke-width="2" />
+  <rect x="640" y="700" width="100" height="56" rx="4" fill="#1b232d" stroke="#5d6b78" />
   <text class="ts" x="668" y="733" text-anchor="middle">HAK</text>
 
   
-  <rect x="104" y="594" width="188" height="150" rx="8" fill="#22303b" stroke="#ff7a45" stroke-width="1.5" />
+  <g transform="translate(-4,0)">
+  <rect x="104" y="594" width="188" height="178" rx="8" class="wall" />
   
   <circle cx="250" cy="642" r="30" fill="#1b232c" stroke="#8b98a5" stroke-width="2" />
   <circle cx="250" cy="642" r="22" fill="none" stroke="#3a4652" stroke-width="1" />
@@ -154,17 +129,13 @@
   </g>
   <circle cx="250" cy="642" r="5" fill="#8b98a5" />
   <text class="tk" x="116" y="614">Wärmepumpe</text>
-  <rect x="152" y="717" width="128" height="9" rx="3" fill="#2c3641" />
+  <rect x="152" y="743" width="128" height="9" rx="3" fill="#2c3641" />
+  </g>
   </g>
 
   
-  <g id="heatcircuit" transform="translate(830,180)">
-    <text class="tk">Heizkreis</text>
-    </g>
-
-  
   <g id="grid" transform="translate(812,710)">
-    <path d="M18 0v46M4 10h28M8 22h20" stroke="#a78bfa" stroke-width="3" fill="none" />
+    <path d="M18 0v46M4 10h28M8 22h20" stroke="#5d6b78" stroke-width="3" fill="none" />
     <text class="tk" x="44" y="12">Netz</text></g>
 
   
@@ -179,10 +150,10 @@
   <rect x="1424" y="620" width="30" height="44" rx="5" fill="#141a21" stroke="#c0c8d0" />
   <circle cx="1439" cy="636" r="5" class="dot" />
 
-  <use href="#car" x="1212" y="700" width="134" height="62" />
-  <text class="tk" x="1216" y="786">links · MG4</text>
-  <use href="#car" x="1370" y="700" width="134" height="62" />
-  <text class="tk" x="1374" y="786">rechts · Škoda</text>
+  <rect x="1206" y="712" width="148" height="78" rx="8" class="wall" />
+  <text class="tk" x="1216" y="734">links · MG4</text>
+  <rect x="1366" y="712" width="148" height="78" rx="8" class="wall" />
+  <text class="tk" x="1376" y="734">rechts · Škoda</text>
   </g>
 
   
