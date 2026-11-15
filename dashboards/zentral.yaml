@@ -16,7 +16,7 @@ views:
                 media_query: "(orientation: landscape)"
             card:
               type: picture-elements
-              image: "/local/dashboard/zentral-quer.svg?v=0b098a3e"
+              image: "/local/dashboard/zentral-quer.svg?v=21b0b15c"
               elements:
                 - type: conditional
                   conditions:
@@ -25,7 +25,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-pv_battery.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-pv_battery.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -43,7 +43,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-battery.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-battery.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -61,7 +61,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-battery-rev.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-battery-rev.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -79,7 +79,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-grid.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-grid.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -97,7 +97,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-grid-rev.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-grid-rev.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -115,7 +115,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-rearhouse.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-rearhouse.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -133,7 +133,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat1.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-flat1.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -151,7 +151,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat2.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-flat2.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -169,7 +169,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat2-rev.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-flat2-rev.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -187,7 +187,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat3.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-flat3.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -205,7 +205,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-flat3-rev.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-flat3-rev.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -223,7 +223,7 @@ views:
                       state: "on"
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp1_cable.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-cp1_cable.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -241,7 +241,7 @@ views:
                       state: "on"
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp2_cable.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-cp2_cable.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -259,7 +259,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp1.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-cp1.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -277,7 +277,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-cp2.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-cp2.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -295,7 +295,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-heatpump.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-heatpump.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -314,7 +314,7 @@ views:
                       below: 1.5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hc_flow.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hc_flow.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -333,7 +333,7 @@ views:
                       below: 2.5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hc_cool.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hc_cool.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -351,7 +351,7 @@ views:
                       state: Warmwasser
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-dhw_load.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-dhw_load.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -364,12 +364,32 @@ views:
                         pointer-events: "none"
                 - type: conditional
                   conditions:
-                    - condition: numeric_state
-                      entity: sensor.heatpump_currentoutputpower
-                      above: 0.1
+                    - condition: state
+                      entity: sensor.heatpump_state
+                      state:
+                        - Heizen
+                        - Warmwasser
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-heat.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-heat.svg?v=21b0b15c"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: state
+                      entity: sensor.heatpump_state
+                      state: "Kühlen"
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-quer-heat_cool.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -387,7 +407,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv3.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-bpv3.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -405,7 +425,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv1.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-bpv1.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -423,7 +443,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-bpv2.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-bpv2.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -442,7 +462,7 @@ views:
                       below: 5.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-01.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-01.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -461,7 +481,7 @@ views:
                       below: 10.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-02.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-02.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -480,7 +500,7 @@ views:
                       below: 15.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-03.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-03.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -499,7 +519,7 @@ views:
                       below: 20.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-04.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-04.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -518,7 +538,7 @@ views:
                       below: 25.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-05.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-05.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -537,7 +557,7 @@ views:
                       below: 30.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-06.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-06.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -556,7 +576,7 @@ views:
                       below: 35.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-07.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-07.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -575,7 +595,7 @@ views:
                       below: 40.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-08.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-08.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -594,7 +614,7 @@ views:
                       below: 45.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-09.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-09.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -613,7 +633,7 @@ views:
                       below: 50.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-10.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-10.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -632,7 +652,7 @@ views:
                       below: 55.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-11.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-11.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -651,7 +671,7 @@ views:
                       below: 60.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-12.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-12.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -670,7 +690,7 @@ views:
                       below: 65.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-13.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-13.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -689,7 +709,7 @@ views:
                       below: 70.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-14.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-14.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -708,7 +728,7 @@ views:
                       below: 75.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-15.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-15.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -727,7 +747,7 @@ views:
                       below: 80.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-16.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-16.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -746,7 +766,7 @@ views:
                       below: 85.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-17.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-17.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -765,7 +785,7 @@ views:
                       below: 90.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-18.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-18.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -784,7 +804,7 @@ views:
                       below: 95.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-19.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-19.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -803,7 +823,7 @@ views:
                       below: 100.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-quer-hp_modulation-20.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-quer-hp_modulation-20.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -857,7 +877,7 @@ views:
                         color: "#ff7a45"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: climate.ctlv2_heating_vaillant
                   tap_action:
                     action: more-info
@@ -885,7 +905,7 @@ views:
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: automation.heating_power_auto
                   tap_action:
                     action: more-info
@@ -913,7 +933,7 @@ views:
                         color: "#f5c542"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: input_boolean.heating_overheating_active
                   tap_action:
                     action: more-info
@@ -944,7 +964,7 @@ views:
                         color: "#4ea1ff"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: climate.ctlv2_cooling_vaillant
                   tap_action:
                     action: more-info
@@ -1702,7 +1722,7 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.00937)"
                     font-weight: 400
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: water_heater.ctlv2_hotwater_vaillant
                   tap_action:
                     action: more-info
@@ -1973,7 +1993,7 @@ views:
                 media_query: "(orientation: portrait)"
             card:
               type: picture-elements
-              image: "/local/dashboard/zentral-hoch.svg?v=0b098a3e"
+              image: "/local/dashboard/zentral-hoch.svg?v=21b0b15c"
               elements:
                 - type: conditional
                   conditions:
@@ -1982,7 +2002,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-pv_battery.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-pv_battery.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2000,7 +2020,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-battery.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-battery.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2018,7 +2038,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-battery-rev.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-battery-rev.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2036,7 +2056,7 @@ views:
                       above: 30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-grid.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-grid.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2054,7 +2074,7 @@ views:
                       below: -30
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-grid-rev.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-grid-rev.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2072,7 +2092,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat1.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-flat1.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2090,7 +2110,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat2.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-flat2.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2108,7 +2128,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat2-rev.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-flat2-rev.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2126,7 +2146,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat3.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-flat3.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2144,7 +2164,7 @@ views:
                       below: -10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-flat3-rev.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-flat3-rev.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2162,7 +2182,7 @@ views:
                       above: 50
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-heatpump.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-heatpump.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2180,7 +2200,7 @@ views:
                       above: 10
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-rearhouse.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-rearhouse.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2198,7 +2218,7 @@ views:
                       state: "on"
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp1_cable.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-cp1_cable.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2216,7 +2236,7 @@ views:
                       state: "on"
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp2_cable.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-cp2_cable.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2234,7 +2254,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp1.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-cp1.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2252,7 +2272,7 @@ views:
                       above: 0.05
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-cp2.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-cp2.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2265,12 +2285,32 @@ views:
                         pointer-events: "none"
                 - type: conditional
                   conditions:
-                    - condition: numeric_state
-                      entity: sensor.heatpump_currentoutputpower
-                      above: 0.1
+                    - condition: state
+                      entity: sensor.heatpump_state
+                      state:
+                        - Heizen
+                        - Warmwasser
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-heat.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-heat.svg?v=21b0b15c"
+                      tap_action:
+                        action: "none"
+                      hold_action:
+                        action: "none"
+                      style:
+                        left: 0
+                        top: 0
+                        width: "100%"
+                        transform: "none"
+                        pointer-events: "none"
+                - type: conditional
+                  conditions:
+                    - condition: state
+                      entity: sensor.heatpump_state
+                      state: "Kühlen"
+                  elements:
+                    - type: image
+                      image: "/local/dashboard/zentral-hoch-heat_cool.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2289,7 +2329,7 @@ views:
                       below: 1.5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hc_flow.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hc_flow.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2308,7 +2348,7 @@ views:
                       below: 2.5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hc_cool.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hc_cool.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2326,7 +2366,7 @@ views:
                       state: Warmwasser
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-dhw_load.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-dhw_load.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2344,7 +2384,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv3.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-bpv3.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2362,7 +2402,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv1.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-bpv1.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2380,7 +2420,7 @@ views:
                       above: 5
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-bpv2.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-bpv2.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2399,7 +2439,7 @@ views:
                       below: 5.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-01.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-01.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2418,7 +2458,7 @@ views:
                       below: 10.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-02.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-02.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2437,7 +2477,7 @@ views:
                       below: 15.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-03.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-03.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2456,7 +2496,7 @@ views:
                       below: 20.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-04.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-04.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2475,7 +2515,7 @@ views:
                       below: 25.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-05.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-05.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2494,7 +2534,7 @@ views:
                       below: 30.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-06.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-06.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2513,7 +2553,7 @@ views:
                       below: 35.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-07.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-07.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2532,7 +2572,7 @@ views:
                       below: 40.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-08.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-08.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2551,7 +2591,7 @@ views:
                       below: 45.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-09.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-09.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2570,7 +2610,7 @@ views:
                       below: 50.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-10.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-10.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2589,7 +2629,7 @@ views:
                       below: 55.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-11.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-11.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2608,7 +2648,7 @@ views:
                       below: 60.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-12.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-12.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2627,7 +2667,7 @@ views:
                       below: 65.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-13.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-13.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2646,7 +2686,7 @@ views:
                       below: 70.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-14.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-14.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2665,7 +2705,7 @@ views:
                       below: 75.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-15.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-15.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2684,7 +2724,7 @@ views:
                       below: 80.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-16.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-16.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2703,7 +2743,7 @@ views:
                       below: 85.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-17.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-17.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2722,7 +2762,7 @@ views:
                       below: 90.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-18.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-18.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2741,7 +2781,7 @@ views:
                       below: 95.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-19.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-19.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2760,7 +2800,7 @@ views:
                       below: 100.001
                   elements:
                     - type: image
-                      image: "/local/dashboard/zentral-hoch-hp_modulation-20.svg?v=0b098a3e"
+                      image: "/local/dashboard/zentral-hoch-hp_modulation-20.svg?v=21b0b15c"
                       tap_action:
                         action: "none"
                       hold_action:
@@ -2814,7 +2854,7 @@ views:
                         color: "#ff7a45"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: climate.ctlv2_heating_vaillant
                   tap_action:
                     action: more-info
@@ -2842,7 +2882,7 @@ views:
                         color: "#f5c542"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: input_boolean.heating_overheating_active
                   tap_action:
                     action: more-info
@@ -2870,7 +2910,7 @@ views:
                         color: "#3ecf8e"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: automation.heating_power_auto
                   tap_action:
                     action: more-info
@@ -2901,7 +2941,7 @@ views:
                         color: "#4ea1ff"
                         --mdc-icon-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.02667)"
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: climate.ctlv2_cooling_vaillant
                   tap_action:
                     action: more-info
@@ -3659,7 +3699,7 @@ views:
                     font-size: "calc((100vw - var(--mdc-drawer-width, 0px)) * 0.03056)"
                     font-weight: 400
                 - type: image
-                  image: "/local/dashboard/zentral-tap.svg?v=0b098a3e"
+                  image: "/local/dashboard/zentral-tap.svg?v=21b0b15c"
                   entity: water_heater.ctlv2_hotwater_vaillant
                   tap_action:
                     action: more-info
