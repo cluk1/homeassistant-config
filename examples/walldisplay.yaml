@@ -93,23 +93,23 @@ views:
             type: sensor
             detail: 2
             name: Außentemperatur
-            entity: sensor.ebusd_ctlv2_displayedoutsidetemp_tempv
+            entity: sensor.ebusd_ctlv2_displayedoutsidetemp_value
             grid_options:
               columns: full
               rows: 3
           - type: entities
             entities:
-              - entity: sensor.flat1_temperatur
+              - entity: !secret flat1_temperature
                 name: Temperatur Wohnung
-              - entity: sensor.flat1_luftfeuchtigkeit
+              - entity: sensor.flat1_humidity
                 name: Luftfeuchte Wohnung
-              - entity: binary_sensor.ebusd_ctlv2_hc1pumpstatus_onoff
+              - entity: sensor.ebusd_ctlv2_hc1pumpstatus_value
                 name: Heizung
-              - entity: sensor.ebusd_hmu_statuscode
+              - entity: sensor.heatpump_state
                 name: Wärmepumpe
-              - entity: sensor.ebusd_ctlv2_hwcstoragetemp_tempv
+              - entity: sensor.ebusd_ctlv2_hwcstoragetemp_value
                 name: Warmwasserspeicher
-              - entity: sensor.ebusd_ctlv2_hc1flowtemp_tempv
+              - entity: sensor.ebusd_ctlv2_hc1flowtemp_value
                 name: Heizungsvorlauf
               - entity: sensor.heatpump_meter_day
                 name: Stromverbrauch heute
