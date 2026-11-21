@@ -1,0 +1,85 @@
+# Heizkörper-Thermostate (FRITZ!DECT, Akkus): Warnung, wenn sich eines abmeldet.
+#
+# Meldet sich ein Thermostat bei der FRITZ!Box ab (meist leere Akkus), wird seine
+# climate-Entity "unavailable". Der Sensor zählt diese Thermostate und führt sie im
+# Attribut "entities". Die Thermostate werden über die Integration gefunden, damit
+# neue oder umbenannte Geräte ohne Änderung hier mitgezählt werden (und keine
+# Raumnamen im Repo stehen).
+#
+# Push an den Admin und persistente Benachrichtigung, wenn ein Thermostat 15 min
+# fehlt, Entwarnung, wenn es wieder da ist. Nach einem HA-Neustart wird ein
+# weiterhin fehlendes Thermostat einmal erneut gemeldet.
+
+template:
+  - sensor:
+      - unique_id: thermostats_offline
+        default_entity_id: sensor.thermostats_offline
+        name: Thermostate offline
+        icon: mdi:radiator-off
+        state: >
+          {{ integration_entities('fritzbox') | select('match', 'climate\.')
+             | select('is_state', 'unavailable') | list | count }}
+        attributes:
+          entities: >
+            {{ integration_entities('fritzbox') | select('match', 'climate\.')
+               | select('is_state', 'unavailable') | sort | list }}
+
+automation:
+  - id: heating_thermostats_offline
+    alias: Heating Thermostats Offline
+    description: ""
+    triggers:
+      - trigger: state
+        entity_id: sensor.thermostats_offline
+        attribute: entities
+        for: "00:15:00"
+    conditions:
+      - condition: template
+        value_template: >
+          {{ trigger.to_state is not none
+             and trigger.to_state.state not in ['unknown', 'unavailable'] }}
+    variables:
+      before: >
+        {{ (trigger.from_state.attributes.entities | default([], true))
+           if trigger.from_state is not none else [] }}
+      now_offline: "{{ trigger.to_state.attributes.entities | default([], true) }}"
+      went_offline: "{{ now_offline | reject('in', before) | list }}"
+      came_back: "{{ before | reject('in', now_offline) | list }}"
+    actions:
+      - if:
+          - condition: template
+            value_template: "{{ went_offline | count > 0 }}"
+        then:
+          - action: !secret notify_admin
+            data:
+              title: Thermostat offline
+              message: >
+                {% for e in went_offline %}{{ state_attr(e, 'friendly_name') or e }}{{ ', ' if not loop.last }}{% endfor %}
+                seit 15 min nicht erreichbar – Akkus leer?
+      - if:
+          - condition: template
+            value_template: "{{ came_back | count > 0 }}"
+        then:
+          - action: !secret notify_admin
+            data:
+              title: Thermostat wieder da
+              message: >
+                {% for e in came_back %}{{ state_attr(e, 'friendly_name') or e }}{{ ', ' if not loop.last }}{% endfor %}
+                wieder erreichbar
+      - if:
+          - condition: template
+            value_template: "{{ now_offline | count > 0 }}"
+        then:
+          - action: persistent_notification.create
+            data:
+              notification_id: thermostats_offline
+              title: Thermostate offline
+              message: >
+                Nicht erreichbar:
+                {% for e in now_offline %}{{ state_attr(e, 'friendly_name') or e }}{{ ', ' if not loop.last }}{% endfor %}
+        else:
+          - action: persistent_notification.dismiss
+            data:
+              notification_id: thermostats_offline
+    mode: queued
+    max: 5
