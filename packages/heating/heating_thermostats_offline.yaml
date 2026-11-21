@@ -7,8 +7,10 @@
 # Raumnamen im Repo stehen).
 #
 # Push an den Admin und persistente Benachrichtigung, wenn ein Thermostat 15 min
-# fehlt, Entwarnung, wenn es wieder da ist. Nach einem HA-Neustart wird ein
-# weiterhin fehlendes Thermostat einmal erneut gemeldet.
+# fehlt, Entwarnung, wenn es wieder da ist. 15 min nach einem HA-Neustart (dann sind
+# die FRITZ!Box-Geräte sicher geladen) und beim manuellen Ausführen werden alle
+# fehlenden Thermostate gemeldet; dabei ändert sich der Sensor nicht, der
+# Zustands-Trigger allein würde also nichts melden.
 
 template:
   - sensor:
@@ -33,19 +35,30 @@ automation:
         entity_id: sensor.thermostats_offline
         attribute: entities
         for: "00:15:00"
-    conditions:
+        id: change
+      - trigger: homeassistant
+        event: start
+        id: start
+    conditions: []
+    actions:
+      - if:
+          - condition: template
+            value_template: "{{ trigger.id | default('') == 'start' }}"
+        then:
+          - delay: "00:15:00"
       - condition: template
         value_template: >
-          {{ trigger.to_state is not none
-             and trigger.to_state.state not in ['unknown', 'unavailable'] }}
-    variables:
-      before: >
-        {{ (trigger.from_state.attributes.entities | default([], true))
-           if trigger.from_state is not none else [] }}
-      now_offline: "{{ trigger.to_state.attributes.entities | default([], true) }}"
-      went_offline: "{{ now_offline | reject('in', before) | list }}"
-      came_back: "{{ before | reject('in', now_offline) | list }}"
-    actions:
+          {{ states('sensor.thermostats_offline') not in ['unknown', 'unavailable'] }}
+      # Bei Änderung: Vergleich mit der Liste vor der Änderung. Sonst (Start oder
+      # manuell): alle fehlenden Thermostate melden.
+      - variables:
+          before: >
+            {{ (trigger.from_state.attributes.entities | default([], true))
+               if trigger.id | default('') == 'change' and trigger.from_state is not none
+               else [] }}
+          now_offline: "{{ state_attr('sensor.thermostats_offline', 'entities') | default([], true) }}"
+          went_offline: "{{ now_offline | reject('in', before) | list }}"
+          came_back: "{{ before | reject('in', now_offline) | list }}"
       - if:
           - condition: template
             value_template: "{{ went_offline | count > 0 }}"
@@ -55,7 +68,7 @@ automation:
               title: Thermostat offline
               message: >
                 {% for e in went_offline %}{{ state_attr(e, 'friendly_name') or e }}{{ ', ' if not loop.last }}{% endfor %}
-                seit 15 min nicht erreichbar – Akkus leer?
+                nicht erreichbar – Akkus leer?
       - if:
           - condition: template
             value_template: "{{ came_back | count > 0 }}"
